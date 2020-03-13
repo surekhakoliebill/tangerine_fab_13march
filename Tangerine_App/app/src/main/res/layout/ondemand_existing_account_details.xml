@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:padding="0dp"
+    android:background="@drawable/background_new_order_main_page"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/backstyle"
+        android:id="@+id/logo">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Account Details"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:paddingTop="10dp"
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/sansation_bold"
+            android:background="@color/colorlycadark"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        >
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:textSize="17sp"
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:fontFamily="@font/sansation_regular"
+            android:textColor="@color/black"
+            android:text="User Name :"/>
+
+        <TextView
+            android:id="@+id/primary_username_value"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="17sp"
+            android:layout_marginLeft="3dp"
+            android:fontFamily="@font/sansation_regular"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        >
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:fontFamily="@font/sansation_regular"
+            android:textColor="@color/black"
+            android:text="Currency :"/>
+
+        <TextView
+            android:id="@+id/currency_value"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="3dp"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="3dp"
+        >
+        <TextView
+
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:textColor="@color/black"
+            android:text="Billing Frequency:"/>
+
+        <TextView
+            android:id="@+id/billing_frequecy_value"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="3dp"
+        >
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Billing Cycle Id:"/>
+
+        <TextView
+            android:id="@+id/billing_cycle_id_value"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:hint=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="3dp"
+        >
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:textSize="17sp"
+            android:paddingLeft="5dp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sansation_regular"
+            android:text="Discount Type :"/>
+
+        <TextView
+            android:id="@+id/discount_type_value"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:layout_marginLeft="3dp"
+            android:fontFamily="@font/sansation_regular"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="3dp"
+        >
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:fontFamily="@font/sansation_regular"
+            android:textColor="@color/black"
+            android:text="Discount Value :"/>
+
+        <TextView
+            android:id="@+id/discount_value1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:layout_marginLeft="3dp"
+            android:fontFamily="@font/sansation_regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="3dp"
+        >
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:textColor="@color/black"
+            android:text="User Name:"/>
+
+        <TextView
+            android:id="@+id/username_value"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:layout_marginLeft="3dp"
+            android:textColor="@color/black"
+            android:hint=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingTop="10dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Discount Type: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/sansation_bold"
+            android:layout_marginLeft="2dp"
+
+            />
+    </LinearLayout>
+    <RadioGroup
+        android:id="@+id/discount_type_radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="visible"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/flat_rb"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textSize="17sp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:fontFamily="@font/sansation_regular"
+            android:text="Flat"
+            />
+        <RadioButton
+            android:id="@+id/percent_rb"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/sansation_regular"
+            android:layout_weight="1"
+            android:text="Percent"/>
+
+    </RadioGroup>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/discount_value"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="4dp"
+            android:inputType="number"
+            android:text=""
+            android:fontFamily="@font/sansation_regular"
+            android:hint="Periodic Discount Value"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        >
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginLeft="1dp"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:text="Back"
+            android:fontFamily="@font/sansation_bold"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button"
+            />
+        <Button
+
+            android:id="@+id/save_and_contionue"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/sansation_bold"
+            android:textColor="@color/white"
+            android:text="@string/save_and_continue"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            />
+    </LinearLayout>
+</LinearLayout>

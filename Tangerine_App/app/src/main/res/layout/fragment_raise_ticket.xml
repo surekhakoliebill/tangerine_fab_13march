@@ -1,0 +1,170 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.aryagami.tangerine.fragments.RaiseTicketFragment">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+        <EditText
+            android:id="@+id/msisdn_number"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:ems="1"
+            android:hint="@string/Number"
+            android:textSize="13sp"
+            android:textColorHint="@color/lightchange"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+
+        <EditText
+            android:id="@+id/contact_number"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:textSize="13sp"
+            android:ems="1"
+            android:textColorHint="@color/lightchange"
+            android:hint="@string/Contactnumber"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+        </LinearLayout>
+
+    <android.support.v7.view.menu.ListMenuItemView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:paddingRight="14dp"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:textSize="13sp"
+            android:maxWidth="120dp"
+            android:gravity="center"
+            android:minWidth="120dp"
+            android:textColor="@color/lightchange"
+            android:textColorHint="@color/lightchange"
+            android:text="@string/category"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <!--<include layout="@layout/item_single_spinner" />-->
+        <Spinner
+            android:id="@+id/category_spinner"
+            android:background="@drawable/edit_box_border"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="1dp">
+        </Spinner>
+       <!-- <ImageView
+            android:layout_centerVertical="true"
+            android:background="@drawable/drop_down_indicator"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:id="@+id/dropdown_indicator"
+            android:layout_alignParentRight="true"/>-->
+    </android.support.v7.view.menu.ListMenuItemView>
+    <RelativeLayout
+        android:id="@+id/short_description_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        android:visibility="gone"
+        android:weightSum="1">
+        <Spinner
+            android:id="@+id/short_description_spinner"
+            android:background="@color/colorWhite"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true">
+        </Spinner>
+        <ImageView
+            android:layout_centerVertical="true"
+            android:background="@drawable/drop_down_indicator"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:paddingRight="20dp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/device_type_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        android:visibility="gone"
+        android:weightSum="1">
+        <Spinner
+            android:id="@+id/device_type_spinner"
+            android:background="@color/colorWhite"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true">
+        </Spinner>
+        <ImageView
+            android:layout_centerVertical="true"
+            android:background="@drawable/drop_down_indicator"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:paddingRight="20dp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:text="DESCRIPTION"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp" >
+
+        <EditText
+            android:id="@+id/description_value"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/edit_box_border"
+            android:ems="1" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:text="@string/Send"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@drawable/button_shape"/>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

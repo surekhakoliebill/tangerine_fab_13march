@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "924497894108",
+    "firebase_url": "https://tangerineapp-bec2d.firebaseio.com",
+    "project_id": "tangerineapp-bec2d",
+    "storage_bucket": "tangerineapp-bec2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924497894108:android:eb444a404bb1dc3c",
+        "android_client_info": {
+          "package_name": "com.tangerine.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924497894108-540fc0femqkks0mu8aaf8jmgtk2c2tmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tangerine.android",
+            "certificate_hash": "9eb84ca8fb87c1e8cb8429a8502de23ce8d8742f"
+          }
+        },
+        {
+          "client_id": "924497894108-lh5tqhti7ilklfpjpq35k4c9tq3o3snk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOFHY81DBBDX_ZpA4w6m9iToSvaBy_gXo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924497894108-lh5tqhti7ilklfpjpq35k4c9tq3o3snk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

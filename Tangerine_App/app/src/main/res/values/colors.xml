@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#006FBA</color>
+    <color name="colorlyca">#006FBA</color>
+    <color name="colorlycagreen">#0BB04D</color>
+    <color name="colorlycadark">#006FBA</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <item name="red" type="color">#EA1D24</item>
+    <color name="black">#FF000000</color>
+    <color name="gray">#d3d3d3</color>
+    <color name="light_gray">#d3d3d3</color>
+    <color name="orange">#FFA500</color>
+    <color name="lightgrey">#808080</color>
+    <color name="whitesmoke">#f5f5f5</color>
+    <color name="tangerine">#F5777C</color>
+    <color name="darkpink">#F79298</color>
+    <color name="pink">#F0424B</color>
+    <color name="dark_grey">#f2f2f2</color>
+    <color name="darkred">#C60F18</color>
+    <color name="price">#EF3F48</color>
+    <color name="pricee">#F3646A</color>
+    <color name="history">#F96669</color>
+    <color name="history1">#EE1C25</color>
+    <color name="lightchange">#F8A0A4</color>
+    <color name="lightpink">#FEE0E0</color>
+    <item name="green" type="color">#FF98cb00</item>
+    <color name="actionbar_opacity">#33000000</color>
+    <color name="white">#FFFFFF</color>
+
+</resources>

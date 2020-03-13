@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <LinearLayout
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backstyle"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorlycadark"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:fontFamily="@font/sansation_bold"
+            android:text="Add Device"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            >
+
+
+            <!--<LinearLayout
+                android:id="@+id/imei_product_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backstyle"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Select Product:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/editbackground"
+                    android:padding="5dp"
+                    android:orientation="vertical">
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/select_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:spinnerMode="dialog"
+                        android:prompt="@string/spinner_title"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/imei_toggle_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/background_new_order_main_page"
+                    android:visibility="visible">
+
+                    <ToggleButton
+                        android:id="@+id/imei_toggle"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="false"
+                        android:layout_centerVertical="false"
+                        android:layout_marginLeft="0dp"
+                        android:background="@drawable/toggle_imei_selector"
+                        android:checked="true"
+                        android:textColor="@color/colorBlack"
+                        android:textOff=""
+                        android:textOn="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/scan_imei_container"
+                    android:layout_marginTop="2dp"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/imei_scan_layout"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="7dp"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:id="@+id/scan_imei_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button"
+                            android:text="SCAN IMEI "
+                            android:padding="10dp"
+                            android:textSize="17sp"
+                            android:textAllCaps="false"
+                            android:fontFamily="@font/sansation_bold"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/imei_container_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:layout_marginTop="5dp"
+                        android:padding="5dp"
+                        android:weightSum="1">
+
+                        <EditText
+                            android:id="@+id/scanned_imei_text"
+                            android:layout_width="255dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:gravity="center|left"
+                            android:textSize="18sp"
+                            android:hint="IMEI"/>
+
+                        <ImageButton
+                            android:id="@+id/search_imei_details_btn"
+                            android:layout_width="70dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/button"
+                            android:src="@drawable/search_icon" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>-->
+
+            <LinearLayout
+                android:id="@+id/add_device_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_more_device"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/sansation_bold"
+                android:background="@drawable/button"
+                android:text="+Add Device"
+                android:textAllCaps="false"
+                android:visibility="visible"
+                android:textColor="@color/white"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="17sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                >
+                <Button
+                    android:id="@+id/device_back"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button"
+                    android:text="Back"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="19sp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/white" />
+                <Button
+                    android:id="@+id/device_continue"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button"
+                    android:text="@string/save_and_continue"
+                    android:visibility="visible"
+                    android:textAllCaps="false"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="19sp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

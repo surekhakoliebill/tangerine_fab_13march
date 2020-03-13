@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_new_order_main_page"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/colorlyca">
+        <ImageButton
+            android:id="@+id/back_imgbtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="3dp"
+            android:background="@drawable/back_arrow_white"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text=" CAPTURE FINGERPRINT"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:background="@color/colorlycadark"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/logo">
+        <TextView
+            android:id="@+id/toast_msg_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:maxLines="5"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:text="" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="170dp"
+            android:layout_height="222dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/editbackground"
+            android:padding="1dp"
+            app:srcCompat="@android:color/background_light" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:enabled="true"
+            android:text="Capture Now"
+            android:textSize="17sp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button"
+            android:layout_alignStart="@+id/button"
+            android:layout_alignLeft="@+id/button"
+            android:enabled="true"
+            android:text="CAPTURE PreView"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button2"
+            android:layout_alignStart="@+id/button2"
+            android:layout_alignLeft="@+id/button2"
+            android:enabled="true"
+            android:text="CAPTURE (BG)"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button3"
+            android:layout_alignStart="@+id/button2"
+            android:layout_alignLeft="@+id/button2"
+            android:enabled="true"
+            android:text="MATCH CAPTURE"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Status Message"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/setflag"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textMessage"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:text="set F"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/getflag"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textMessage"
+            android:layout_toEndOf="@+id/button3"
+            android:layout_toRightOf="@+id/button3"
+            android:text="GET F"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/resetflag"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:layout_below="@+id/textMessage"
+            android:layout_toStartOf="@+id/textView4"
+            android:layout_toLeftOf="@+id/textView4"
+            android:text="RESET F"
+            android:visibility="invisible" />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_below="@+id/textMessage"
+            android:text="Done"
+            android:gravity="left|center"
+            android:background="@drawable/button"
+            android:drawableLeft="@drawable/checked"
+            android:paddingLeft="90dp"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

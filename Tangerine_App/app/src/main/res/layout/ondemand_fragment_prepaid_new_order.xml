@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    android:background="@drawable/background_new_order_main_page"
+    android:orientation="vertical">
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:id="@+id/radioGroup">
+        <RadioButton
+            android:id="@+id/create_new_acc_radio_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/create_new_account"
+            android:padding="5dp"
+            android:textSize="17sp"
+            android:checked="true"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/existing_acc_radio_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/associate_to_existing"
+            android:padding="5dp"
+            android:textSize="17sp"
+            android:textColor="@color/black"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/existing_account_container1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="Select Account:"
+            android:textSize="17sp"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editbackground"
+            android:orientation="vertical">
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                android:id="@+id/item_one_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/spinner_title"
+                />
+        </LinearLayout>
+
+        <!--<include
+            android:id="@+id/userType_Spinner"
+            layout="@layout/item_account_single_spinner"></include>-->
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:background="@drawable/xtendedlyca_button"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:text="Cancel"/>
+
+        <Button
+            android:id="@+id/save_and_continue"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:background="@drawable/xtendedlyca_button"
+            android:textSize="17sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:text="@string/continue_btn"/>
+    </LinearLayout>
+</LinearLayout>

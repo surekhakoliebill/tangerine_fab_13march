@@ -1,0 +1,27 @@
+<resources>>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/sansation_regular</item>
+        <item name="fontFamily">@font/sansation_regular</item>
+
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:buttonStyle">@style/SansationButtonStyle</item>
+        <item name="android:editTextStyle">@style/SansationEditViewStyle</item>
+        <item name="android:textViewStyle">@style/SansationTextViewStyle</item>
+
+    </style>
+
+    <style name="SansationEditViewStyle" parent="android:Widget.EditText">
+        <item name="android:fontFamily">@font/sansation_regular</item>
+    </style>
+
+    <style name="SansationButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/sansation_regular</item>
+    </style>
+    <style name="SansationTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/sansation_regular</item>
+    </style>
+</resources>

@@ -1,0 +1,175 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_gravity="center"
+    android:id="@+id/sim_swap_validate_form"
+    tools:context="com.aryagami.tangerine.fragments.UserInformationFragment">
+
+    <FrameLayout
+        android:id="@+id/main_home_container1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="#fff"
+            android:padding="3dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/backstyle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_new_order_main_page"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Sim Replace Form"
+                            android:layout_gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/new_staff_commssion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/validate_form_last_call_duration"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Last Call Duration(Sec)"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/validate_form_last_called_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Last Called Number"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/validate_form_last_recharge_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Last Recharge Amount"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/validate_form_customer_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Customer's Name"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/validate_form_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Email"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <Button
+                            android:id="@+id/sim_replace_cancel_btn"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/button"
+                            android:textColor="@color/white"
+                            android:textAllCaps="false"
+                            android:textSize="17sp"
+                            android:text="Cancel"/>
+
+                        <Button
+                            android:id="@+id/sim_replace_upload_btn"
+                            android:layout_width="170dp"
+                            android:layout_height="50dp"
+                            android:textColor="@color/white"
+                            android:textAllCaps="false"
+                            android:layout_marginLeft="10dp"
+                            android:visibility="visible"
+                            android:textSize="17sp"
+                            android:gravity="left|center"
+                            android:background="@drawable/button"
+                            android:drawableLeft="@drawable/uploaad"
+                            android:paddingLeft="45dp"
+                            android:text="Upload"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:background="#fbfbf5"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/main_home_container1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+
+            android:padding="3dp">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RadioGroup
+                            android:id="@+id/radiogrpid"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/imageView"
+                            android:weightSum="3"
+                            android:layout_marginTop="3dp"
+                            android:padding="3dp"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:background="@drawable/backstyle"
+                            android:gravity="center"
+                            >
+
+                            <RadioButton
+                                android:id="@+id/natid_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Ugandan"
+                                android:checked="true"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"/>
+                            <RadioButton
+                                android:id="@+id/frnr_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Foreigner"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+
+                                android:textColor="@color/colorBlack"/>
+                            <RadioButton
+                                android:id="@+id/refugee_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Refugee"
+                                android:textSize="15sp"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorBlack"/>
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        >
+                        <Button
+                            android:id="@+id/scan_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_gravity="right"
+                            android:text="Scan NIN Document"
+                            android:padding="8dp"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            android:textAllCaps="false"
+                            android:drawableLeft="@drawable/facialpass"
+                            android:background="@drawable/button"
+                            />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/verify_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="Fingerprint Verify Successfully"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:textColor="@color/colorPrimaryDark"
+                        />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="5dp">
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/give_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:padding="4dp"
+                            android:fontFamily="@font/sansation_regular"
+                            android:hint="Given Name"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/surname_layout">
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/surname"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:padding="4dp"
+                            android:fontFamily="@font/sansation_regular"
+                            android:hint="Surname"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/email_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:padding="4dp"
+                            android:fontFamily="@font/sansation_regular"
+                            android:hint="Email Id"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/dob_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:padding="4dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:fontFamily="@font/sansation_regular"
+                            android:hint="Date of Birth(DD/MM/YYYY)"/>
+
+                    </android.support.design.widget.TextInputLayout>
+                    <LinearLayout
+                        android:id="@+id/gender_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/editbackground"
+                        android:padding="3dp"
+                        android:orientation="vertical">
+                        <Spinner
+                            android:id="@+id/select_gender_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:spinnerMode="dialog"
+                            android:prompt="@string/spinner_title"
+                            />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:fontFamily="@font/sansation_regular"
+                                android:text="+256"
+                                android:editable="false"
+                                />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/phone_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:maxLength="9"
+                                android:inputType="number"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Phone Number"
+                                />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/reg_national_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="visible"
+                            android:paddingTop="5dp">
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/national_id"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:maxLength="14"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="National ID Number"/>
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/document_ID"
+                                    android:layout_gravity="center"
+                                    android:paddingTop="5dp"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:maxLength="9"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Document ID"/>
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/ugandan_nationality_id"                                android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Nationality"/>
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:gravity="left"
+                                android:paddingTop="5dp"
+                                >
+
+                                <Button
+                                    android:id="@+id/verifyidentitynumber_btn"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/white"
+                                    android:clickable="true"
+                                    android:padding="2dp"
+                                    android:textSize="17sp"
+                                    android:textAllCaps="false"
+                                    android:background="@drawable/button"
+                                    android:text="Verify Identity"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/reg_refugee_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            >
+
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/refugee_id"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Refugee Id Number"/>
+
+                            </android.support.design.widget.TextInputLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/issued_date"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:focusable="false"
+                                    android:editable="false"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Issued Date(DD/MM/YYYY)"/>
+
+                            </android.support.design.widget.TextInputLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/refugee_nationality"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Nationality"/>
+
+                            </android.support.design.widget.TextInputLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:gravity="left"
+                                android:paddingTop="5dp"
+                                >
+
+                                <Button
+                                    android:id="@+id/verify_refugee_btn"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/white"
+                                    android:clickable="true"
+                                    android:padding="2dp"
+                                    android:textSize="17sp"
+                                    android:textAllCaps="false"
+                                    android:background="@drawable/button"
+                                    android:text="Verify Refugee Identity"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:id="@+id/reg_foreigner_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            >
+
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/foreigner_passport_id"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Passport Number"/>
+                            </android.support.design.widget.TextInputLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginTop="5dp"
+                                android:visibility="visible">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="50dp"
+                                    android:layout_gravity="left|center"
+                                    android:text="Select Passport Type"
+                                    android:textSize="17sp"
+                                    android:gravity="center"
+                                    android:textColor="@color/colorBlack"
+                                    />
+                                <include
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/addressType_Spinner_layout"
+                                    layout="@layout/item_single_address_spinner">
+                                </include>
+
+
+                            </LinearLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:id="@+id/visa_expiry_layout"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/visa_expiry_date"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:editable="false"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Visa Expiry Date(DD/MM/YYYY)"/>
+
+                            </android.support.design.widget.TextInputLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/foreigner_nationality_id"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Nationality"/>
+
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <!--   <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:orientation="horizontal">
+
+                           <TextView
+                               android:layout_width="130dp"
+                               android:layout_height="wrap_content"
+                               android:text="Given Name"
+                               android:layout_gravity="center"
+                               android:textColor="@color/colorBlack"
+                               android:textSize="15sp"
+                               android:layout_marginLeft="35dp"/>
+                           <EditText
+                               android:id="@+id/give_name"
+                               android:layout_width="170dp"
+                               android:layout_height="wrap_content"
+
+                               android:padding="5dp"
+                               android:layout_gravity="center"
+                               android:background="@drawable/editbackground"
+                               android:textColor="@color/black"
+                               android:textSize="15sp" />
+                       </LinearLayout>-->
+
+                    <!-- <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:orientation="horizontal"
+                         android:paddingTop="5dp">
+
+                         <TextView
+                             android:layout_width="130dp"
+                             android:layout_height="wrap_content"
+                             android:text="Surname"
+                             android:layout_gravity="center"
+                             android:textSize="15sp"
+                             android:textColor="@color/colorBlack"
+                             android:layout_marginLeft="35dp"/>
+                         <EditText
+                             android:id="@+id/surname"
+                             android:layout_width="170dp"
+                             android:layout_height="wrap_content"
+                             android:paddingTop="10dp"
+                             android:layout_gravity="center"
+                             android:background="@drawable/editbackground"
+                             android:textColor="@color/black"
+                             android:textSize="15sp" />
+                     </LinearLayout>-->
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:text="Other Name"
+                            android:layout_gravity="center"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginLeft="35dp"/>
+                        <EditText
+                            android:id="@+id/other_name"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/editbackground"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>-->
+
+                    <!-- <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:orientation="horizontal"
+                         android:paddingTop="5dp">
+
+                         <TextView
+                             android:layout_width="130dp"
+                             android:layout_height="wrap_content"
+                             android:text="Email"
+                             android:layout_gravity="center"
+                             android:textSize="15sp"
+                             android:textColor="@color/colorBlack"
+                             android:layout_marginLeft="35dp"/>
+                         <EditText
+                             android:id="@+id/email_id"
+                             android:layout_width="170dp"
+                             android:layout_height="wrap_content"
+                             android:paddingTop="10dp"
+                             android:layout_gravity="center"
+                             android:background="@drawable/editbackground"
+                             android:textColor="@color/black"
+                             android:inputType="textEmailAddress"
+                             android:textSize="15sp" />
+                     </LinearLayout>-->
+                    <!--  <LinearLayout
+                          android:id="@+id/date_picker_layout"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="horizontal"
+                          android:paddingTop="5dp"
+                          android:visibility="visible"
+                          android:layout_marginBottom="5dp"
+                          >
+                          <TextView
+
+                              android:layout_width="130dp"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="center"
+                              android:textColor="@color/colorBlack"
+                              android:textSize="15sp"
+                              android:layout_marginLeft="35dp"
+                              android:text="Date of Birth"
+                              />
+                          <EditText
+                              android:id="@+id/dob_edittext"
+                              android:layout_width="170dp"
+                              android:layout_height="40dp"
+                              android:layout_gravity="center"
+                              android:paddingTop="5dp"
+                              android:background="@drawable/editbackground"
+                              android:hint="DD/MM/YYYY"
+                              android:textSize="15sp"
+                              android:textColor="@color/black"
+                              />
+                      </LinearLayout>-->
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:text="User Name"
+                            android:layout_gravity="center"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginLeft="35dp"/>
+                        <EditText
+                            android:id="@+id/user_name"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/editbackground"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>-->
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:text="User Group"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="35dp"/>
+                        <Spinner
+                            android:id="@+id/user_group_spinner"
+                            android:layout_width="220dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentRight="true">
+                        </Spinner>
+                    </LinearLayout>-->
+
+                    <!-- <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:orientation="horizontal"
+                         android:paddingTop="5dp">
+
+                         <TextView
+                             android:layout_width="130dp"
+                             android:layout_height="wrap_content"
+                             android:text="Phone Number"
+                             android:layout_gravity="center"
+                             android:textSize="15sp"
+                             android:textColor="@color/colorBlack"
+                             android:layout_marginLeft="35dp"/>
+                         <EditText
+                             android:id="@+id/phone_no"
+                             android:layout_width="170dp"
+                             android:layout_height="wrap_content"
+                             android:paddingTop="10dp"
+                             android:layout_gravity="center"
+                             android:inputType = "number"
+                             android:maxLength="12"
+                             android:text="256"
+                             android:background="@drawable/editbackground"
+                             android:textColor="@color/black"
+                             android:textSize="15sp" />
+                     </LinearLayout>-->
+
+
+                    <!-- <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:orientation="vertical"
+                         android:paddingTop="5dp">
+
+
+                         &lt;!&ndash;<LinearLayout
+                             android:id="@+id/reg_national_container"
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:visibility="visible">
+                             <include layout="@layout/fragment_nationalid"
+                                 />
+                         </LinearLayout>&ndash;&gt;
+
+                       &lt;!&ndash;  <LinearLayout
+                             android:id="@+id/reg_foreigner_container"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:visibility="gone">
+                             <include layout="@layout/fragment_foreigener_identifier" />
+                         </LinearLayout>&ndash;&gt;
+
+
+ &lt;!&ndash;
+                             <LinearLayout
+                                 android:id="@+id/reg_national_container"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent"
+                                 android:orientation="vertical"
+                                 android:visibility="visible"
+                                 android:paddingTop="5dp">
+
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="50dp"
+                                     android:orientation="horizontal"
+                                     android:paddingTop="5dp">
+
+                                     <TextView
+                                         android:layout_width="130dp"
+                                         android:layout_height="wrap_content"
+                                         android:layout_gravity="center"
+                                         android:text="National ID Number"
+                                         android:textColor="@color/colorBlack"
+                                         android:textSize="15sp"
+                                         android:layout_marginLeft="35dp"
+                                         />
+                                     <EditText
+                                         android:id="@+id/national_id"
+                                         android:layout_width="170dp"
+                                         android:layout_height="40dp"
+                                         android:layout_gravity="center"
+                                         android:paddingTop="5dp"
+                                         android:maxLength="14"
+                                         android:background="@drawable/editbackground"
+                                         android:textColor="@color/black"
+                                         android:textSize="15sp" />
+                                 </LinearLayout>
+
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="horizontal"
+                                     android:paddingTop="5dp">
+
+                                     <TextView
+                                         android:layout_width="130dp"
+                                         android:layout_height="wrap_content"
+                                         android:text="Document ID"
+                                         android:layout_gravity="center"
+                                         android:textColor="@color/colorBlack"
+                                         android:layout_marginLeft="35dp"
+                                         android:textSize="15sp"
+                                         />
+                                     <EditText
+                                         android:id="@+id/document_ID"
+                                         android:layout_width="170dp"
+                                         android:layout_height="40dp"
+                                         android:layout_gravity="center"
+                                         android:paddingTop="5dp"
+                                         android:maxLength="9"
+                                         android:inputType="number"
+                                         android:background="@drawable/editbackground"
+                                         android:textColor="@color/black"
+                                         android:textSize="15sp" />
+                                 </LinearLayout>
+
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="horizontal"
+                                     android:visibility="gone"
+                                     android:paddingTop="5dp">
+
+                                     <TextView
+                                         android:layout_width="130dp"
+                                         android:layout_height="wrap_content"
+                                         android:layout_gravity="center"
+                                         android:text="Nationality"
+                                         android:textColor="@color/colorBlack"
+                                         android:textSize="17sp"
+                                         android:layout_marginLeft="35dp"
+                                         />
+                                     <EditText
+                                         android:id="@+id/ugandan_nationality_id"
+                                         android:layout_width="170dp"
+                                         android:layout_height="40dp"
+                                         android:layout_gravity="center"
+                                         android:padding="3dp"
+                                         android:background="@drawable/editbackground"
+                                         android:textColor="@color/black"
+                                         android:textSize="17sp" />
+                                 </LinearLayout>
+
+                                 <LinearLayout
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="horizontal"
+                                     android:gravity="left"
+                                     android:paddingTop="5dp"
+                                     >
+
+                                     <Button
+                                         android:id="@+id/verifyidentitynumber_btn"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="40dp"
+                                         android:layout_gravity="center"
+                                         android:textColor="@color/white"
+                                         android:clickable="true"
+                                         android:padding="2dp"
+                                         android:textAllCaps="false"
+                                         android:background="@drawable/button"
+                                         android:text="Verify Identity Number"/>
+                                 </LinearLayout>
+
+                             </LinearLayout>&ndash;&gt;
+
+
+
+                        &lt;!&ndash; <LinearLayout
+                             android:id="@+id/reg_foreigner_container"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:orientation="vertical"
+                             android:visibility="visible"
+                             >
+
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent"
+                                 android:orientation="horizontal"
+                                 android:paddingTop="5dp">
+
+                                 <TextView
+                                     android:id="@+id/passport_num_text"
+                                     android:layout_width="130dp"
+                                     android:layout_height="wrap_content"
+                                     android:layout_gravity="center"
+                                     android:text="Passport Number"
+                                     android:textColor="@color/colorBlack"
+                                     android:textSize="17sp"
+                                     android:layout_marginLeft="35dp"
+                                     />
+                                 <EditText
+                                     android:id="@+id/foreigner_passport_id"
+                                     android:layout_width="170dp"
+                                     android:layout_height="40dp"
+                                     android:paddingTop="10dp"
+                                     android:layout_gravity="center"
+                                     android:background="@drawable/editbackground"
+                                     android:textColor="@color/black"
+                                     android:textSize="15sp" />
+                             </LinearLayout>
+
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent"
+                                 android:orientation="horizontal"
+                                 android:visibility="gone"
+                                 android:paddingTop="5dp">
+
+                                 <TextView
+                                     android:layout_width="130dp"
+                                     android:layout_height="wrap_content"
+                                     android:layout_gravity="center"
+                                     android:text="Refugee Identity Number"
+                                     android:textColor="@color/colorBlack"
+                                     android:layout_marginLeft="35dp"
+                                     android:textSize="17sp"
+                                     />
+                                 <EditText
+                                     android:id="@+id/refugee_identity"
+                                     android:layout_width="170dp"
+                                     android:layout_height="40dp"
+                                     android:layout_gravity="center"
+                                     android:padding="3dp"
+                                     android:background="@drawable/editbackground"
+                                     android:textColor="@color/black"
+                                     android:textSize="17sp" />
+                             </LinearLayout>
+
+                             <LinearLayout
+                                 android:id="@+id/foreigner_date_picker_layout"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent"
+                                 android:orientation="horizontal"
+                                 android:paddingTop="5dp"
+                                 android:layout_marginBottom="5dp"
+                                 android:visibility="visible"
+                                 >
+                                 <TextView
+                                     android:id="@+id/issued_date_text"
+                                     android:layout_width="130dp"
+                                     android:layout_height="wrap_content"
+                                     android:layout_gravity="center"
+                                     android:textColor="@color/colorBlack"
+                                     android:textSize="17sp"
+                                     android:layout_marginLeft="35dp"
+                                     android:text="Visa Expiry Date"
+                                     />
+                                 <EditText
+                                     android:id="@+id/issued_date"
+                                     android:layout_width="170dp"
+                                     android:layout_height="40dp"
+                                     android:layout_gravity="center"
+                                     android:padding="3dp"
+                                     android:background="@drawable/editbackground"
+                                     android:hint="DD/MM/YYYY"
+                                     android:textSize="17sp"
+                                     android:textColor="@color/black"
+                                     />
+                             </LinearLayout>
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="match_parent"
+                                 android:orientation="horizontal"
+                                 android:paddingTop="5dp">
+
+                                 <TextView
+                                     android:layout_width="130dp"
+                                     android:layout_height="wrap_content"
+                                     android:layout_gravity="center"
+                                     android:text="Nationality"
+                                     android:textColor="@color/colorBlack"
+                                     android:textSize="17sp"
+                                     android:layout_marginLeft="35dp"
+                                     />
+                                 <EditText
+                                     android:id="@+id/foreigner_nationality_id"
+                                     android:layout_width="170dp"
+                                     android:layout_height="40dp"
+                                     android:layout_gravity="center"
+                                     android:padding="3dp"
+                                     android:background="@drawable/editbackground"
+                                     android:textColor="@color/black"
+                                     android:textSize="17sp" />
+                             </LinearLayout>
+
+                         </LinearLayout>&ndash;&gt;
+
+
+                         &lt;!&ndash;<LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:orientation="horizontal"
+                             android:paddingTop="5dp">
+
+                             <TextView
+                                 android:layout_width="130dp"
+                                 android:layout_height="50dp"
+                                 android:text="National ID Number"
+                                 android:textColor="@color/white"
+                                 android:layout_gravity="center"
+                                 android:layout_marginLeft="35dp"
+                                 android:gravity="center"/>
+                             <EditText
+                                 android:id="@+id/national_id"
+                                 android:layout_width="200dp"
+                                 android:layout_height="wrap_content"
+                                 android:paddingTop="10dp"
+                                 android:layout_gravity="center"
+                                 android:layout_marginLeft="10dp"
+                                 android:background="@color/darkpink"
+                                 android:textColor="@color/black"
+                                 android:textSize="15sp" />
+                         </LinearLayout>&ndash;&gt;
+
+                         &lt;!&ndash;<LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:orientation="horizontal"
+                             android:paddingTop="5dp">
+
+                             <TextView
+                                 android:layout_width="130dp"
+                                 android:layout_height="50dp"
+                                 android:text="Document ID"
+                                 android:layout_gravity="center"
+                                 android:textColor="@color/white"
+                                 android:layout_marginLeft="35dp"
+                                 android:gravity="center"/>
+                             <EditText
+                                 android:id="@+id/document_ID"
+                                 android:layout_width="200dp"
+                                 android:layout_height="wrap_content"
+                                 android:layout_gravity="center"
+                                 android:paddingTop="10dp"
+                                 android:layout_marginLeft="10dp"
+                                 android:background="@color/darkpink"
+                                 android:textColor="@color/black"
+                                 android:textSize="15sp" />
+                         </LinearLayout>&ndash;&gt;
+
+                         &lt;!&ndash;<LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:orientation="horizontal"
+                             android:paddingTop="5dp">
+
+                             <TextView
+                                 android:layout_width="130dp"
+                                 android:layout_height="50dp"
+                                 android:text="Date of Birth"
+                                 android:textColor="@color/white"
+                                 android:layout_gravity="center"
+                                 android:layout_marginLeft="35dp"
+                                 android:gravity="center"/>
+                             <EditText
+                                 android:id="@+id/DOB_id"
+                                 android:layout_width="200dp"
+                                 android:layout_height="wrap_content"
+                                 android:layout_gravity="center"
+                                 android:paddingTop="10dp"
+                                 android:layout_marginLeft="10dp"
+                                 android:background="@color/darkpink"
+                                 android:textColor="@color/black"
+                                 android:textSize="15sp" />
+                         </LinearLayout>&ndash;&gt;
+
+                         &lt;!&ndash;<LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:orientation="horizontal"
+                             android:paddingTop="5dp">
+
+                            <CheckBox
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Verify Mendatory Fields Only"
+                                android:textColor="@color/white"
+                                android:padding="5dp"/>
+                         </LinearLayout>&ndash;&gt;
+                         &lt;!&ndash;<LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:orientation="horizontal"
+                             android:paddingTop="5dp"
+                             android:paddingLeft="5dp">
+
+                             <Button
+                                 android:id="@+id/verifyidentitynumber_btn"
+                                 android:layout_width="130dp"
+                                 android:layout_height="40dp"
+                                 android:background="@color/red"
+                                 android:layout_gravity="center"
+                                 android:textColor="@color/white"
+                                 android:text="Verify Identity Number"/>
+                         </LinearLayout>&ndash;&gt;
+                         &lt;!&ndash;<LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:orientation="horizontal"
+                             android:paddingTop="15dp"
+                             android:paddingLeft="5dp">
+
+                             <Button
+                                 android:id="@+id/cancel_btn"
+                                 android:layout_width="130dp"
+                                 android:layout_height="40dp"
+                                 android:background="@color/red"
+                                 android:layout_gravity="center"
+                                 android:textColor="@color/white"
+                                 android:text="Back"/>
+
+                             <Button
+                                 android:id="@+id/savecontinue1_btn"
+                                 android:layout_width="130dp"
+                                 android:layout_height="40dp"
+                                 android:layout_marginLeft="110dp"
+                                 android:background="@color/red"
+                                 android:layout_gravity="center"
+                                 android:textColor="@color/white"
+                                 android:text="Save and Continue"/>
+                         </LinearLayout>&ndash;&gt;
+
+                     </LinearLayout>-->
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,1943 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_new_order_main_page"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivUserProfile"
+                    android:layout_width="115dp"
+                    android:layout_height="115dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/edit_box_border" />
+
+                <com.aryagami.data.CustomTextView
+                    android:id="@+id/tvMrz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="start|center_horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:typeface="ALLER_STD_REG" />
+
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="10dp">-->
+
+                <!--<com.aryagami.data.CustomTextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="right"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:text="mrz"-->
+                <!--android:textAllCaps="true"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textSize="15dp"-->
+                <!--app:typeface="ALLER_STD_REG" />-->
+
+                <!--<com.aryagami.data.CustomTextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:gravity="center"-->
+                <!--android:text=" : "-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textSize="15dp"-->
+                <!--app:typeface="ALLER_STD_REG" />-->
+
+                <!--<com.aryagami.data.CustomTextView-->
+                <!--android:id="@+id/tvMrz"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="left"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:textAllCaps="true"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textSize="15dp"-->
+                <!--app:typeface="ALLER_STD_REG" />-->
+                <!--</LinearLayout>-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="Document"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDocumentType"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="lastName"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvLastName"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:id="@+id/llFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="firstName"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvFirstName"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorlyca" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="documentNo"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvPassportNo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="documentNoCheck"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDocumentNoCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="country"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvCountry"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="Nationality"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvNationality"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:id="@+id/llGeneder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="gender"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvSex"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorlyca" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="dateOfBirth"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDOB"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="DateOfBirthCheck"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDOBCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="DateOfIssue"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="center"
+                        android:text=" : "
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDateOfIssue"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="DateOfExpiry"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDateOfExpiry"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorlyca" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="dateOfExpiryCheck"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDateOfExpiryCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llOtherId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorlyca" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="otherId"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvOtherId"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorlyca" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="otherIdCheck"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvOtherIdCheck"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:visibility="gone"
+                        android:background="@color/colorlyca" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="SecondRowCheckNumber"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvSecondRowCheckNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:visibility="gone"
+                        android:background="@color/colorlyca" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="result"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvRet"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:gravity="left|start"
+                            android:textAllCaps="true"
+                            android:paddingLeft="10dp"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <com.aryagami.data.CustomTextView
+            android:id="@+id/tvSave"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="OK"
+            android:textColor="@color/white"
+            android:background="@drawable/xtendedlyca_button"
+            android:textSize="17sp"
+            app:typeface="ALLER_STD_DISPLAY" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="#9d000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivUserProfile"
+                    android:layout_width="115dp"
+                    android:layout_height="115dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/edit_box_border" />
+
+                <com.aryagami.data.CustomTextView
+                    android:id="@+id/tvMrz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="start|center_horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    app:typeface="ALLER_STD_REG" />
+
+                &lt;!&ndash;<LinearLayout&ndash;&gt;
+                &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;
+                &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;
+                &lt;!&ndash;android:orientation="horizontal"&ndash;&gt;
+                &lt;!&ndash;android:padding="10dp">&ndash;&gt;
+
+                &lt;!&ndash;<com.aryagami.data.CustomTextView&ndash;&gt;
+                &lt;!&ndash;android:layout_width="0dp"&ndash;&gt;
+                &lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;
+                &lt;!&ndash;android:layout_gravity="right"&ndash;&gt;
+                &lt;!&ndash;android:layout_weight="1"&ndash;&gt;
+                &lt;!&ndash;android:gravity="right"&ndash;&gt;
+                &lt;!&ndash;android:paddingRight="10dp"&ndash;&gt;
+                &lt;!&ndash;android:text="mrz"&ndash;&gt;
+                &lt;!&ndash;android:textAllCaps="true"&ndash;&gt;
+                &lt;!&ndash;android:textColor="@color/black"&ndash;&gt;
+                &lt;!&ndash;android:textSize="15dp"&ndash;&gt;
+                &lt;!&ndash;app:typeface="ALLER_STD_REG" />&ndash;&gt;
+
+                &lt;!&ndash;<com.aryagami.data.CustomTextView&ndash;&gt;
+                &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;
+                &lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;
+                &lt;!&ndash;android:layout_gravity="right"&ndash;&gt;
+                &lt;!&ndash;android:gravity="center"&ndash;&gt;
+                &lt;!&ndash;android:text=" : "&ndash;&gt;
+                &lt;!&ndash;android:textColor="@color/black"&ndash;&gt;
+                &lt;!&ndash;android:textSize="15dp"&ndash;&gt;
+                &lt;!&ndash;app:typeface="ALLER_STD_REG" />&ndash;&gt;
+
+                &lt;!&ndash;<com.aryagami.data.CustomTextView&ndash;&gt;
+                &lt;!&ndash;android:id="@+id/tvMrz"&ndash;&gt;
+                &lt;!&ndash;android:layout_width="0dp"&ndash;&gt;
+                &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;
+                &lt;!&ndash;android:layout_gravity="left"&ndash;&gt;
+                &lt;!&ndash;android:layout_weight="1"&ndash;&gt;
+                &lt;!&ndash;android:gravity="center"&ndash;&gt;
+                &lt;!&ndash;android:paddingLeft="10dp"&ndash;&gt;
+                &lt;!&ndash;android:textAllCaps="true"&ndash;&gt;
+                &lt;!&ndash;android:textColor="@color/black"&ndash;&gt;
+                &lt;!&ndash;android:textSize="15dp"&ndash;&gt;
+                &lt;!&ndash;app:typeface="ALLER_STD_REG" />&ndash;&gt;
+                &lt;!&ndash;</LinearLayout>&ndash;&gt;
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="Document"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDocumentType"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="lastName"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvLastName"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:id="@+id/llFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="firstName"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvFirstName"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="documentNo"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvPassportNo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="documentNoCheck"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDocumentNoCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="country"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvCountry"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="Nationality"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvNationality"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:id="@+id/llGeneder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="gender"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvSex"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="dateOfBirth"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDOB"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="DateOfBirthCheck"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDOBCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="DateOfIssue"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="center"
+                        android:text=" : "
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDateOfIssue"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="DateOfExpiry"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDateOfExpiry"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingRight="10dp"
+                        android:text="dateOfExpiryCheck"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:gravity="top|center_horizontal"
+                        android:text=" : "
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/tvDateOfExpiryCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:textAllCaps="true"
+
+                        android:textSize="15dp"
+                        app:typeface="ALLER_STD_REG" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llOtherId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="otherId"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvOtherId"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="otherIdCheck"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvOtherIdCheck"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="SecondRowCheckNumber"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvSecondRowCheckNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:paddingLeft="10dp"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/red" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:paddingRight="10dp"
+                            android:text="result"
+                            android:textAllCaps="true"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right"
+                            android:gravity="top|center_horizontal"
+                            android:text=" : "
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                        <com.aryagami.data.CustomTextView
+                            android:id="@+id/tvRet"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_weight="1"
+                            android:gravity="left|start"
+                            android:textAllCaps="true"
+                            android:paddingLeft="10dp"
+
+                            android:textSize="15dp"
+                            app:typeface="ALLER_STD_REG" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <com.aryagami.data.CustomTextView
+            android:id="@+id/tvSave"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="OK"
+            android:textColor="@color/white"
+            android:background="@drawable/bbutton"
+            android:textSize="17sp"
+            app:typeface="ALLER_STD_DISPLAY" />
+
+    </LinearLayout>
+
+</RelativeLayout>-->

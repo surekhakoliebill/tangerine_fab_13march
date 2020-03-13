@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:background="@color/red"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    tools:showIn="@layout/activity_user_profile_edit">
+<!--  tools:context="com.example.aryagami.tangerine.tangerine.activities.UserProfileActivity"-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hometan">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--<TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/userprofile"
+                />-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:background="@color/history1">
+
+
+            <LinearLayout
+                android:id="@+id/product_picture_thumbnails"
+                android:layout_width="100dp"
+                android:layout_gravity="center"
+                android:layout_height="100dp"
+                android:innerRadius="0dp"
+                android:background="@drawable/userprofileimg"
+                android:shape="rectangle"
+                android:thicknessRatio="1.9"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/profile_image"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Upload Image"
+                android:layout_gravity="center"
+                android:background="@color/red"
+                android:layout_centerHorizontal="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="2dp"
+                android:src="@drawable/userprofileimg"
+                />
+
+            </LinearLayout>
+
+
+          <!-- <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:background="@color/history1"
+                android:orientation="vertical">
+
+               <ImageView
+                   android:id="@+id/product_picture_thumbnails"
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:layout_marginLeft="30dp"
+                   android:src="@drawable/userprofileimg"/>
+              &lt;!&ndash; <Button
+                   android:id="@+id/profile_image"
+                   android:layout_width="150dp"
+                   android:layout_height="50dp"
+                   android:text="Upload Image"
+                   android:background="@color/red"
+                   android:textColor="@color/white"
+                   android:layout_marginTop="10dp"
+                   android:focusable="true"
+                   android:layout_marginLeft="10dp"
+                   android:focusableInTouchMode="true"
+                   android:src="@drawable/userprofileimg"
+                   />&ndash;&gt;
+
+            </LinearLayout>-->
+
+
+           <!-- <ImageView
+                android:id="@+id/product_picture_thumbnails"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/userprofileimg"
+                />
+
+            <Button
+                android:id="@+id/profile_image"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Upload Image"
+                android:background="@color/red"
+                android:layout_centerHorizontal="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="2dp"
+                android:layout_marginLeft="80dp"
+                android:src="@drawable/userprofileimg"
+                />-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/quantityField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/quantityTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:maxWidth="120dp"
+                        android:minWidth="120dp"
+                        android:text="Full Name"
+                        android:textColor="@color/colorBlack"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/fullname"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_alignBottom="@+id/quantityTitle"
+                        android:layout_alignTop="@+id/quantityTitle"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/quantityTitle"
+                        android:ems="1" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/actualPriceField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="3dp">
+
+                    <TextView
+                        android:id="@+id/actualPriceTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Phone Number"
+                        android:textColor="@color/colorBlack"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/phoneNumber"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:inputType="number"
+                        android:layout_alignBottom="@+id/actualPriceTitle"
+                        android:layout_alignTop="@+id/actualPriceTitle"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/actualPriceTitle"
+                        android:ems="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/discountPriceField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/discountPriceTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:maxWidth="120dp"
+                        android:minWidth="120dp"
+                        android:text="Address"
+                        android:textColor="@color/colorBlack"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:maxLines="3"
+                        android:layout_alignBottom="@+id/discountPriceTitle"
+                        android:layout_alignTop="@+id/discountPriceTitle"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/discountPriceTitle"
+                        android:ems="1" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/city_title_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/city_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:maxWidth="120dp"
+                        android:minWidth="120dp"
+                        android:text="City "
+                        android:textColor="@color/colorBlack"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/city_value"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_alignBottom="@+id/discountPriceTitle"
+                        android:layout_alignTop="@+id/discountPriceTitle"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/discountPriceTitle"
+                        android:ems="1" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/state_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/state_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:maxWidth="120dp"
+                        android:minWidth="120dp"
+                        android:text="State "
+                        android:textColor="@color/colorBlack"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/state_value"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_alignBottom="@+id/discountPriceTitle"
+                        android:layout_alignTop="@+id/discountPriceTitle"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/discountPriceTitle"
+                        android:ems="1" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/emailTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:maxWidth="120dp"
+                        android:minWidth="120dp"
+                        android:text="Email"
+                        android:textColor="@color/colorBlack"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/emailTextt"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_alignBottom="@+id/emailTitle"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/emailTitle"
+                        android:ems="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/comanyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/companyTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:maxWidth="120dp"
+                        android:minWidth="120dp"
+                        android:text="Company"
+                        android:textColor="@color/colorBlack"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <EditText
+                        android:id="@+id/companytext"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/companyTitle"
+                        android:ems="1" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/update_btn"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:text="Update"
+                    android:background="@drawable/bbutton"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <!-- <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/traingle"
+             android:orientation="vertical"
+             >-->
+
+
+
+        <!--</LinearLayout>-->
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="505dp"
+
+            android:background="@drawable/finalback"/>
+
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/main_home_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/backstyle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/prepaid_service_layout"
+                        android:padding="5dp"
+                        android:elevation="@dimen/bottom_navigation_elevation"
+                        android:orientation="horizontal"
+                        android:background="@color/colorlycadark"
+                        android:layout_height="50dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="Reseller Registration"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/sansation_bold"
+                            android:textSize="20dp"
+                            android:layout_gravity="center"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:background="@color/colorlycadark"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="3dp"
+                        android:orientation="horizontal"
+                        android:paddingRight="37dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Mandatory Documents"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="18sp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/company_mandatory"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        android:layout_marginTop="5dp"
+                        android:background="#fff">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/certified_company"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/button"
+                                android:text=""
+                                android:textAllCaps="false"
+                                android:textSize="15sp"
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout1"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn1"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+                                <TextView
+
+                                    android:id="@+id/notification"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            >
+
+                            <Button
+                                android:id="@+id/Certified_form_file"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/button"
+                                android:text=""
+                                android:textAllCaps="false"
+                                android:textSize="15sp"
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout2"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn2"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:layout_marginTop="10dp"
+                                    android:id="@+id/notification1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15sp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="No file is selected" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="visible"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/copies_directories"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:textAllCaps="false"
+                                android:background="@drawable/button"
+                                android:text=""
+                                android:textSize="15sp"
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout3"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn3"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:id="@+id/notification2"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="visible"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/audited_financial"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:textAllCaps="false"
+                                android:background="@drawable/button"
+                                android:text=""
+                                android:textSize="15sp"
+                                android:textColor="@color/white" />
+                            <LinearLayout
+                                android:id="@+id/layout4"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn4"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:id="@+id/notification3"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/URA_certified"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:textAllCaps="false"
+                                android:background="@drawable/button"
+                                android:textSize="15sp"
+                                android:text=""
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout5"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn5"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:id="@+id/notification4"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/previous_business"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:textAllCaps="false"
+                                android:background="@drawable/button"
+                                android:textSize="15sp"
+                                android:text=" "
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout6"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn6"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:id="@+id/notification5"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/bank_statement"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:textAllCaps="false"
+                                android:background="@drawable/button"
+                                android:textSize="15sp"
+                                android:text=" "
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout7"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn7"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:id="@+id/notification6"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/cma_doc"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:textAllCaps="false"
+                                android:background="@drawable/button"
+                                android:textSize="15sp"
+                                android:text=" "
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout8"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn8"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:id="@+id/notification7"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <Button
+                            android:id="@+id/cancelfinal_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sansation_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button"
+                            android:text="Back"
+                            android:padding="5dp"
+                            android:textSize="17sp"
+                            android:textAllCaps="false"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/white" />
+
+                        <Button
+                            android:id="@+id/new_staff_document_save_and_continue_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sansation_bold"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/button"
+                            android:text="Submit"
+                            android:padding="5dp"
+                            android:textSize="17sp"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

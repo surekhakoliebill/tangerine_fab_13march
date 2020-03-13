@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_new_order_main_page">
+    <!--<android.support.design.widget.AppBarLayout
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </android.support.design.widget.AppBarLayout>-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:layout_gravity="center"
+                    android:background="@color/colorlyca"
+                    android:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:title="">
+
+                    <ImageView
+                        android:id="@+id/ivBack"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/left_arrow" />
+
+                    <com.aryagami.data.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="SCAN ICCID "
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:textSize="17dp" />
+
+                </android.support.v7.widget.Toolbar>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ugandan_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/ivScan"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/barcode" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/tvLetsGo"
+                        android:layout_width="270dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:gravity="center"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:text="SCAN ICCID/IMEI"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:background="@drawable/xtendedlyca_button"
+                        android:textSize="20sp"
+                        android:onClick="launchFullActivity"
+                        />
+                    <com.aryagami.data.CustomTextView
+                        android:id="@+id/nira_scanning"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:gravity="center"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:text="@string/passport_scan"
+                        android:textColor="@color/white"
+                        android:background="@drawable/xtendedlyca_button"
+                        android:textSize="15dp"
+                        android:visibility="gone"
+                        app:typeface="ALLER_STD_LIGHT" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <Button
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="@string/activity_sample"
+                    android:onClick="launchFullActivity" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+
+
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backstyle"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_gravity="center"
+            android:background="@color/colorlyca"
+            android:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:src="@drawable/left_arrow" />
+
+            <com.aryagami.data.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/text_scan_doc"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="17dp" />
+
+        </android.support.v7.widget.Toolbar>
+    </LinearLayout>
+    <RadioGroup
+        android:id="@+id/scan_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <RadioButton
+            android:id="@+id/ugandan_radio_btn"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="Ugandan"
+            android:textSize="20sp"
+            android:checked="true"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        <RadioButton
+            android:id="@+id/foreigner_radio_btn"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="Foreigner"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+    </RadioGroup>
+
+    &lt;!&ndash;<ScrollView&ndash;&gt;
+    &lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;
+    &lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;
+    &lt;!&ndash;android:fillViewport="true"&ndash;&gt;
+    &lt;!&ndash;android:padding="10dp"&ndash;&gt;
+    &lt;!&ndash;android:scrollbars="none">&ndash;&gt;
+
+    <LinearLayout
+        android:id="@+id/ugandan_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/ivScan"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/sample_id_uganda" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <com.aryagami.data.CustomTextView
+                android:id="@+id/tvLetsGo"
+                android:layout_width="270dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="National Id Card"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/xtendedlyca_button"
+                android:textSize="20sp"
+                app:typeface="ALLER_STD_LIGHT" />
+            <com.aryagami.data.CustomTextView
+                android:id="@+id/nira_scanning"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="@string/passport_scan"
+                android:textColor="@color/white"
+                android:background="@drawable/xtendedlyca_button"
+                android:textSize="15dp"
+                android:visibility="gone"
+                app:typeface="ALLER_STD_LIGHT" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/foreigner_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivScan1"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/passport_image" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <com.aryagami.data.CustomTextView
+                android:id="@+id/foreinger_scan_btn"
+                android:layout_width="270dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:textStyle="bold"
+                android:text="@string/passport_scan"
+                android:textColor="@color/white"
+                android:background="@drawable/xtendedlyca_button"
+                android:textSize="20sp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+    &lt;!&ndash;</LinearLayout>&ndash;&gt;
+    &lt;!&ndash;</ScrollView>&ndash;&gt;-->

@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/new1_sim_swap_list"
+    android:background="@drawable/background_new_order_main_page">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backstyle">
+    <LinearLayout
+        android:id="@+id/plan_group_details_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:visibility="gone"
+            android:background="@color/colorlycadark"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/background_new_order_main_page"
+            android:id="@+id/list_item_plans"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="MSISDN:"
+                    android:paddingLeft="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sim_swap_list_msisdn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="Old IMSI:"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sim_swap_list_old_imsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="New IMSI:"
+                    android:paddingLeft="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sim_swap_list_new_imsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="Reason:"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sim_swap_list_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="Requested Date:"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sim_swap_list_requested_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="State:"
+                    android:paddingLeft="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sim_swap_list_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="simSwapLogId:"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sim_swap_list_simSwapLogId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="status:"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/sim_swap_list_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/sim_swap_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:paddingTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Action"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:visibility="visible"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/editbackground"
+                    android:orientation="vertical">
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/sim_swap_spinner"
+                        android:layout_width="match_parent"
+                        app:hintText="Action"
+                        android:layout_height="50dp"
+
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/Sim_Replace_Form"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#fff"
+                android:visibility="gone"
+                android:padding="3dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/backstyle">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fitsSystemWindows="true"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingTop="5dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Sim Replace Form"
+                                android:layout_gravity="center"
+                                android:textSize="20dp"
+                                android:textColor="@color/colorBlack"
+                                android:gravity="center_horizontal"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/new_staff_commssion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/validate_form_last_call_duration"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:inputType="number"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Last Call Duration(Sec)"
+                                    />
+                            </android.support.design.widget.TextInputLayout>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/validate_form_last_called_number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:inputType="number"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Last Called Number"
+                                    />
+                            </android.support.design.widget.TextInputLayout>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/validate_form_last_recharge_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:inputType="number"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Last Recharge Amount"
+                                    />
+                            </android.support.design.widget.TextInputLayout>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/validate_form_customer_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:inputType="number"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Customer's Name"
+                                    />
+                            </android.support.design.widget.TextInputLayout>
+                            <android.support.design.widget.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/validate_form_email"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:padding="4dp"
+                                    android:inputType="text"
+                                    android:fontFamily="@font/sansation_regular"
+                                    android:hint="Email"
+                                    />
+                            </android.support.design.widget.TextInputLayout>
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:paddingTop="10dp">
+
+                            <Button
+                                android:id="@+id/staff_back_button_"
+                                android:layout_width="150dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/button"
+                                android:textColor="@color/white"
+                                android:textAllCaps="false"
+                                android:textSize="17sp"
+                                android:text="Back"/>
+
+                            <Button
+                                android:id="@+id/new_staff_savecontinue_btn"
+                                android:layout_width="170dp"
+                                android:layout_height="50dp"
+                                android:textColor="@color/white"
+                                android:textAllCaps="false"
+                                android:layout_marginLeft="10dp"
+                                android:visibility="visible"
+                                android:textSize="17sp"
+                                android:background="@drawable/button"
+                                android:text="@string/save_and_continue"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Upload_Document_Copies"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:background="#fff">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Upload Documents"
+                        android:layout_gravity="center"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorBlack"
+                        android:gravity="center_horizontal"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Upload_User_Id_Copy_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/rectanglebg"
+                    android:orientation="vertical"
+                    >
+
+                    <Button
+                        android:id="@+id/Upload_User_Id_Copy"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:text="Upload User Id Copy"
+                        android:layout_gravity="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                    <HorizontalScrollView
+                        android:id="@+id/Upload_User_Id_Copy_images_cont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <!-- &lt;!&ndash;android:layout_below="@+id/musicBtrn"&ndash;&gt;
+                           android:scrollbars="none">-->
+
+                        <LinearLayout
+                            android:id="@+id/Upload_User_Id_Copy_form_picture_thumbnails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"></LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/Upload_Simswap_Form_Copy_form_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/rectanglebg"
+                    android:orientation="vertical"
+                    >
+
+                    <Button
+                        android:id="@+id/Upload_Simswap_Form_Copy"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:text="Upload Simswap Form Copy"
+                        android:layout_gravity="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                    <HorizontalScrollView
+                        android:id="@+id/Upload_Simswap_Form_Copy_form_images_cont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <!-- &lt;!&ndash;android:layout_below="@+id/musicBtrn"&ndash;&gt;
+                           android:scrollbars="none">-->
+
+                        <LinearLayout
+                            android:id="@+id/Upload_Simswap_Form_Copy_form_picture_thumbnails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"></LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Upload_Police_Letter_form_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/rectanglebg"
+                    android:orientation="vertical"
+                    >
+
+                    <Button
+                        android:id="@+id/Upload_Police_Letter"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:text="Upload Police Letter"
+                        android:layout_gravity="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                    <HorizontalScrollView
+                        android:id="@+id/Upload_Police_Letter_form_images_cont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <!-- &lt;!&ndash;android:layout_below="@+id/musicBtrn"&ndash;&gt;
+                           android:scrollbars="none">-->
+
+                        <LinearLayout
+                            android:id="@+id/Upload_Police_Letter_form_picture_thumbnails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"></LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/activation_form_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/rectanglebg"
+                    android:orientation="vertical"
+                    >
+
+                    <Button
+                        android:id="@+id/capture_activation_form"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:text="Upload Faulty Sim Copy"
+                        android:layout_gravity="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                    <HorizontalScrollView
+                        android:id="@+id/activation_form_images_cont"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <!-- &lt;!&ndash;android:layout_below="@+id/musicBtrn"&ndash;&gt;
+                           android:scrollbars="none">-->
+
+                        <LinearLayout
+                            android:id="@+id/activation_form_picture_thumbnails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"></LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

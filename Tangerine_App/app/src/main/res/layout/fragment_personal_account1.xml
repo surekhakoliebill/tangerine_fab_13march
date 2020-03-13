@@ -1,0 +1,247 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="10dp"
+    android:layout_gravity="center"
+    tools:context="com.aryagami.tangerine.fragments.UserInformationFragment">
+
+    <FrameLayout
+        android:id="@+id/main_home_container1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            >
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/backstyle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical">
+
+                    <!--<TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="USER REGISTRATION"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:background="@drawable/homepage3"
+                        />-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="UseInformation"
+                            android:layout_gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fitsSystemWindows="true"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/imageView"
+                            android:weightSum="1"
+                            android:background="@drawable/backstyle"
+                            android:orientation="horizontal"
+                            android:id="@+id/radioGroup12">
+                            <RadioButton
+                                android:id="@+id/personal11_reg_radio_btn"
+                                android:layout_width="190dp"
+                                android:layout_height="match_parent"
+                                android:padding="5dp"
+                                android:checked="true"
+                                android:text="Personal Account"
+                                android:textColor="@color/colorBlack"/>
+
+                            <RadioButton
+                                android:id="@+id/compnay11_reg_radio_btn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Comapany Account"
+                                android:padding="5dp"
+                                android:textColor="@color/colorBlack"/>
+                        </RadioGroup>
+
+
+
+                        <!--<fragment
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/frag1"
+                            android:layout_weight="1"
+                            android:name="com.aryagami.tangerine.fragments.UserInformationFragmentFragment"
+                            >
+                        </fragment>-->
+
+
+
+
+                        <LinearLayout
+                            android:id="@+id/reg_personal1_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:fitsSystemWindows="true"
+                            android:paddingTop="20dp"
+                            android:visibility="visible">
+
+                            <include layout="@layout/fragment_personal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/reg_company1_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fitsSystemWindows="true"
+                            android:paddingTop="20dp"
+                            android:visibility="gone">
+                            <include layout="@layout/fragment_company" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:text="Given Name"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="35dp"/>
+                        <EditText
+                            android:id="@+id/give_name"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:background="@color/darkpink"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>-->
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:text="Surname"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="35dp"/>
+                        <EditText
+                            android:id="@+id/sur_name"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:background="@color/darkpink"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>-->
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:text="Other Name"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="35dp"/>
+                        <EditText
+                            android:id="@+id/other_name"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:background="@color/darkpink"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="5dp">
+
+                        <Button
+                            android:id="@+id/cancel_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sansation_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button"
+                            android:textColor="@color/white"
+                            android:textAllCaps="false"
+                            android:textSize="17sp"
+                            android:text="Back"/>
+
+                        <Button
+                            android:id="@+id/savecontinue12_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sansation_bold"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:textAllCaps="false"
+                            android:layout_marginLeft="10dp"
+                            android:visibility="visible"
+                            android:textSize="17sp"
+                            android:background="@drawable/button"
+                            android:text="Save and Continue"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

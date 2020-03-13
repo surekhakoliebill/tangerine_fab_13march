@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_margin="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/backstyle"
+        android:orientation="horizontal"
+        android:id="@+id/logo">
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:background="@color/colorlycadark"
+            android:text="PREPAID SERVICES"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+        <!--<ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:src="@drawable/lycalogo"/>-->
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/backstyle"
+        android:layout_marginBottom="0dp">
+<<<<<<< HEAD
+=======
+
+>>>>>>> c48399a63bef597c66131289fdc25aa1aec03815
+        <EditText
+            android:id="@+id/serverdMSISDN_eText"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:hint="ServerdMSISDN"/>
+
+        <Button
+            android:id="@+id/check_prepaid_plans_btn"
+            android:layout_width="147dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/button"
+            android:text="Browse Plans"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+<<<<<<< HEAD
+
+
+            />
+=======
+>>>>>>> c48399a63bef597c66131289fdc25aa1aec03815
+
+
+            />
+
+    </LinearLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_layout"
+        android:visibility="visible"
+        android:layout_weight="1">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/backstyle"
+            app:tabGravity="fill"
+            app:tabMode="scrollable"
+            app:tabTextColor="@color/black"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabSelectedTextColor="@color/black"
+            android:textAlignment="center"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            />
+
+        <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tablayout"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"></android.support.v4.view.ViewPager>
+    </RelativeLayout>
+
+</LinearLayout>

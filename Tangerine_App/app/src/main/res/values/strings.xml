@@ -1,0 +1,206 @@
+<resources>
+    <string name="app_name">Tangerine Agent Registration</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="logging_in">Logging In</string>
+    <string name="user_login">User Login</string>
+    <string name="msisdin">MSISDN</string>
+    <string name="password_hint">PASSWORD</string>
+    <string name="plans">PLANS</string>
+    <string name="Notifications">NOTIFICATIONS</string>
+    <string name="Tangerine">TANGERINE</string>
+    <string name="Tickets">TICKETS</string>
+    <string name="Number">ENTER MSISDN</string>
+    <string name="Contactnumber">ENTER CONTACT NUMBER</string>
+    <string name="category">SELECT CATEGORY</string>
+    <string name="Description">Description</string>
+    <string name="Send">SEND</string>
+    <string name="find_us">Find Us</string>
+
+
+    <string name="permission_necessary">Permission necessary</string>
+    <string name="external_storage_permission_is_necessary">External storage permission is necessary</string>
+
+    <string name="marshmallow_microphone_permission_needed_for_recording">Microphone permission needed for recording. Please allow in App Settings for additional functionality.</string>
+    <string name="marshmallow_external_storage_permission">External Storage permission needed. Please allow in App Settings for additional functionality.</string>
+    <string name="marshmallow_Camera_permission">Camera permission needed. Please allow in App Settings for additional functionality.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="old_password">CURRENT PASSWORD</string>
+    <string name="new_password">NEW PASSWORD</string>
+    <string name="confirm_hint">REPEAT NEW PASSWORD</string>
+    <string name="save">UPDATE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="password_length">Password must be 6 to 15 characters.</string>
+    <string name="password">Password Matches.</string>
+    <string name="Password_Not_Matching">password not matching.</string>
+    <string name="changed_password">Password has been changed Successfully.</string>
+    <string name="request_password_change">please change password</string>
+    <string name="enter_valid">Enter Valid</string>
+
+    <string name="take_photo">Take Photo</string>
+    <string name="from_gallery">Choose from Library</string>
+    <string name="picture_dialog">Add Product Photo</string>
+
+
+    <string name="edit">Edit</string>
+    <string name="edit_picture">Edit Picture</string>
+    <string name="move_right">Move Right</string>
+    <string name="move_left">Move Left</string>
+    <string name="cant_move_right">cannot move right image already at right end</string>
+    <string name="cant_move_left">cannot move left image already at left end</string>
+    <string name="delete">Delete</string>
+    <string name="Please_upload_pictures_of_the_product">Please upload Documents...</string>
+    <string name="image_uploading">Uploading image ....</string>
+    <string name="Successfully_uploaded_user_data">Uploaded User Data successfully.</string>
+    <string name="ok">OK</string>
+    <string name="Pdf_uploading_Failed">Failed to upload pdf file</string>
+    <string name="Product_uploading_Failed">Failed to upload user data</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="welcome"> Welcome </string>
+
+    <string name="Successfully_uploaded_product">Image Uploaded Succussfully</string>
+
+    <string name="base"><![CDATA[\"base\">aHR0cHM6Ly9hY2N1cmFzY2FuLmNvbS8=]]></string>
+    <string name="text_scan_doc">SCAN YOUR DOCUMENT</string>
+    <string name="passport_scan">Passport &amp; ID MRZ</string>
+    <string name="Successfully_uploaded_pdf_documents">Pdf documents have been uploaded successfully</string>
+    <string name="Successfully_uploaded_passport_documents">Passport documents have been uploaded successfully!</string>
+    <string name="Successfully_uploaded_fingerprint">Fingerprint scanning image has been successfully uploaded.</string>
+    <string name="associate_to_existing">Associate to Existing Account</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="enter_manual_credit_score">Enter Manual Credit Limit</string>
+    <string name="save_and_contioue">Save &amp; Continue</string>
+    <string name="Please_upload_nin_document">Please Upload NIN Document.</string>
+    <string name="Please_upload_passport_document">Please Upload Passport Document</string>
+    <string name="Please_upload_profile_document">Please Upload Profile.</string>
+    <string name="Please_upload_required_documents">Please Upload Required Documents!</string>
+    <string name="order_placed_successfully">New Order Placed Succssfully.</string>
+    <string name="continue_btn">Continue</string>
+    <string name="Please_upload_Refugee_document">Please upload Refugee ID Document.</string>
+
+
+    <!-- SCAN SDK STRINGS - START -->
+
+    <!-- Dialog "OK" button. Dismisses dialog. -->
+    <string name="dialog_ok">OK</string>
+
+    <!-- message for the dialog showing the error of camera hardware -->
+    <string name="cannot_connect_camera">Can\'t connect to the camera.</string>
+
+    <!-- message for the dialog showing the camera is disabled because of security policies. Camera cannot be used. -->
+    <string name="camera_disabled">Camera has been disabled because of security policies.</string>
+
+    <string name="basic_setting">"Basic"</string>
+    <string name="advance_setting">"More..."</string>
+    <string name="summary_notify_sound_preference">"Play sound when car number is recognized."</string>
+    <string name="title_notify_sound_preference">"Notification sound"</string>
+
+    <string name="mode_title_list_preference">Choose mode</string>
+    <string name="mode_list_preference">NPR mode</string>
+    <string name="mode_summary_list_preference">Set mode for NPR.</string>
+    <string-array name="mode_entries_list_preference">
+        <item>Preview mode</item>
+        <item>Capture mode</item>
+    </string-array>
+    <string-array name="mode_entryvalues_list_preference">
+        <item>preview</item>
+        <item>capture</item>
+    </string-array>
+
+    <string name="picsize_title_list_preference">Choose picture size</string>
+    <string name="picsize_list_preference">Picture size</string>
+    <string name="picsize_summary_list_preference">Set picture size for capture.</string>
+
+    <string name="capture_mode">capture mode</string>
+    <string name="preview_mode">preview mode</string>
+
+    <string name="tips">"Hold card here.\nIt will scan actomatically."</string>
+    <string name="card_details">AccuraSDK</string>
+    <string name="crash_toast_text">Crash Report</string>
+    <string name="map_key" translatable="false">AIzaSyAA5-bbD42DwGsA5rNZbpG8TB6hreMFBiE</string>
+
+    <!-- SCAN SDK STRINGS - END -->
+
+
+    // copied from another APP
+
+         <string name="nav_header_title">DV Infosys</string>
+        <string name="nav_header_subtitle">dvinfosys0@gmail.com</string>
+        <string name="nav_header_desc">Navigation header</string>
+
+        <string name="spinner_title">PROMPT</string>
+
+        <string name="Please_upload_refugee_document">Please Upload Refugee Document.</string>
+        <string name="drawer_open">Open navigation drawer</string>
+        <string name="drawer_close">Close navigation drawer</string>
+        <string name="Read_external_storage_permission">Read External Storage permission needed. Please allow in App Settings for additional functionality.</string>
+
+        <string name="save_alert">SAVE</string>
+        <string name="sim_swap">Sim Swap Requested Done.</string>
+        <string name="vouucher_assigned">Voucher Assigned Successfully.</string>
+        <string name="amount_credit">Amount Credit Successfully.</string>
+
+
+        <string name="Successfully_uploaded_user_profile">Successfully Updated User Profe</string>
+        <string name="save_and_continue">Save &amp; Continue</string>
+        <string name="upload_pdf">Upload Pdf</string>
+        <string name="generate_pdf">Generate Pdf</string>
+        <string name="Pdf_dialog">Select Pdf</string>
+
+        <string name="sender_num">Sender Number:</string>
+        <string name="message1">Sending OTP for Testing</string>
+        <string name="generating_otp">Generating OTP...</string>
+        <string name="logging">Logging...</string>
+        <string name="user_name">USERNAME</string>
+        <string name="reserve_and_continue"><![CDATA[Reserve & Continue]]></string>
+
+
+        <!--Barcode Reader-->
+
+        <string name="scanner_activity">ZXing Scanner - Full Activity</string>
+        <string name="scanner_fragment_activity">ZXing Scanner - Full Fragment Activity</string>
+        <string name="simple_scanner_activity">ZXing Scanner - Simple Activity</string>
+        <string name="custom_view_finder_scanner_activity">ZXing Scanner - Custom View Finder Activity</string>
+        <string name="scaling_scanner_activity">ZXing Scanner - Scaling Activity</string>
+        <string name="simple_scanner_fragment_activity">ZXing Scanner - Simple Fragment Activity</string>
+        <string name="full_screen_scanner_fragment_activity">ZXing Scanner - Full Screen Fragment Activity</string>
+        <string name="simple_activity_sample">Simple Activity Sample</string>
+        <string name="simple_fragment_sample">Simple Fragment Sample</string>
+        <string name="activity_sample">Scan Document</string>
+        <string name="fragment_sample">Full Fragment Sample</string>
+        <string name="full_screen_sample">Full Screen Fragment Sample</string>
+        <string name="custom_view_finder_sample">Custom View Finder Sample</string>
+        <string name="scaling_sample">Scaling Sample</string>
+        <string name="toggle_flash">Flash</string>
+        <string name="flash_on">Flash [ON]</string>
+        <string name="flash_off">Flash [OFF]</string>
+        <string name="auto_focus_on">Auto Focus [ON]</string>
+        <string name="auto_focus_off">Auto Focus [OFF]</string>
+        <string name="formats">Formats</string>
+        <string name="choose_formats">Choose Formats</string>
+        <string name="select_camera">Select a Camera</string>
+        <string name="ok_button">OK</string>
+        <string name="cancel_button">Cancel</string>
+        <string name="gps_permission_allow_to_access_location_data">ALLOW PERMISSIONS</string>
+        <bool name="cameraPreviewShouldFillView">true</bool>
+
+        <string name="title_activity_preference">Preference</string>
+
+        <string name="text_alert">Alert</string>
+        <string name="text_flash_on">Flash [ON]</string>
+        <string name="text_flash_off">Flash [OFF]</string>
+        <string name="text_rotate">Rotate</string>
+        <string name="text_landscape_simulated">Portrait mode with design in landscape</string>
+        <string name="text_landscape">Landscape mode</string>
+
+        <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+        <string name="msg_camera_permission">The app need access to camera for read barcodes</string>
+        <string name="msg_camera_permission_denied">Camera permission denied</string>
+
+
+</resources>

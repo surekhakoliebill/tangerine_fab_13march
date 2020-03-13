@@ -1,0 +1,730 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/billing_address"
+    tools:context="com.aryagami.tangerine.fragments.BillingAddressFragment">
+
+    <FrameLayout
+        android:id="@+id/billing_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:padding="3dp">
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/backstyle"
+                android:id="@+id/logo">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:background="@drawable/homepage3"
+                    />
+            </LinearLayout>-->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/backstyle">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Billing Address"
+                            android:layout_gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/white"
+                        android:paddingTop="10dp"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="Billing Address"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/sansation_bold"
+                            android:layout_marginLeft="2dp"
+
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:fontFamily="@font/sansation_regular"
+                                android:text="+256"
+                                android:editable="false"
+                                />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/staff_landline_no"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:maxLength="9"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Landline Number"
+                                />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </LinearLayout>
+                    <!-- <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:paddingTop="5dp">
+
+                         <TextView
+                             android:layout_width="130dp"
+                             android:layout_height="wrap_content"
+                             android:text="Landline Number"
+                             android:textColor="@color/colorBlack"
+                             android:textSize="15sp"
+                             android:layout_gravity="center"
+                             android:layout_marginLeft="35dp"
+                             />
+                         <EditText
+                             android:id="@+id/landline_no"
+                             android:layout_width="170dp"
+                             android:layout_height="wrap_content"
+                             android:paddingTop="10dp"
+                             android:layout_gravity="center"
+                             android:inputType ="number"
+                             android:maxLength="12"
+                             android:text="256"
+                             android:background="@drawable/editbackground"
+                             android:textColor="@color/black"
+                             android:textSize="15sp" />
+                     </LinearLayout>-->
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="3dp">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="wrap_content"
+                            android:text="Alternate Phone Number"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="35dp"
+                            />
+                        <EditText
+                            android:id="@+id/alternate_phone_number"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center"
+                            android:background="@color/darkpink"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>-->
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="3dp"
+                        android:paddingRight="37dp"
+                        android:weightSum="1">
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:text="Reseller Name"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:layout_marginLeft="35dp"
+                            />
+
+                        &lt;!&ndash;<include
+                            android:id="@+id/userType_Spinner"
+                            layout="@layout/item_single_spinner">
+                        </include>&ndash;&gt;
+                        &lt;!&ndash;<Spinner
+                            android:id="@+id/shilling_spinner"
+                            android:background="@color/colorWhite"
+                            android:layout_width="220dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentRight="true">
+                        </Spinner>&ndash;&gt;
+                    </LinearLayout>-->
+
+                    <include layout="@layout/staff_my_new_address"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/staff_address_container_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/staff_add_more"
+                        android:layout_width="130dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/button"
+                        android:text="Add Address"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:layout_gravity="right"
+                        android:padding="10dp"
+                        android:visibility="gone"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="15sp"/>
+
+
+
+                    <!--<LinearLayout
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/textout"
+                                android:layout_width="300dp"
+                                android:layout_height="wrap_content"
+                                android:text="My Address"
+                                android:layout_alignParentLeft="true"
+                                />
+                            <Button
+                                android:id="@+id/remove"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="Remove"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:text="Address Type (Home or Work)"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <EditText
+                                android:id="@+id/address_type"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@color/darkpink"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:text="Door/Flat No."
+                                android:textColor="@color/white"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <EditText
+                                android:id="@+id/door_flat_no"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@color/darkpink"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:text="Complete Address eg. street name, land mark"
+                                android:textColor="@color/white"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <EditText
+                                android:id="@+id/complete_address"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@color/darkpink"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:text="Postal Address"
+                                android:textColor="@color/white"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <EditText
+                                android:id="@+id/postal_address"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@color/darkpink"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp">
+
+                            <TextView
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:text="Country"
+                                android:textColor="@color/white"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <EditText
+                                android:id="@+id/country"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@color/darkpink"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="3dp"
+                            android:paddingRight="37dp"
+                            android:weightSum="1">
+                            <TextView
+                                android:layout_width="140dp"
+                                android:layout_height="wrap_content"
+                                android:text="City"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <include
+                                android:id="@+id/userType_Spinner"
+                                layout="@layout/item_single_spinner">
+                            </include>
+
+                        </LinearLayout>
+
+
+
+                        &lt;!&ndash;<Button
+                            android:id="@+id/remove"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="Remove"/>&ndash;&gt;
+                        &lt;!&ndash;<TextView
+                            android:id="@+id/textout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="kkk"
+                            android:layout_alignParentLeft="true"
+                            android:layout_toLeftOf="@id/remove"/>&ndash;&gt;
+
+
+                        &lt;!&ndash; <TextView
+                             android:id="@+id/textoutl"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:text="kkk"
+                             android:layout_alignParentLeft="true"
+                             android:layout_toLeftOf="@id/remove"/>&ndash;&gt;
+                    </LinearLayout>-->
+
+
+                    <LinearLayout
+                        android:id="@+id/container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    </LinearLayout>
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:text="My Address" />
+                        <Button
+                            android:id="@+id/add"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="140dp"
+                            android:text="Add"/>
+                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="15dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginBottom="20dp"
+                            android:paddingLeft="5dp">
+
+                            <Button
+                                android:id="@+id/staff_backbilling_btn"
+                                android:layout_width="150dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/button"
+                                android:layout_gravity="center"
+                                android:textAllCaps="false"
+                                android:padding="2dp"
+                                android:textSize="17sp"
+                                android:textColor="@color/white"
+                                android:text="Back"/>
+                            <Button
+                                android:id="@+id/staff_savecontinue_btn"
+                                android:layout_width="150dp"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="15dp"
+                                android:background="@drawable/button"
+                                android:layout_gravity="center"
+                                android:textAllCaps="false"
+                                android:padding="2dp"
+                                android:textSize="17sp"
+                                android:textColor="@color/white"
+                                android:text="Save &amp; Continue"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:layout_width="300dp"
+                            android:layout_height="30dp"
+                            android:text="My Address 1"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:text="Address Type (Home or Work)"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <EditText
+                                android:id="@+id/address_type"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@color/darkpink"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingTop="3dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Door/Flat No."
+                                    android:textColor="@color/white"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="35dp"
+                                    />
+                                <EditText
+                                    android:id="@+id/door_flat_no"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="@color/darkpink"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingTop="3dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Complete Address eg. street name, land mark"
+                                    android:textColor="@color/white"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="35dp"
+                                    />
+                                <EditText
+                                    android:id="@+id/complete_address"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="@color/darkpink"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingTop="3dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Postal Address"
+                                    android:textColor="@color/white"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="35dp"
+                                    />
+                                <EditText
+                                    android:id="@+id/postal_address"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="@color/darkpink"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingTop="3dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Country"
+                                    android:textColor="@color/white"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="35dp"
+                                    />
+                                <EditText
+                                    android:id="@+id/country"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="@color/darkpink"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="3dp"
+                            android:paddingRight="37dp"
+                            android:weightSum="1">
+                            <TextView
+                                android:layout_width="140dp"
+                                android:layout_height="wrap_content"
+                                android:text="City"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <include
+                                android:id="@+id/userType_Spinner"
+                                layout="@layout/item_single_spinner">
+                            </include>
+
+                        </LinearLayout>
+                        </LinearLayout>-->
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp">
+
+
+
+                        &lt;!&ndash;<LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="130dp"
+                                android:layout_height="wrap_content"
+                                android:text="Address Line 1"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:layout_marginLeft="35dp"
+                                />
+                            <EditText
+                                android:id="@+id/postaladdress_line1"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@color/darkpink"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                        &ndash;&gt;
+
+
+                    &lt;!&ndash;<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="15dp"
+                            android:paddingLeft="5dp">
+
+                            <Button
+                                android:id="@+id/backbilling_btn"
+                                android:layout_width="130dp"
+                                android:layout_height="40dp"
+                                android:background="@color/red"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:text="Back"/>
+                            <Button
+                                android:id="@+id/savecontinue_btn"
+                                android:layout_width="130dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="110dp"
+                                android:background="@color/red"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:text="Save and Continue"/>
+                        </LinearLayout>&ndash;&gt;
+
+                    </LinearLayout>-->
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

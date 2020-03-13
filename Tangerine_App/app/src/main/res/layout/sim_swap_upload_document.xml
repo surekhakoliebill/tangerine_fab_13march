@@ -1,0 +1,444 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_gravity="center"
+    android:id="@+id/sim_swap_validate_form"
+    tools:context="com.aryagami.tangerine.fragments.UserInformationFragment">
+
+    <FrameLayout
+        android:id="@+id/main_home_container1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="#fff"
+            android:padding="3dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/backstyle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/Upload_Document_Copies"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        android:layout_marginTop="5dp"
+                        android:background="#fff">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingTop="5dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Upload Documents"
+                                android:layout_gravity="center"
+                                android:textSize="20dp"
+                                android:textColor="@color/colorBlack"
+                                android:gravity="center_horizontal"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/Upload_User_Id_Copy_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/Upload_User_Id_Copy"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/button"
+                                android:text="Upload User Id Copy"
+                                android:textAllCaps="false"
+                                android:textSize="15sp"
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout1"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn1"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+                                <TextView
+
+                                    android:id="@+id/notification"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!--<LinearLayout
+                            android:id="@+id/Upload_User_Id_Copy_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            >
+
+                            <Button
+                                android:id="@+id/Upload_User_Id_Copy"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/button"
+                                android:text="Upload User Id Copy"
+                                android:layout_gravity="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white" />
+
+                            <HorizontalScrollView
+                                android:id="@+id/Upload_User_Id_Copy_images_cont"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                &lt;!&ndash; &lt;!&ndash;android:layout_below="@+id/musicBtrn"&ndash;&gt;
+                                   android:scrollbars="none">&ndash;&gt;
+
+                                <LinearLayout
+                                    android:id="@+id/Upload_User_Id_Copy_Form_Picture_Thumbnails"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                </LinearLayout>
+                            </HorizontalScrollView>
+
+                        </LinearLayout>-->
+
+                        <LinearLayout
+                            android:id="@+id/Upload_Simswap_Form_Copy_form_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/Upload_Simswap_Form_Copy"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/button"
+                                android:text="Upload Simswap Form Copy"
+                                android:textAllCaps="false"
+                                android:textSize="15sp"
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout2"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn2"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+                                <TextView
+
+                                    android:id="@+id/notification1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <!--<LinearLayout
+                            android:id="@+id/Upload_Simswap_Form_Copy_form_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            >
+
+                            <Button
+                                android:id="@+id/Upload_Simswap_Form_Copy"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/button"
+                                android:text="Upload Simswap Form Copy"
+                                android:layout_gravity="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white" />
+
+                            <HorizontalScrollView
+                                android:id="@+id/Upload_Simswap_Form_Copy_form_images_cont"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                &lt;!&ndash; &lt;!&ndash;android:layout_below="@+id/musicBtrn"&ndash;&gt;
+                                   android:scrollbars="none">&ndash;&gt;
+
+                                <LinearLayout
+                                    android:id="@+id/Upload_Simswap_Form_Copy_form_picture_thumbnails"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"></LinearLayout>
+                            </HorizontalScrollView>
+
+                        </LinearLayout>-->
+
+                        <LinearLayout
+                            android:id="@+id/Upload_Police_Letter_form_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="visible"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/Upload_Police_Letter"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:textAllCaps="false"
+                                android:background="@drawable/button"
+                                android:text="Upload Police Letter"
+                                android:textSize="15sp"
+                                android:textColor="@color/white" />
+                            <LinearLayout
+                                android:id="@+id/layout4"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn4"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:id="@+id/notification2"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!--<LinearLayout
+                            android:id="@+id/Upload_Police_Letter_form_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            >
+
+                            <Button
+                                android:id="@+id/Upload_Police_Letter"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/button"
+                                android:text="Upload Police Letter"
+                                android:layout_gravity="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white" />
+
+                            <HorizontalScrollView
+                                android:id="@+id/Upload_Police_Letter_form_images_cont"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                &lt;!&ndash; &lt;!&ndash;android:layout_below="@+id/musicBtrn"&ndash;&gt;
+                                   android:scrollbars="none">&ndash;&gt;
+
+                                <LinearLayout
+                                    android:id="@+id/Upload_Police_Letter_form_picture_thumbnails"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"></LinearLayout>
+                            </HorizontalScrollView>
+
+                        </LinearLayout>-->
+
+                        <LinearLayout
+                            android:id="@+id/Upload_Faulty_Sim_Copy_form_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="170dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="visible"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <Button
+                                android:id="@+id/Upload_Faulty_Sim_Copy"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:textAllCaps="false"
+                                android:background="@drawable/button"
+                                android:textSize="15sp"
+                                android:text="Upload Faulty Sim Copy"
+                                android:textColor="@color/white" />
+
+                            <LinearLayout
+                                android:id="@+id/layout5"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10dp">
+                                <Button
+                                    android:id="@+id/cc_btn5"
+                                    android:layout_width="80dp"
+                                    android:layout_height="80dp"
+                                    android:background="@drawable/pdf_icon"/>
+
+                                <TextView
+                                    android:id="@+id/notification3"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="15sp"
+                                    android:text="No file is selected" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!--<LinearLayout
+                            android:id="@+id/Upload_Faulty_Sim_Copy_form_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/rectanglebg"
+                            android:orientation="vertical"
+                            >
+
+                            <Button
+                                android:id="@+id/Upload_Faulty_Sim_Copy"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/button"
+                                android:text="Upload Faulty Sim Copy"
+                                android:layout_gravity="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white" />
+
+                            <HorizontalScrollView
+                                android:id="@+id/Upload_Faulty_Sim_Copy_form_images_cont"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                &lt;!&ndash; &lt;!&ndash;android:layout_below="@+id/musicBtrn"&ndash;&gt;
+                                   android:scrollbars="none">&ndash;&gt;
+
+                                <LinearLayout
+                                    android:id="@+id/Upload_Faulty_Sim_Copy_form_picture_thumbnails"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"></LinearLayout>
+                            </HorizontalScrollView>
+
+                        </LinearLayout>-->
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <Button
+                            android:id="@+id/sim_swap_upload_cancel_btn"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/button"
+                            android:textColor="@color/white"
+                            android:textAllCaps="false"
+                            android:textSize="17sp"
+                            android:text="Cancel"/>
+
+                        <Button
+                            android:id="@+id/sim_swap_document_upload_btn"
+                            android:layout_width="170dp"
+                            android:layout_height="50dp"
+                            android:textColor="@color/white"
+                            android:textAllCaps="false"
+                            android:visibility="visible"
+                            android:textSize="17sp"
+                            android:gravity="left|center"
+                            android:background="@drawable/button"
+                            android:drawableLeft="@drawable/uploaad"
+                            android:paddingLeft="45dp"
+                            android:text="Upload"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

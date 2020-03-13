@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btn_flash"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_flash_off"
+        android:title="@string/text_flash_off"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/btn_rotate"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_screen_rotation"
+        android:title="@string/text_rotate"
+        app:showAsAction="ifRoom"/>
+
+</menu>

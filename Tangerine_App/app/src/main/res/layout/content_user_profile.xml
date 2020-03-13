@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/red"
+    android:padding="5dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.aryagami.tangerine.activities.UserProfileActivity"
+    tools:showIn="@layout/activity_user_profile">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hometan">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/userprofile"
+            />
+
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/image_container"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@color/history1"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/userprofileimg"
+                />
+           <!-- <Button
+                android:id="@+id/profile_image"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:text="Upload Image"
+                android:background="@color/history1"
+                android:layout_centerHorizontal="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:textColor="@color/white"
+                android:src="@drawable/userprofileimg"
+                />-->
+        </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/userName_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/userNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxWidth="120dp"
+                android:minWidth="120dp"
+                android:text="Full Name"
+                android:textColor="@color/colorBlack"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/fullname"
+                android:inputType="number"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@+id/quantityTitle"
+                android:layout_alignTop="@+id/quantityTitle"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/quantityTitle"
+                android:ems="1" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/phoneNumber_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/phoneNumberTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxWidth="120dp"
+                android:minWidth="120dp"
+                android:text="Phone Number"
+                android:textColor="@color/colorBlack"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/phoneNumber"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:layout_alignBottom="@+id/actualPriceTitle"
+                android:layout_alignTop="@+id/actualPriceTitle"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/actualPriceTitle"
+                android:ems="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addressTitle_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/addressTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxWidth="120dp"
+                android:minWidth="120dp"
+                android:text="Address"
+                android:textColor="@color/colorBlack"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:layout_alignBottom="@+id/discountPriceTitle"
+                android:layout_alignTop="@+id/discountPriceTitle"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/discountPriceTitle"
+                android:ems="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/city_title_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/city_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxWidth="120dp"
+                android:minWidth="120dp"
+                android:text="City "
+                android:textColor="@color/colorBlack"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/city_value"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:layout_alignBottom="@+id/discountPriceTitle"
+                android:layout_alignTop="@+id/discountPriceTitle"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/discountPriceTitle"
+                android:ems="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/state_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/state_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxWidth="120dp"
+                android:minWidth="120dp"
+                android:text="Address"
+                android:textColor="@color/colorBlack"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/state_value"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:layout_alignBottom="@+id/discountPriceTitle"
+                android:layout_alignTop="@+id/discountPriceTitle"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/discountPriceTitle"
+                android:ems="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/emailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxWidth="120dp"
+                android:minWidth="120dp"
+                android:text="Email"
+                android:textColor="@color/colorBlack"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/emailTextt"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:layout_alignBottom="@+id/emailTitle"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/emailTitle"
+                android:ems="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/comanyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/companyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxWidth="120dp"
+                android:minWidth="120dp"
+                android:text="Company"
+                android:textColor="@color/colorBlack"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/companytext"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:inputType="numberDecimal"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/companyTitle"
+                android:ems="1" />
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/edit_profile_btn"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="50dp"
+            android:padding="3dp"
+            android:text="Edit"
+            android:layout_gravity="center"
+            android:background="@drawable/bbutton"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+
+    </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <!-- <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/traingle"
+             android:orientation="vertical"
+             >-->
+
+
+
+        <!--</LinearLayout>-->
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="505dp"
+            android:background="@drawable/finalback"/>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+

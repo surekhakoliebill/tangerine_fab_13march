@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_change_sim">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/backstyle">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="SIM SWAP"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:background="@color/colorlycadark"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/new_msisdn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:padding="4dp"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:fontFamily="@font/sansation_regular"
+                    android:hint="Enter MSISDN Number"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/new_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:padding="4dp"
+                    android:fontFamily="@font/sansation_regular"
+                    android:hint="Enter Reason"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/new_sim_submit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:background="@drawable/button"
+                android:textColor="@color/white"
+                android:text="Submit"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:padding="2dp"
+            android:textColor="@color/colorlyca"
+            android:gravity="center|left"
+            android:text="Sim Swap Requests:"/>
+
+        <ListView
+            android:id="@+id/new_sim_swap_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:dividerHeight="3dp"></ListView>
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

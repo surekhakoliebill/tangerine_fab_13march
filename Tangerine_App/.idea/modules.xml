@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Tangerine_App.iml" filepath="$PROJECT_DIR$/Tangerine_App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/accuraSDK_SRC/accuraSDK_SRC.iml" filepath="$PROJECT_DIR$/accuraSDK_SRC/accuraSDK_SRC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/accurasdk_SRC_7_12_2018/accurasdk_SRC_7_12_2018.iml" filepath="$PROJECT_DIR$/accurasdk_SRC_7_12_2018/accurasdk_SRC_7_12_2018.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/picasso-2.5.2/picasso-2.5.2.iml" filepath="$PROJECT_DIR$/picasso-2.5.2/picasso-2.5.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slideexpandablelistview/slideexpandablelistview.iml" filepath="$PROJECT_DIR$/slideexpandablelistview/slideexpandablelistview.iml" />
+    </modules>
+  </component>
+</project>

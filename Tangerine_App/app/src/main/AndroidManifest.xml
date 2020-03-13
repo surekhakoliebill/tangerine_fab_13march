@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.aryagami">
+
+    <uses-permission android:name="android.permission.USB_PERMISSION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REVOKE_RUNTIME_PERMISSIONS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.INSTALL_GRANT_RUNTIME_PERMISSIONS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.GRANT_RUNTIME_PERMISSIONS"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-feature
+        android:name="android.hardware.autofocus"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_lyca"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:configChanges="fontScale|screenSize"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <!--<service
+            android:name=".util.FirebaseIDService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>-->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/map_key" />
+
+        <activity
+            android:name=".tangerine.activities.SplashScreenActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".tangerine.activities.LoginActivity"
+            android:label="Login Page"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".tangerine.activities.FingerPrintScannerActivity"
+            android:label="Login Page"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity-alias
+            android:name="USB_PNP_Activity"
+            android:label="@string/app_name"
+            android:targetActivity=".tangerine.activities.FingerPrintScannerActivity">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity-alias>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode" />
+        <service android:name=".util.GPSTracker"  android:enabled="true"/>
+        <activity
+            android:name=".tangerine.activities.ImageGridViewActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.WarehouseManagementActivity"
+            android:label="Warehouse Stock"
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ResellerWalletBalanceActivity"
+            android:label="Wallet Balance"
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".tangerine.activities.UploadSubscriberFingerprint"
+            android:label="User Registration"
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ScanNowPassportImageActivity"
+            android:label="Scan Now Passport Image Activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.AddDeviceOrderActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.AddDeviceExistingPostpaidOrderActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ScanDocsActivity"
+            android:label="Scan Now Passport Image Activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ResellerStockRequestActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ResellerETopupRequestsActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ResellerProductRequestsActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ResellerVoucherRequestsActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ResellerStockRequestsActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ResellerUploadDeliveryNoteActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.BuildVersion"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:label=" "
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".tangerine.activities.ScanResultActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name="com.docrecog.scan.CameraActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.EditMandatoryDocsActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".tangerine.activities.EditBillingAddressInfoActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".tangerine.activities.EditUserInformationActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".tangerine.activities.EditUserMainActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ResellerChangePasswordActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.OnDemandAddDevicePrepaidActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".tangerine.activities.ExistingPostpaidOrderAddDeviceActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.EVoucherRechargeActivity"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.AirtimeVoucherRechargeActivity"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
+        <activity
+            android:name=".tangerine.activities.StaffBillingAddressActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".tangerine.activities.DeviceOrderScanIMEIActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".tangerine.activities.DeviceOrderPaymentActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.ETopupRechargeActivity"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.NewStaffUserRegistration"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.NewStaffBillingAddressActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.NewCopyStaffDocumentUploadActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.UpdateVisaValidityActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.UpdateVisaActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.CacheUpdateUserDataActivity"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".tangerine.activities.CacheNewOrderDataActivity"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".tangerine.activities.StaffByResellerActivity"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".tangerine.activities.NewSimSwapActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+        <activity android:name=".tangerine.activities.MapsActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.SimSwapPdfUploadActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.ValidateSimSwapActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandAccountSetupActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandNewOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandRegistrationActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandAddSubscriptionActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandNewOrderPaymentActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandExistingPostpaidOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandExistingPostpaidOrderAddSubscriptionActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandExistingPostpaidOrderPaymentActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandExistingAccountDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.BarcodeScannerActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.BaseScannerActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.FullScannerActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.BarcodeScanResultActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.CheckZoneActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.BundleRechargeActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.NavigationMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.OnDemandContractInformationActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".tangerine.activities.ScannerActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity android:name=".tangerine.activities.SelectReportActivity"
+            android:label=" "
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <receiver
+            android:name="com.aryagami.util.MyBroadCastReceiver">
+        </receiver>
+
+        <service
+            android:name="com.aryagami.util.UpdateCacheNewOrderData" />
+    </application>
+
+</manifest>

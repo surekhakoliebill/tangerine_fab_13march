@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_new_order_main_page"
+    android:orientation="vertical">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/backstyle"
+        android:id="@+id/logo">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Payment Details"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:paddingTop="10dp"
+            android:background="@color/colorlycadark"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Order Information:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="2dp"
+
+            />
+
+        <CheckBox
+            android:id="@+id/fulfillmentCheck"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="17sp"
+            android:checked="false"
+            android:text="Fulfillment Pending"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/order_details_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="10dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Order Details:"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="2dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:text="Setup Price:"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/ex_setup_value"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textColor="@color/black"
+                android:text=""
+                android:gravity="center|left"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:text="Total Plan Price:"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/ex_plan_price_value"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textColor="@color/black"
+                android:text=""
+                android:gravity="center|left"
+                android:textSize="17sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:text="Deposit Value:"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/ex_deposit_value"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:gravity="center|left"
+                android:text=""
+                android:layout_marginLeft="10dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:text="Airtime Value:"
+                android:gravity="center|left"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/airtime_value"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:gravity="center|left"
+                android:text=""
+                android:layout_marginLeft="10dp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:text="Select Currency"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"/>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            android:padding="5dp"
+            android:layout_marginTop="5dp">
+            <Spinner
+                android:id="@+id/currency_spinner"
+                android:layout_alignParentRight="true"
+                android:layout_width="match_parent"
+                android:tooltipText=""
+                android:gravity="center"
+                android:padding="5dp"
+                android:background="@drawable/editbackground"
+                android:layout_height="50dp">
+            </Spinner>
+            <ImageView
+                android:layout_centerVertical="true"
+                android:background="@drawable/downarrowgreen"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginRight="14dp"
+                android:layout_alignParentRight="true" />
+            <!-- <View
+                 android:layout_width="1dp"
+                 android:layout_height="fill_parent"
+                 android:layout_toLeftOf="@id/dropdown_indicator"
+                 android:layout_marginRight="10dp"
+                 android:background="#e0e0e0"
+                 />-->
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/rectanglebg"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/payment_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:fontFamily="@font/sansation_bold"
+            android:text="Upload Payment Copy"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/cc_btn1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/pdf_icon"/>
+            <TextView
+
+                android:id="@+id/dis_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:text="No file is selected" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_marginTop="10dp"
+        >
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/sansation_bold"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            />
+        <Button
+
+            android:id="@+id/place_order"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/sansation_bold"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:text="Place Order"
+            android:textAllCaps="false"
+            android:background="@drawable/button"
+            />
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

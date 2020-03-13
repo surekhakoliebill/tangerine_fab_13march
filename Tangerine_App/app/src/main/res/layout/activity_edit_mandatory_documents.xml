@@ -1,0 +1,215 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorlyca"
+    >
+
+    <LinearLayout
+        android:id="@+id/accountsetup_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/backstyle"
+                android:id="@+id/logo">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="User Registration"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:background="@color/colorlycadark"
+                    />
+            </LinearLayout>
+
+            <!--   <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:background="@color/colorlycadark"
+                   android:text="USER REGISTRATION"
+                   android:textColor="@color/white"
+                   android:textSize="20dp"
+                   android:paddingLeft="10dp"
+                   android:paddingTop="10dp" />-->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/lycabackground">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Account Setup"
+                            android:layout_gravity="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorBlack"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageView"
+                        android:weightSum="1"
+                        android:background="@drawable/backstyle"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:id="@+id/radioGroup1">
+
+                        <RadioButton
+                            android:id="@+id/create_default_btn"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:padding="5dp"
+                            android:checked="true"
+                            android:textSize="15sp"
+                            android:text="Create Default Account"
+                            android:textColor="@color/colorBlack" />
+
+                        <RadioButton
+                            android:id="@+id/associate_existing_account_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="5dp"
+                            android:textSize="15sp"
+                            android:text="Associate to Existing Account"
+                            android:textColor="@color/colorBlack"/>
+                    </RadioGroup>
+                    <LinearLayout
+                        android:id="@+id/existing_account_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="35dp"
+                            android:text="Account"
+                            android:textColor="@color/colorBlack" />
+                        <include
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="35dp"
+                            android:id="@+id/userType_Spinner"
+                            android:background="@drawable/backstyle"
+                            layout="@layout/item_single_spinner">
+                        </include>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/default_account_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="3dp"
+                        android:background="@drawable/lycabackground"
+                        android:visibility="visible">
+
+                        <include layout="@layout/edit_mandatory_account_documents" />
+                    </LinearLayout>
+
+                    <!-- <LinearLayout
+                         android:id="@+id/existing_account_container"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:paddingTop="20dp"
+                         android:visibility="gone">
+                         <include layout="@layout/associate_existing_account"
+                             />
+                     </LinearLayout>-->
+
+
+
+                    <Button
+                        android:id="@+id/submitfinal_btn"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="75dp"
+                        android:background="@drawable/button"
+                        android:text="Save for Later"
+                        android:padding="5dp"
+                        android:textSize="17sp"
+                        android:layout_marginTop="10dp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+
+                        <!--<Button
+                            android:id="@+id/cancel_btn"
+                            android:layout_width="130dp"
+                            android:layout_height="40dp"
+                            android:background="@color/red"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:text="Back"/>-->
+                        <Button
+                            android:id="@+id/cancelfinal_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sansation_bold"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button"
+                            android:text="Back"
+                            android:padding="5dp"
+                            android:textSize="17sp"
+                            android:textAllCaps="false"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/white" />
+
+                        <Button
+                            android:id="@+id/save_and_continue_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/sansation_bold"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/button"
+                            android:text="@string/save_and_continue"
+                            android:padding="5dp"
+                            android:textSize="17sp"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:name="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <!--<group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_posts"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Posts" />
+
+        <item
+            android:id="@+id/nav_class"
+            android:title="Class"
+            android:visible="false" />
+        <item
+            android:id="@+id/nav_dept"
+            android:title="Department"
+            android:visible="false" />
+        <item
+            android:id="@+id/nav_batch"
+            android:title="Batch"
+            android:visible="false" />
+        <item
+            android:id="@+id/nav_campus"
+            android:title="Campus"
+            android:visible="false" />
+
+
+        <item
+            android:id="@+id/nav_walls"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Walls" />
+
+        <item
+            android:id="@+id/nav_wall_news"
+            android:title="News"
+            android:visible="false" />
+        <item
+            android:id="@+id/nav_wall_events"
+            android:title="Events"
+            android:visible="false" />
+        <item
+            android:id="@+id/nav_wall_fun"
+            android:title="Fun"
+            android:visible="false" />
+        <item
+            android:id="@+id/nav_wall_hadith"
+            android:title="Hadith"
+            android:visible="false" />
+        <item
+            android:id="@+id/nav_wall_Poetry"
+            android:title="Poetry"
+            android:visible="false" />
+
+
+    </group>
+
+    <item
+        android:id="@+id/nav_com"
+        android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+    <group android:id="@+id/profile">
+    <item
+        android:id="@+id/nav_reseller_profile_edit"
+        android:icon="@drawable/users64lyca"
+
+        android:title="Profile" >
+    <!--<menu>
+        <group android:checkableBehavior="single" android:id="@+id/your_group">
+
+        <item
+            android:id="@+id/menuSortNewest"
+            android:title="1-1" />
+        <item
+            android:id="@+id/menuSortRating"
+            android:title="1-2" />
+        </group>
+    </menu>-->
+    </item>
+    </group>
+    <!--<group android:id="@+id/reg">
+    <item
+        android:id="@+id/nav_registration"
+        android:icon="@drawable/registration64lyca"
+        android:fontFamily="@font/sansation_regular"
+<<<<<<< HEAD
+        android:title="Device" />
+    </group>
+=======
+        android:title="User Registration" />
+    </group>-->
+>>>>>>> 621bf6b610e787a58992f1e2e54dc1e24b52e3a4
+    <group android:id="@+id/pass">
+    <item
+        android:id="@+id/nav_reseller_change_password"
+        android:icon="@drawable/password64lyca"
+        android:fontFamily="@font/sansation_regular"
+        android:title="Change Password" />
+    </group>
+    <group android:id="@+id/subs">
+    <item
+        android:id="@+id/nav_subscription_list_by_reseller"
+        android:icon="@drawable/subscription64lyca"
+        android:fontFamily="@font/sansation_regular"
+        android:title="Suscription List" />
+    </group>
+    <group android:id="@+id/order">
+    <item
+        android:id="@+id/nav_new_order"
+        android:icon="@drawable/neworder64lyca"
+        android:fontFamily="@font/sansation_regular"
+        android:title="New Order" />
+    </group>
+
+    <group android:id="@+id/existing_order">
+        <item
+            android:id="@+id/nav_existing_order"
+            android:icon="@drawable/neworder64lyca"
+            android:fontFamily="@font/sansation_regular"
+            android:title="Existing Order" />
+    </group>
+
+    <group android:id="@+id/upuser">
+    <item
+        android:id="@+id/update_user"
+        android:icon="@drawable/update64lyca"
+        android:fontFamily="@font/sansation_regular"
+        android:title="Update User" />
+    </group>
+    <group android:id="@+id/prepaid">
+    <item
+        android:id="@+id/nav_prepaid_recharge"
+        android:icon="@drawable/recharge64lyca"
+        android:fontFamily="@font/sansation_regular"
+        android:title="Prepaid Recharges" />
+    </group>
+    <group android:id="@+id/upload">
+    <item
+        android:id="@+id/nav_upload_subscription_fingerprint"
+        android:icon="@drawable/fingerprint64lyca"
+        android:fontFamily="@font/sansation_regular"
+        android:title="Upload Fingerprint" />
+    </group>
+    <group android:id="@+id/vouch">
+    <item
+        android:id="@+id/top_up_vouchers"
+        android:icon="@drawable/vouchers64lyca"
+        android:fontFamily="@font/sansation_regular"
+        android:title="TopUp Vouchers" />
+    </group>
+    <group android:id="@+id/sim">
+    <item
+        android:id="@+id/nav_sim_swap"
+        android:icon="@drawable/simswap64lyca"
+        android:title="Sim Swap" />
+    </group>
+    <group android:id="@+id/balance">
+    <item
+        android:id="@+id/nav_balance_transfer"
+        android:icon="@drawable/creditbalance64lyca"
+        android:title="Credit Balance" />
+    </group>
+    <group android:id="@+id/staff">
+    <item
+        android:id="@+id/nav_staff_users"
+        android:icon="@drawable/staff64lyca"
+        android:title="Staff User" />
+    </group>
+    <group android:id="@+id/block">
+    <item
+        android:id="@+id/nav_voucher_block"
+        android:icon="@drawable/vouchers64lyca"
+        android:title="Voucher Bundles" />
+    </group>
+    <group android:id="@+id/api">
+    <item
+        android:id="@+id/nav_set_api_key"
+        android:icon="@drawable/api64lyca"
+        android:title="Set API KEY" />
+    </group>
+    <group android:id="@+id/stock">
+    <item
+        android:id="@+id/nav_stock_request"
+        android:icon="@drawable/stock64lyca"
+        android:title="Stock Request" />
+    </group>
+
+    <group android:id="@+id/warehouse_stock">
+        <item
+            android:id="@+id/nav_warehouse_stock"
+            android:icon="@drawable/stock64lyca"
+            android:title="Warehouse Stock" />
+    </group>
+
+    <group android:id="@+id/wallet_balance">
+        <item
+            android:id="@+id/nav_wallet_balance"
+            android:icon="@drawable/stock64lyca"
+            android:title="Wallet Balance" />
+    </group>
+
+    <group android:id="@+id/distributors_request">
+        <item
+            android:id="@+id/nav_distributors_request"
+            android:icon="@drawable/stock64lyca"
+            android:title="Distributor Requests" />
+    </group>
+
+    <group android:id="@+id/logout">
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logout64lyca"
+        android:title="Log Out" />
+    </group>
+</menu>

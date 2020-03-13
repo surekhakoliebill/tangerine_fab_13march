@@ -1,0 +1,131 @@
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!--<resources xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!--<item name="colorPrimary">@color/colorlyca</item>-->
+        <item name="colorPrimary">@color/colorWhite</item>
+        <item name="colorPrimaryDark">@color/colorlycadark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorlycadark</item>
+        <item name="android:colorControlNormal">@color/black</item>
+    </style>
+
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:textViewStyle">@style/SansationTextViewStyle</item>
+        <item name="android:editTextStyle">@style/SansationEditViewStyle</item>
+        <item name="buttonStyle">@style/SansationButtonStyle</item>-->
+    </style>
+    <!--<style name="SansationEditViewStyle" parent="android:Widget.EditText">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/sansation_regular</item>
+    </style>
+    <style name="SansationTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/sansation_regular</item>
+    </style>
+
+    <style name="SansationButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/sansation_regular</item>
+    </style>-->
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="EditText.Login" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="NavigationViewStyle">
+        <item name="android:textSize">18sp</item> <!-- menu item text size-->
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textStyle">@font/sansation_regular</item>
+        <item name="android:listPreferredItemHeightSmall">40dp</item><!-- menu item height-->
+        <item name="android:icon"
+            android:drawable="@drawable/leftarrow"
+            android:gravity="center" />
+    </style>
+
+
+    <style name="HeaderBar">
+        <item name="android:background">@drawable/background_new_order_main_page</item>
+    </style>
+
+    <style name="LoginTextInputLayoutStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/colorBlack</item>
+    </style>
+
+    //Barcode Scanner
+    <style name="TransparentToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- Support Library compability -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="Toolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="selectableItemBackground">?android:selectableItemBackground</item>
+        <item name="selectableItemBackgroundBorderless">?android:selectableItemBackground</item>
+    </style>
+
+
+</resources>
+
+
+
+
+<!--
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    &lt;!&ndash; Base application theme. &ndash;&gt;
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        &lt;!&ndash;<item name="android:textViewStyle">@style/SansationTextViewStyle</item>
+        <item name="android:editTextStyle">@style/SansationEditViewStyle</item>
+        <item name="buttonStyle">@style/SansationButtonStyle</item>&ndash;&gt;
+    </style>
+    &lt;!&ndash;<style name="SansationEditViewStyle" parent="android:Widget.EditText">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/sansation_regular</item>
+    </style>
+    <style name="SansationTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/sansation_regular</item>
+    </style>
+
+    <style name="SansationButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/sansation_regular</item>
+    </style>&ndash;&gt;
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="EditText.Login" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+</resources>-->
