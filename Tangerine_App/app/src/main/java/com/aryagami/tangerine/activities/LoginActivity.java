@@ -116,7 +116,9 @@ public class LoginActivity extends AppCompatActivity {
                                                         UserSession.setResellerName(activity, resellerLoginInfo.userInfo.company);
                                                         navigationData.company = resellerLoginInfo.userInfo.company.toString();
                                                         UserSession.setAggregator(activity, resellerLoginInfo.aggregator);
+                                                       // UserSession.setEnableMobileMoneyReg(activity, resellerLoginInfo.userInfo.enableMobileMoneyReg);
                                                         RegistrationData.setNavigationData(navigationData);
+                                                        RegistrationData.setEnableMobileMoneyReg(resellerLoginInfo.userInfo.enableMobileMoneyReg);
 
                                                         ProgressDialogUtil.stopProgressDialog(progressDialog);
                                                         MyToast.makeMyToast(LoginActivity.this, "Successfully Login", Toast.LENGTH_LONG);

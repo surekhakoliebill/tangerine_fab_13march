@@ -288,6 +288,162 @@ public class NewOrderCommand implements Serializable, DataModel {
         return json;
     }
 
+    public String getRetailerNewOrderJSON() throws IOException {
+        StringWriter swriter = new StringWriter();
+        JsonWriter jwriter = new JsonWriter(swriter);
+        jwriter.setIndent(" ");
+
+        jwriter.beginObject();
+
+        if(resellerCode != null){
+            jwriter.name("resellerCode").value(resellerCode);
+        }
+
+        jwriter.name("productListingIds");
+        if(productListingIds != null) {
+            getProductListingIdsJSON(productListingIds, jwriter);
+        }
+
+        if (registrationServiceType.equals("Postpaid")) {
+
+            if (creditLimit != null) {
+                jwriter.name("creditLimit").value(creditLimit);
+            }
+            jwriter.name("fulfillmentDone").value(fulfillmentDone);
+            jwriter.name("registrationServiceType").value(registrationServiceType);
+
+            jwriter.name("subscriptions");
+            if (subscriptions != null) {
+                try {
+                    getSubscriptionJSON(jwriter);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            jwriter.name("contract");
+            if (contract != null) {
+                getContractJSON(jwriter);
+            }
+
+            jwriter.name("resellerLocation");
+            if (resellerLocation != null) {
+                getLocationCoordinatesJSON(jwriter);
+            }
+            if (creditScore != null) {
+                jwriter.name("creditScore").value(creditScore);
+            }
+
+            if (requestedCreditLimit != null) {
+                jwriter.name("requestedCreditLimit").value(requestedCreditLimit);
+            } else {
+                jwriter.name("requestedCreditLimit").value(0);
+            }
+            if (isNewAccount) {
+                jwriter.name("userInfo");
+                if (userInfo != null) {
+                    try {
+                        getUserRegistrationJSON(jwriter);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            jwriter.name("totalValue").value(totalValue);
+            /* jwriter.name("paymentInfo");
+            if(paymentInfo != null)
+                getPaymentInfoJSON(jwriter);*/
+            jwriter.name("currentStatus").value(currentStatus);
+            if (depositValue != null) {
+                jwriter.name("depositValue").value(depositValue);
+            } else {
+                jwriter.name("depositValue").value(0);
+            }
+// for postpaid
+            jwriter.name("productListings");
+            if(productListings != null) {
+                getProductListingsJSON(productListings, jwriter);
+            }
+        } else {
+            if (creditLimit != null) {
+                jwriter.name("creditLimit").value(creditLimit);
+            } else {
+                jwriter.name("creditLimit").value(0);
+            }
+            jwriter.name("fulfillmentDone").value(fulfillmentDone);
+            jwriter.name("registrationServiceType").value(registrationServiceType);
+
+            jwriter.name("subscriptions");
+            if (subscriptions != null) {
+                try {
+                    getSubscriptionJSON(jwriter);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (creditScore != null) {
+                jwriter.name("creditScore").value(creditScore);
+            } else {
+                jwriter.name("creditScore").value(0);
+            }
+
+            jwriter.name("resellerLocation");
+            if (resellerLocation != null) {
+                getLocationCoordinatesJSON(jwriter);
+            }
+
+            jwriter.name("contract");
+            if (contract != null) {
+                getContractJSON(jwriter);
+            }
+            if (requestedCreditLimit != null) {
+                jwriter.name("requestedCreditLimit").value(requestedCreditLimit);
+            } else {
+                jwriter.name("requestedCreditLimit").value(0);
+            }
+            if (isNewAccount) {
+                jwriter.name("userInfo");
+                if (userInfo != null) {
+                    try {
+                        getUserRegistrationJSON(jwriter);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            jwriter.name("totalValue").value(totalValue);
+
+            jwriter.name("paymentInfo");
+            if (paymentInfo != null)
+                getPaymentInfoJSON(jwriter);
+            jwriter.name("currentStatus").value(currentStatus);
+            if (depositValue != null) {
+                jwriter.name("depositValue").value(depositValue);
+            } else {
+                jwriter.name("depositValue").value(0);
+            }
+
+            jwriter.name("productListings");
+            if(productListings != null) {
+                getProductListingsJSON(productListings, jwriter);
+            }
+
+            jwriter.name("addresellerCommand");
+            if (addresellerCommand != null) {
+                try {
+                    writeJsonResellerData(jwriter);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+        jwriter.endObject();
+
+        String json = swriter.toString();
+        return json;
+    }
+
     public String getNewOrderForExistingJSON() throws IOException {
         StringWriter swriter = new StringWriter();
         JsonWriter jwriter = new JsonWriter(swriter);

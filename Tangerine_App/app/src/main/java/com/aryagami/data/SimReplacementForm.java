@@ -34,11 +34,37 @@ public class SimReplacementForm implements DataModel {
     public String email;
 
     public String msisdn;
+    public String newIccid;
+    public String userId;
 
     public String status;
 
     public float accuracy;
     public List<String> msisdns;
+
+
+    public String lastSmsSentNumber;
+
+    public List<String> lastThreeCalledNumbers;
+
+    public List<String> lastThreeSmsSentNumbers;
+
+    public List<String> mostlyCalledNumbers;
+
+    public Double airTimeAmountLoaded;
+
+    public String latestBundleUsed;
+
+    public Float availableMobileMoneyBalance;
+
+    public String mobileMoneyMPin;
+
+    public Boolean skipValidation;
+
+    public String skipValidationReason;
+
+
+
 
     public static List<DataModel> parseSimJSONResponse(String json) throws IOException {
         InputStream in;
@@ -77,25 +103,92 @@ public class SimReplacementForm implements DataModel {
 
         jwriter.beginObject();
 
-        jwriter.name("lastCallsLimit").value(lastCallsLimit);
-        jwriter.name("lastPaymentsLimit").value(lastPaymentsLimit);
-        jwriter.name("lastCallDuration").value(lastCallDuration);
-        jwriter.name("lastCalledParty").value(lastCalledParty);
-        jwriter.name("lastPaymentAmout").value(lastPaymentAmout);
-        jwriter.name("lastCalledPartyCheckLimit").value(lastCalledPartyCheckLimit);
+        // jwriter.name("lastCallsLimit").value(lastCallsLimit);
+        // jwriter.name("lastPaymentsLimit").value(lastPaymentsLimit);
+        //  jwriter.name("lastCallDuration").value(lastCallDuration);
+        //   jwriter.name("lastCalledParty").value(lastCalledParty);
+        //  jwriter.name("lastPaymentAmout").value(lastPaymentAmout);
+        //   jwriter.name("lastCalledPartyCheckLimit").value(lastCalledPartyCheckLimit);
         jwriter.name("ownerName").value(ownerName);
         jwriter.name("email").value(email);
         jwriter.name("msisdn").value(msisdn);
+        jwriter.name("skipValidation").value(skipValidation);
+        jwriter.name("airTimeAmountLoaded").value(airTimeAmountLoaded);
+
+        jwriter.name("latestBundleUsed").value(latestBundleUsed);
+        //jwriter.name("lastThreeCalledNumbers").value((Number) lastThreeCalledNumbers);
+
+        jwriter.name("lastThreeCalledNumbers");
+        getLastThreeCalledNumbersJSON(lastThreeCalledNumbers, jwriter);
+
+        jwriter.name("lastThreeSmsSentNumbers");
+        getLastThreeSmsNumbersJSON(lastThreeSmsSentNumbers, jwriter);
+
+        jwriter.name("mostlyCalledNumbers");
+        getMostlyCalledNumbersJSON(mostlyCalledNumbers, jwriter);
+
 
         jwriter.endObject();
         String json = swriter.toString();
         return json;
     }
 
+
+    public String getJSONICCIDData() throws IOException {
+        StringWriter swriter = new StringWriter();
+        JsonWriter jwriter = new JsonWriter(swriter);
+        jwriter.setIndent(" ");
+
+        jwriter.beginObject();
+
+        jwriter.name("newIccid").value(newIccid);
+        jwriter.name("msisdn").value(msisdn);
+        jwriter.name("userId").value(userId);
+
+        jwriter.endObject();
+        String json = swriter.toString();
+        return json;
+    }
     @Override
     public DataType getDataType() {
 
         return DataType.SimReplacementForm;
+    }
+
+    public void getLastThreeCalledNumbersJSON(List<String> lastThreeCalledNumbers, JsonWriter jwriter) throws IOException {
+        try {
+            jwriter.beginArray();
+            for (String lastThreeCalledCount : lastThreeCalledNumbers) {
+                jwriter.value(lastThreeCalledCount);
+            }
+            jwriter.endArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getLastThreeSmsNumbersJSON(List<String> lastThreeSmsSentNumbers, JsonWriter jwriter) throws IOException {
+        try {
+            jwriter.beginArray();
+            for (String lastThreeSmsNumberCount : lastThreeSmsSentNumbers) {
+                jwriter.value(lastThreeSmsNumberCount);
+            }
+            jwriter.endArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getMostlyCalledNumbersJSON(List<String> mostlyCalledNumbers, JsonWriter jwriter) throws IOException {
+        try {
+            jwriter.beginArray();
+            for (String mostlyCalledNumberCount : mostlyCalledNumbers) {
+                jwriter.value(mostlyCalledNumberCount);
+            }
+            jwriter.endArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

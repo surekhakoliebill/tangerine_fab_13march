@@ -69,20 +69,20 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
         simDocumentsUpload = new SimDocumentsUpload();
         simSwapList = new SimSwapList();
 
-          postMSISDN = getIntent().getStringExtra("msisdn");
-          postUserId = getIntent().getStringExtra("userId");
-          postSimSwapLogId = getIntent().getStringExtra("simSwapLogId");
+        postMSISDN = getIntent().getStringExtra("msisdn");
+        postUserId = getIntent().getStringExtra("userId");
+        postSimSwapLogId = getIntent().getStringExtra("simSwapLogId");
 
 
         Button upload = (Button) findViewById(R.id.sim_swap_document_upload_btn);
         Button cancel = (Button) findViewById(R.id.sim_replace_cancel_btn);
 
-        upload_user_id_copy = (Button) findViewById(R.id.Upload_User_Id_Copy);
+        // upload_user_id_copy = (Button) findViewById(R.id.Upload_User_Id_Copy);
         upload_simswap_form_copy = (Button) findViewById(R.id.Upload_Simswap_Form_Copy);
         upload_police_letter = (Button) findViewById(R.id.Upload_Police_Letter);
         upload_faulty_sim_copy = (Button) findViewById(R.id.Upload_Faulty_Sim_Copy);
 
-        buttonsList.add(upload_user_id_copy);
+        //buttonsList.add(upload_user_id_copy);
         buttonsList.add(upload_simswap_form_copy);
         buttonsList.add(upload_police_letter);
         buttonsList.add(upload_faulty_sim_copy);
@@ -93,10 +93,10 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
                 uploadedDocArray = new PdfDocumentData[DocumentTypes.getCompanyDocArray().length];
                 companyDocs = DocumentTypes.getCompanyDocArray();
 
-                upload_user_id_copy.setText(companyDocs[0].displayName);
-                upload_simswap_form_copy.setText(companyDocs[1].displayName);
-                upload_police_letter.setText(companyDocs[2].displayName);
-                upload_faulty_sim_copy.setText(companyDocs[3].displayName);
+                //upload_user_id_copy.setText(companyDocs[0].displayName);
+                upload_simswap_form_copy.setText(companyDocs[0].displayName);
+                upload_police_letter.setText(companyDocs[1].displayName);
+                upload_faulty_sim_copy.setText(companyDocs[2].displayName);
 
                 for (DocumentTypes types : DocumentTypes.getCompanyDocArray()) {
                     if (types.isMandatory) {
@@ -108,19 +108,19 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
             getDocumentTypes();
         }
 
-        notification = findViewById(R.id.notification);
+        //notification = findViewById(R.id.notification);
         notification1 = findViewById(R.id.notification1);
         notification2 = findViewById(R.id.notification2);
         notification3 = findViewById(R.id.notification3);
 
-        upload_user_id_copy.setOnClickListener(new View.OnClickListener() {
+       /* upload_user_id_copy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 String documentName = upload_user_id_copy.getText().toString().replace(" ", "_");
                 selectAlertItem(activity,71 ,documentName);
             }
         });
-
+*/
         upload_simswap_form_copy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -236,7 +236,9 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
                 if (docData != null) {
 
                     String[] docFileName = docData.docFiles.split(";");
-                    String fileUrl = "sim_swap_documents" + "/" + postSimSwapLogId + "/," + docFileName[0];
+
+                    //sim_swap_documents" + "/" + $scope.simSwapReqId+ "/"+msisdn_doctype
+                    String fileUrl = "sim_swap_documents" + "/" + postSimSwapLogId + "/"+postMSISDN+"_"+docData.docType+"/," + docFileName[0];
 
                     RestServiceHandler uploadImageServiceHandler = new RestServiceHandler();
                     uploadImageServiceHandler.uploadPdf("pdf", fileUrl, docData.pdfRwaData.toString(), new RestServiceHandler.Callback() {
@@ -327,14 +329,14 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
 
                         if (companyDocs.length != 0) {
 
-                            upload_user_id_copy.setText(companyDocs[0].displayName);
-                            upload_simswap_form_copy.setText(companyDocs[1].displayName);
-                            upload_police_letter.setText(companyDocs[2].displayName);
-                            upload_faulty_sim_copy.setText(companyDocs[3].displayName);
+                            //upload_user_id_copy.setText(companyDocs[0].displayName);
+                            upload_simswap_form_copy.setText(companyDocs[0].displayName);
+                            upload_police_letter.setText(companyDocs[1].displayName);
+                            upload_faulty_sim_copy.setText(companyDocs[2].displayName);
 
                         }else{
 
-                            upload_user_id_copy.setText("NA");
+                            //upload_user_id_copy.setText("NA");
                             upload_simswap_form_copy.setText("NA");
                             upload_police_letter.setText("NA");
                             upload_faulty_sim_copy.setText("NA");
@@ -367,7 +369,7 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 71 && resultCode == RESULT_OK) {
+       /* if (requestCode == 71 && resultCode == RESULT_OK) {
             if (data != null)
                 if (data.getData() != null) {
                     // from direct external Storage
@@ -404,7 +406,7 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
             }else{
                 MyToast.makeMyToast(activity,"File Path Not Found", Toast.LENGTH_SHORT);
             }
-        }
+        }*/
 
         if (requestCode == 72 && resultCode == RESULT_OK) {
             if (data != null)
@@ -420,14 +422,14 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
 
             if(pdfUri != null) {
                 PdfDocumentData docData1 = new PdfDocumentData();
-                docData1.displayName = companyDocs[1].displayName.toString();
-                docData1.docType = checkDisplayName(companyDocs[1].displayName.toString());
+                docData1.displayName = companyDocs[0].displayName.toString();
+                docData1.docType = checkDisplayName(companyDocs[0].displayName.toString());
                 docData1.imageData = pdfUri;
                 String encodeData = FilePath.getEncodeData(activity,pdfUri);
                 if (encodeData != null) {
                     if(!encodeData.equals("File size is too Large") && !encodeData.equals("File Not Found")){
                         docData1.pdfRwaData = encodeData;
-                        uploadedDocArray[1] = docData1;
+                        uploadedDocArray[0] = docData1;
                         pdfDocumentDataList.add(docData1);
                         notification1.setText("A file is selected :" + docData1.displayName.toString().replace(" ","_")+".pdf");
                     }else if (encodeData.equals("File Not Found")){
@@ -460,14 +462,14 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
 
             if(pdfUri != null) {
                 PdfDocumentData docData1 = new PdfDocumentData();
-                docData1.displayName = companyDocs[2].displayName;
-                docData1.docType = checkDisplayName(companyDocs[2].displayName.toString());
+                docData1.displayName = companyDocs[1].displayName;
+                docData1.docType = checkDisplayName(companyDocs[1].displayName.toString());
                 docData1.imageData = pdfUri;
                 String encodeData = FilePath.getEncodeData(activity,pdfUri);
                 if (encodeData != null) {
                     if(!encodeData.equals("File size is too Large") && !encodeData.equals("File Not Found")){
                         docData1.pdfRwaData = encodeData;
-                        uploadedDocArray[2] = docData1;
+                        uploadedDocArray[1] = docData1;
                         pdfDocumentDataList.add(docData1);
                         notification2.setText("A file is selected :" + docData1.displayName.toString().replace(" ","_")+".pdf");
                     }else if (encodeData.equals("File Not Found")){
@@ -498,15 +500,15 @@ public class SimSwapPdfUploadActivity extends AppCompatActivity {
 
             if(pdfUri != null) {
                 PdfDocumentData docData1 = new PdfDocumentData();
-                docData1.displayName = companyDocs[3].displayName;
-                docData1.docType = checkDisplayName(companyDocs[3].displayName.toString());
+                docData1.displayName = companyDocs[2].displayName;
+                docData1.docType = checkDisplayName(companyDocs[2].displayName.toString());
                 docData1.imageData = pdfUri;
 
                 String encodeData = FilePath.getEncodeData(activity,pdfUri);
                 if (encodeData != null) {
                     if(!encodeData.equals("File size is too Large") && !encodeData.equals("File Not Found")){
                         docData1.pdfRwaData = encodeData;
-                        uploadedDocArray[3] = docData1;
+                        uploadedDocArray[2] = docData1;
                         pdfDocumentDataList.add(docData1);
                         notification3.setText("A file is selected :" + docData1.displayName.toString().replace(" ","_")+".pdf");
                     }else if (encodeData.equals("File Not Found")){

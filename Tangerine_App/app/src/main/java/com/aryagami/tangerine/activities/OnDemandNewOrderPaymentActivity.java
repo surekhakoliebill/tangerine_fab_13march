@@ -31,6 +31,7 @@ import com.aryagami.data.DataModel;
 import com.aryagami.data.NewOrderCommand;
 import com.aryagami.data.PdfDocumentData;
 import com.aryagami.data.RegistrationData;
+import com.aryagami.data.ResellerStaff;
 import com.aryagami.data.Roles;
 import com.aryagami.data.Subscription;
 import com.aryagami.data.UserLogin;
@@ -56,6 +57,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
     Button backButton, placePrepaidOrderBtn,uploadPaymentCopy;
     Activity activity = this;
     NewOrderCommand command;
+    String registrationType = "";
     ProgressDialog progressDialog, progressDialog2,progressDialog1;
     LinearLayout billingInformationLayout, chequeLayout;
     RadioGroup radioGroup, radioGroup1;
@@ -140,6 +142,10 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                     emailId.setText(registration.email);
                 } else {
                     emailId.setText("");
+                }
+
+                if (registration.registrationType != null) {
+                    registrationType = registration.registrationType;
                 }
             }
         }
@@ -1139,7 +1145,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    BugReport.postBugReport(activity, Constants.emailId, "STATUS:"+e.getMessage(), "CONTRACT Information");
+                    BugReport.postBugReport(activity, Constants.emailId, "STATUS:"+e.getMessage(), "NewOrderPayment Exception");
 
                 }
             }
@@ -1536,7 +1542,11 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
 
                                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
                                    alertDialog.setCancelable(false);
-                                   alertDialog.setMessage("Subscription Activated Successfully. \n Current Status: " + userLogin.activationState);
+                                   if(userLogin.activationState.equalsIgnoreCase("INIT")){
+                                       alertDialog.setMessage("Subscription Activated Successfully. \n Current Status: activation in progress.");
+                                   }else{
+                                       alertDialog.setMessage("Subscription Activated Successfully. \n Current Status: " + userLogin.activationState);
+                                   }
                                    alertDialog.setNeutralButton(activity.getResources().getString(R.string.ok),
                                            new DialogInterface.OnClickListener() {
                                                public void onClick(DialogInterface dialog, int id) {
@@ -1792,7 +1802,27 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
 
         command.userInfo.currency = "UGX";
         command.userInfo.tempUserToken = uuid;
+
+        if(registrationType.equalsIgnoreCase("retailer")){
+            ResellerStaff staff = getResellerInfo();
+            command.addresellerCommand = staff;
+        }
         return command;
+
+    }
+
+    private ResellerStaff getResellerInfo() {
+        ResellerStaff staff = new ResellerStaff();
+
+        staff.aggregatorId = UserSession.getResellerId(activity);
+        staff.immedidateServiceCutoffDays = 1;
+        staff.isAggregator = false;
+        staff.isDistributor = false;
+        staff.isRetailer = true;
+        staff.paymentType = "Upfront";
+        staff.resellerName = command.userInfo.fullName.toString();
+        staff.status = "APPROVED";
+        return staff;
 
     }
 
@@ -1805,7 +1835,14 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
             if (rolesArray.length != 0) {
                 for (Roles role : rolesArray) {
                     if (role.roleName != null) {
-                        if (role.roleName.equals("Consumer")) {
+                        String name = "";
+                        if(registrationType.equalsIgnoreCase("retailer")){
+                            name = "Reseller Retailer";
+                        }else{
+                            name = "Consumer";
+                        }
+
+                        if (role.roleName.equals(name)) {
                             registration.roleId = role.roleId.longValue();
                             registration.roleName = role.roleName.toString();
                         }

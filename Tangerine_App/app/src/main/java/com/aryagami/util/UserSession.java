@@ -20,6 +20,7 @@ public class UserSession   {
     static private String resellerId = null;
     static private String aggregator = null;
     static private String resellerName = null;
+    static private Boolean enableMobileMoneyReg = null;
     static private String subscriptionId = null;
     static private UserRegistration allUserInformation= null;
 
@@ -261,5 +262,35 @@ public class UserSession   {
 
     }
 
+   /* public static Boolean getEnableMobileMoneyReg(Context context) {
 
+        if (enableMobileMoneyReg == null){
+            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
+            enableMobileMoneyReg = sharedpreferences.getBoolean("enableMobileMoneyReg", null);
+        }
+
+        return enableMobileMoneyReg;
+    }
+
+    public static void setEnableMobileMoneyReg(Context context, Boolean enableMobileMoneyReg) {
+        UserSession.enableMobileMoneyReg = enableMobileMoneyReg;
+
+        if (enableMobileMoneyReg != null) {
+
+            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
+
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+           // editor.putString("enableMobileMoneyReg", enableMobileMoneyReg);
+            editor.putBoolean("enableMobileMoneyReg", enableMobileMoneyReg);
+            editor.commit();
+        } else {
+            UserSession.enableMobileMoneyReg = null;
+            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.remove("enableMobileMoneyReg");
+            editor.commit();
+        }
+    }
+
+*/
 }

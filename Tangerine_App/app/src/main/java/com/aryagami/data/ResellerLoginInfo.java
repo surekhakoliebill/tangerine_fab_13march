@@ -92,6 +92,8 @@ public class ResellerLoginInfo implements DataModel, Serializable {
                 userRegistration.physicalAddress = reader.nextString();
             } else if (name.equals("phoneNumber")&& reader.peek() != JsonToken.NULL) {
                 userRegistration.phoneNumber = reader.nextString();
+            } else if (name.equals("enableMobileMoneyReg")&& reader.peek() != JsonToken.NULL) {
+                userRegistration.enableMobileMoneyReg = reader.nextBoolean();
             }else{
                 reader.skipValue();
             }

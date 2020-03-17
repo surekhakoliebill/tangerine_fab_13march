@@ -27,10 +27,12 @@ import com.aryagami.restapis.RestServiceHandler;
 import com.aryagami.tangerine.activities.ResellerProductRequestsActivity;
 import com.aryagami.tangerine.activities.ResellerUploadDeliveryNoteActivity;
 import com.aryagami.util.BugReport;
+import com.aryagami.util.MarshMallowPermission;
 import com.aryagami.util.MyToast;
 import com.aryagami.util.ProgressDialogUtil;
 import com.aryagami.util.ReDirectToParentActivity;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -79,6 +81,7 @@ public class ResellerProductRequestsListAdapter extends ArrayAdapter {
         Button fulfillmentButton = (Button)rowView.findViewById(R.id.approve_button);
         Button deliveryNote = (Button)rowView.findViewById(R.id.delivery_note);
         Button uploadDeliveryNote = (Button)rowView.findViewById(R.id.upload_delivery_note);
+        Button viewDeliveryNote = (Button)rowView.findViewById(R.id.view_delivery_note);
 
         final WalletAccountTransactionLogVo rowItem = (WalletAccountTransactionLogVo) getItem(position);
 
@@ -129,21 +132,25 @@ public class ResellerProductRequestsListAdapter extends ArrayAdapter {
             rejectButton.setVisibility(View.VISIBLE);
             deliveryNote.setVisibility(View.GONE);
             uploadDeliveryNote.setVisibility(View.GONE);
+            viewDeliveryNote.setVisibility(View.GONE);
         }else if(rowItem.requestStatus.equals("Approved")){
             fulfillmentButton.setVisibility(View.GONE);
             rejectButton.setVisibility(View.GONE);
             deliveryNote.setVisibility(View.VISIBLE);
             uploadDeliveryNote.setVisibility(View.VISIBLE);
+            viewDeliveryNote.setVisibility(View.GONE);
         }else if(rowItem.requestStatus.equals("Cancelled") || rowItem.requestStatus.equals("Rejected") ){
             fulfillmentButton.setVisibility(View.GONE);
             rejectButton.setVisibility(View.GONE);
             deliveryNote.setVisibility(View.GONE);
             uploadDeliveryNote.setVisibility(View.GONE);
+            viewDeliveryNote.setVisibility(View.GONE);
         }else if(rowItem.requestStatus.equals("Completed")){
             fulfillmentButton.setVisibility(View.GONE);
             rejectButton.setVisibility(View.GONE);
-            deliveryNote.setVisibility(View.VISIBLE);
-            deliveryNote.setText("View Delivery Note");
+            deliveryNote.setVisibility(View.GONE);
+           // deliveryNote.setText("View Delivery Note");
+            viewDeliveryNote.setVisibility(View.VISIBLE);
             uploadDeliveryNote.setVisibility(View.GONE);
         }
         
@@ -280,23 +287,58 @@ public class ResellerProductRequestsListAdapter extends ArrayAdapter {
             }
         });
 
+        viewDeliveryNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               Uri uri = Uri.parse(Constants.serverURL+"fetch_documents/reseller_documents/payment_documents/"+rowItem.requestId+"/reseller_delivery_note.pdf");
+              //  String fileName = rowItem.requestId + "_" + rowItem.toBinName + ".pdf";
+               // Uri uri = Uri.parse(rowItem.deliveryNoteUrl.toString());
+                DownloadManager.Request request = new DownloadManager.Request(uri);
+                request.setDescription("Downloading...");
+                request.setDestinationInExternalFilesDir(getContext(), Environment.DIRECTORY_DOWNLOADS, "reseller_delivery_note.pdf");
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                DownloadManager downloadManager = (DownloadManager) activity.getSystemService(DOWNLOAD_SERVICE);
+                downloadManager.enqueue(request);
+            }
+        });
+
         deliveryNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String fileUrl = Constants.serverURL +"fetch_documents"+"/"+"reports"+etopupReport.docPath+".csv";
-               if(rowItem.deliveryNoteUrl != null){
-                   String fileName = rowItem.requestId + "_" + rowItem.toBinName + ".pdf";
-                   Uri uri = Uri.parse(rowItem.deliveryNoteUrl.toString());
 
-                   DownloadManager.Request request = new DownloadManager.Request(uri);
-                   request.setDescription("Downloading...");
-                   request.setDestinationInExternalFilesDir(getContext(), Environment.DIRECTORY_DOWNLOADS, fileName);
-                   request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                   DownloadManager downloadManager = (DownloadManager) activity.getSystemService(DOWNLOAD_SERVICE);
-                   downloadManager.enqueue(request);
-               }else{
-                   MyToast.makeMyToast(activity,"URL not found", Toast.LENGTH_SHORT);
-               }
+                final MarshMallowPermission marshMallowPermission = new MarshMallowPermission(activity);
+
+                if (!marshMallowPermission.checkPermissionForExternalStorage()) {
+                    marshMallowPermission.requestPermissionForExternalStorage();
+                } else {
+
+                    // IMAGES WILL SAVE IN TANGERINE/TEMP DIRECTORY
+
+                   /* String folderPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/Tangerine/Temp";
+                    File folder = new File(folderPath);
+                    if (!folder.exists()) {
+                        folder.mkdirs();
+                       // MyToast.makeMyToast(activity, "Tangerine Directory Created", Toast.LENGTH_SHORT);
+                    }
+*/
+                    if(rowItem.deliveryNoteUrl != null){
+                        String fileName = rowItem.requestId + "_" + rowItem.toBinName + ".pdf";
+                        Uri uri = Uri.parse(rowItem.deliveryNoteUrl.toString());
+
+                        DownloadManager.Request request = new DownloadManager.Request(uri);
+                        request.setDescription("Downloading...");
+                        request.setDestinationInExternalFilesDir(getContext(), Environment.DIRECTORY_DOWNLOADS, fileName);
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        DownloadManager downloadManager = (DownloadManager) activity.getSystemService(DOWNLOAD_SERVICE);
+                        downloadManager.enqueue(request);
+                    }else{
+                        MyToast.makeMyToast(activity,"URL not found", Toast.LENGTH_SHORT);
+                    }
+                }
+
+                //String fileUrl = Constants.serverURL +"fetch_documents"+"/"+"reports"+etopupReport.docPath+".csv";
+
 
             }
         });

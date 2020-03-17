@@ -45,6 +45,16 @@
         android:layout_marginTop="10dp"
         android:weightSum="1">
 
+        <CheckBox
+            android:id="@+id/enableMobileMoneyReg"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fontFamily="@font/sansation_bold"
+            android:textSize="17sp"
+            android:text=" Mobile Money Registration"
+            android:checked="false">
+        </CheckBox>
+
         <TextView
             android:layout_width="140dp"
             android:layout_height="40dp"

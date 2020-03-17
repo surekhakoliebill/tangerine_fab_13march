@@ -44,7 +44,7 @@
                             android:text="Sim Replace Form"
                             android:layout_gravity="center"
                             android:textStyle="bold"
-                            android:textSize="20dp"
+                            android:textSize="23dp"
                             android:textColor="@color/colorBlack"
                             android:gravity="center_horizontal"/>
                     </LinearLayout>
@@ -61,13 +61,40 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <android.support.design.widget.TextInputEditText
-                                android:id="@+id/validate_form_last_call_duration"
+                                android:id="@+id/previous_bundle_used"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:padding="4dp"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Previous Bundle Used"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Last Three Called Numbers"
+                            android:textSize="23sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/sansation_regular"
+                            android:textStyle="bold"
+                            android:padding="5dp">
+
+                        </TextView>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/first_called_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:maxLength="12"
                                 android:inputType="number"
                                 android:fontFamily="@font/sansation_regular"
-                                android:hint="Last Call Duration(Sec)"
+                                android:hint="First Called Number"
                                 />
                         </android.support.design.widget.TextInputLayout>
 
@@ -76,13 +103,14 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <android.support.design.widget.TextInputEditText
-                                android:id="@+id/validate_form_last_called_number"
+                                android:id="@+id/second_called_number"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:padding="4dp"
+                                android:maxLength="12"
                                 android:inputType="number"
                                 android:fontFamily="@font/sansation_regular"
-                                android:hint="Last Called Number"
+                                android:hint="Second Called Number"
                                 />
                         </android.support.design.widget.TextInputLayout>
 
@@ -91,13 +119,44 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <android.support.design.widget.TextInputEditText
-                                android:id="@+id/validate_form_last_recharge_name"
+                                android:id="@+id/third_called_number"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:padding="4dp"
                                 android:inputType="number"
+                                android:maxLength="12"
                                 android:fontFamily="@font/sansation_regular"
-                                android:hint="Last Recharge Amount"
+                                android:hint="Third Called Number"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="Last Three SMS Sent Numbers"
+                            android:textSize="23sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/sansation_regular"
+                            android:textStyle="bold">
+
+                        </TextView>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/first_sms_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:maxLength="12"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="First SMS Number"
                                 />
                         </android.support.design.widget.TextInputLayout>
 
@@ -106,12 +165,78 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <android.support.design.widget.TextInputEditText
-                                android:id="@+id/validate_form_customer_name"
+                                android:id="@+id/second_sms_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:maxLength="12"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Second SMS Number"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/third_sms_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:maxLength="12"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Third SMS Number"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/mostly_called_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:maxLength="12"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Mostly Called Number"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/previous_recharge_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:padding="4dp"
+                                android:inputType="number"
+                                android:fontFamily="@font/sansation_regular"
+                                android:hint="Previous Recharge Amount"
+                                />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/customer_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:padding="4dp"
                                 android:fontFamily="@font/sansation_regular"
-                                android:hint="Customer's Name"
+                                android:hint="Customer's name"
                                 />
                         </android.support.design.widget.TextInputLayout>
                         <android.support.design.widget.TextInputLayout
@@ -119,7 +244,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <android.support.design.widget.TextInputEditText
-                                android:id="@+id/validate_form_email"
+                                android:id="@+id/email_sim"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:padding="4dp"

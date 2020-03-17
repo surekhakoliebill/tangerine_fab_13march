@@ -60,6 +60,7 @@
                             android:layout_height="170dp"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
+                            android:visibility="gone"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:background="@drawable/rectanglebg"

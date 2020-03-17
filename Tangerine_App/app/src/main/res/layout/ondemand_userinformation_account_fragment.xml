@@ -80,7 +80,7 @@
                                 android:layout_weight="1"
                                 android:padding="5dp"
                                 android:checked="true"
-                                android:text="Personal Account"
+                                android:text="Personal"
                                 android:textColor="@color/colorBlack"/>
 
                             <RadioButton
@@ -88,9 +88,20 @@
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
-                                android:text="Company Account"
+                                android:text="Company"
                                 android:padding="5dp"
                                 android:textColor="@color/colorBlack"/>
+
+                            <RadioButton
+                                android:id="@+id/retailer11_reg_radio_btn"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:text="Retailer"
+                                android:padding="5dp"
+                                android:textColor="@color/colorBlack"/>
+
+
                         </RadioGroup>
 
 

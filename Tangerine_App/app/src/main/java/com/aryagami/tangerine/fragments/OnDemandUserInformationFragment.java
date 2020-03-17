@@ -52,7 +52,7 @@ import java.util.List;
 
 public class OnDemandUserInformationFragment extends Fragment {
 
-    RadioButton personalRadioBtn, companyRadioBtn, nationalBtn, foreignerBtn, refugeeBtn;
+    RadioButton personalRadioBtn, retailerRadioBtn,  companyRadioBtn, nationalBtn, foreignerBtn, refugeeBtn;
     LinearLayout personalRegContainer , companyRegContainer, nationalContainer, foreignerContainer, refugeeContainer, genderLayout;
     UserRegistration userRegistrationData, userRegistration;
     ProgressDialog progressDialog;
@@ -185,6 +185,7 @@ public class OnDemandUserInformationFragment extends Fragment {
         companyRegContainer = (LinearLayout) view.findViewById(R.id.reg_company1_container);
         personalRadioBtn = (RadioButton) view.findViewById(R.id.personal11_reg_radio_btn);
         companyRadioBtn = (RadioButton)view.findViewById(R.id.compnay11_reg_radio_btn);
+        retailerRadioBtn = (RadioButton)view.findViewById(R.id.retailer11_reg_radio_btn);
 
         RadioGroup radio = (RadioGroup) view.findViewById(R.id.radiogrpid);
         nationalContainer = (LinearLayout) view.findViewById(R.id.reg_national_container);
@@ -198,6 +199,12 @@ public class OnDemandUserInformationFragment extends Fragment {
         document_id = (TextInputEditText) view.findViewById(R.id.document_ID);
         foreigner_nationality = (TextInputEditText) view.findViewById(R.id.foreigner_nationality_id);
         surname = (TextInputEditText) view.findViewById(R.id.surname);
+
+        if(UserSession.getUserGroup(getContext()).equals("Reseller Distributor")){
+            retailerRadioBtn.setVisibility(View.VISIBLE);
+        }else {
+            retailerRadioBtn.setVisibility(View.GONE);
+        }
 
         if(nationalBtn.isChecked()){
             RegistrationData.setIsForeigner(false);
@@ -616,6 +623,20 @@ public class OnDemandUserInformationFragment extends Fragment {
                         companyRegContainer.setVisibility(View.VISIBLE);
                         btnsave.setVisibility(View.VISIBLE);
                         break;
+
+                    case R.id.retailer11_reg_radio_btn:
+                        personalRegContainer.setVisibility(View.VISIBLE);
+                        companyRegContainer.setVisibility(View.GONE);
+                        if(nationalBtn.isChecked()){
+                            RegistrationData.setIsForeigner(false);
+                            RegistrationData.setIsUgandan(true);
+                            RegistrationData.setIsRefugee(false);
+                            btnsave.setVisibility(View.INVISIBLE);
+                        }else{
+                            btnsave.setVisibility(View.VISIBLE);
+                        }
+
+                        break;
                 }
             }
         });
@@ -847,7 +868,7 @@ public class OnDemandUserInformationFragment extends Fragment {
 
         userRegistration.resellerCode = UserSession.getResellerId(getContext());
 
-        if( personalRadioBtn.isChecked()) {
+        if( personalRadioBtn.isChecked() || retailerRadioBtn.isChecked()  ) {
 
             EditText email_id = (EditText) view.findViewById(R.id.email_id);
 
@@ -1019,7 +1040,11 @@ public class OnDemandUserInformationFragment extends Fragment {
                 return null;
             }
 
-            userRegistration.registrationType = "personal";
+            if(personalRadioBtn.isChecked()) {
+                userRegistration.registrationType = "personal";
+            }else if(retailerRadioBtn.isChecked()){
+                userRegistration.registrationType = "retailer";
+            }
 
         }
 

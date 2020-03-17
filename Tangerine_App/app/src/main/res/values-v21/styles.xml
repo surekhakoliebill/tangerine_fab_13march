@@ -11,6 +11,8 @@
         <item name="android:buttonStyle">@style/SansationButtonStyle</item>
         <item name="android:editTextStyle">@style/SansationEditViewStyle</item>
         <item name="android:textViewStyle">@style/SansationTextViewStyle</item>
+        <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:datePickerDialogTheme">@style/AlertDialogTheme</item>
 
     </style>
 
@@ -23,5 +25,17 @@
     </style>
     <style name="SansationTextViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/sansation_regular</item>
+    </style>
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorlycagreen</item>
+    </style>
+    <style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="colorAccent">@color/colorlycagreen</item>
+    </style>
+
+    <style name="Toolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="selectableItemBackground">?android:selectableItemBackground</item>
+        <item name="selectableItemBackgroundBorderless">?android:selectableItemBackground</item>
     </style>
 </resources>

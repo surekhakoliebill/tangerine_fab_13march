@@ -575,7 +575,16 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
     public void getAccountDetails(Callback cback) throws IOException {
         callback = cback;
         api = API.GET_ACCOUNT_DETAILS;
-        url = Constants.serviceUrl + "get_active_accounts/";
+        url = Constants.serviceUrl + "get_active_consumer_accounts/";
+        method = HttpHandler.GET;
+        params = null;
+        executeService();
+    }
+
+    public void getMobileMoneyAccountDetails(Callback cback) throws IOException {
+        callback = cback;
+        api = API.GET_ACCOUNT_DETAILS;
+        url = Constants.serviceUrl + "get_mblmny_accounts/";
         method = HttpHandler.GET;
         params = null;
         executeService();
@@ -658,11 +667,18 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         api = API.NEW_ORDER;
         url = Constants.serviceUrl + "new_order/";
         method = HttpHandler.POST;
+
         if (newOrderCommand.isNewAccount) {
-            params = newOrderCommand.getNewOrderJSON();
+            if (newOrderCommand.userInfo.registrationType.equalsIgnoreCase("retailer")) {
+                params = newOrderCommand.getRetailerNewOrderJSON();
+
+            } else {
+                params = newOrderCommand.getNewOrderJSON();
+            }
         } else {
             params = newOrderCommand.getNewOrderForExistingJSON();
         }
+
         executeService();
     }
 
@@ -880,6 +896,15 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         url = Constants.serviceUrl + "/validate_ownership/";
         method = HttpHandler.POST;
         params = simReplacementForm.getApproveResellerInfoJSON();
+        executeService();
+    }
+
+    public void postICCIDForSimSwap(SimReplacementForm replacementForm, Callback cback) throws IOException {
+        callback = cback;
+        api = API.NEW_ORDER;
+        url = Constants.serviceUrl + "sim_swap_process/";
+        method = HttpHandler.POST;
+        params = replacementForm.getJSONICCIDData();
         executeService();
     }
 

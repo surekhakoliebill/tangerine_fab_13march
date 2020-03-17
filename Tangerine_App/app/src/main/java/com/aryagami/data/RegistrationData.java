@@ -477,4 +477,15 @@ public class RegistrationData implements Serializable {
     }
 
     public static Boolean isPassportScan = false;
+
+    public static Boolean getEnableMobileMoneyReg() {
+        return enableMobileMoneyReg;
+    }
+
+    public static void setEnableMobileMoneyReg(Boolean enableMobileMoneyReg) {
+        RegistrationData.enableMobileMoneyReg = enableMobileMoneyReg;
+    }
+
+    public static Boolean enableMobileMoneyReg = false;
+
 }

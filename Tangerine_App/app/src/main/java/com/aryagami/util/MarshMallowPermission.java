@@ -19,6 +19,7 @@ public class MarshMallowPermission {
 
     public static final int EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 2;
     public static final int CAMERA_PERMISSION_REQUEST_CODE = 3;
+    public static final int INTERNAL_STORAGE_PERMISSION_REQUEST_CODE= 4;
     Activity activity;
 
     public MarshMallowPermission(Activity activity) {
@@ -33,6 +34,15 @@ public class MarshMallowPermission {
             return false;
         }
     }
+
+    /*public boolean checkPermissionForInternalStorage(){
+        int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_INTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED){
+            return true;
+        } else {
+            return false;
+        }
+    }*/
 
     public boolean checkPermissionForCamera(){
         int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);

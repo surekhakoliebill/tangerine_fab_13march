@@ -642,10 +642,10 @@ public class NavigationMainActivity extends AppCompatActivity
                             } else if (id == 9) {
                                 Intent intent1 = new Intent(getApplicationContext(), BuildVersion.class);
                                 startActivity(intent1);
-                            }else if (id == 10) {
+                            }/*else if (id == 10) {
                                 Intent intent1 = new Intent(getApplicationContext(), BundleRechargeActivity.class);
                                 startActivity(intent1);
-                            }else if (id == 10) {
+                            }*/else if (id == 10) {
 
                                 RestServiceHandler serviceHandler = new RestServiceHandler();
                                 try {
@@ -773,7 +773,7 @@ public class NavigationMainActivity extends AppCompatActivity
                     .addHeaderModel(new HeaderModel("Staff Users"))
                     .addHeaderModel(new HeaderModel("Sales Report"))
                     .addHeaderModel(new HeaderModel("App Version"))
-                    .addHeaderModel(new HeaderModel("Bundle Recharge"))
+                    //.addHeaderModel(new HeaderModel("Bundle Recharge"))
                     .addHeaderModel(new HeaderModel("Logout"));
         }
         getAllRoles();

@@ -181,7 +181,7 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
 
        if(userRegistration != null)
            if(userRegistration.registrationType != null) {
-               if (userRegistration.registrationType.equals("personal")) {
+               if (userRegistration.registrationType.equals("personal") || userRegistration.registrationType.equals("retailer")) {
                    accountsetupPersonal.setVisibility(View.VISIBLE);
                    accountsetupCompany.setVisibility(View.GONE);
 
@@ -331,7 +331,7 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                         }
                     }
 
-                } else if (userRegistration.registrationType.equals("personal")) {
+                } else if (userRegistration.registrationType.equals("personal") || userRegistration.registrationType.equals("retailer")) {
 
                     if (newOrderCommand != null) {
                         UserRegistration userRegistration2 = collectUserDocs();
@@ -1196,7 +1196,7 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
         if(RegistrationData.getCapturedFingerprintDrawable() != null){
 
             UserRegistration.UserDocCommand uDocCommand2 = new UserRegistration.UserDocCommand();
-            uDocCommand2.docFiles = filePrefix + "_nin_fingerPrint_0;";
+            uDocCommand2.docFiles = filePrefix + "_nin_verified_fingerPrint_0;";
             uDocCommand2.docType = "fingerprints";
             uDocCommand2.docFormat = "jpeg";
             uDocCommand2.reviewStatus = "Accepted";
@@ -1238,7 +1238,11 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
 
         user.resellerCode = UserSession.getResellerId(activity);
         user.currency = "UGX";
-        user.userGroup = "Consumer";
+        if (userRegistration.registrationType.equals("personal")|| userRegistration.registrationType.equals("company")) {
+            user.userGroup = "Consumer";
+        }else if (userRegistration.registrationType.equals("retailer")){
+            user.userGroup = "Reseller Retailer";
+        }
         return user;
     }
 

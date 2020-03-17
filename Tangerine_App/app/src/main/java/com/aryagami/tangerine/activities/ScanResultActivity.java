@@ -25,8 +25,6 @@ import com.docrecog.scan.RecogEngine;*/
 import com.aryagami.R;
 import com.aryagami.data.RegistrationData;
 import com.aryagami.data.ScanData;
-import com.aryagami.data.UserRegistration;
-import com.aryagami.tangerine.fragments.UserInformationFragment;
 import com.aryagami.util.MyToast;
 import com.docrecog.scan.CameraActivity;
 import com.docrecog.scan.RecogEngine;
@@ -159,7 +157,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
             tvRet.setText("failed");
             MyToast.makeMyToast(activity,"Incorrect Scanning, please Scan Doc",Toast.LENGTH_SHORT);
            activity.finish();
-            Intent intent = new Intent(activity,UserRegistration.class);
+            Intent intent = new Intent(activity,ScanNowPassportImageActivity.class);
             startActivity(intent);
 
         }else if(RecogEngine.g_recogResult.ret == 1){
@@ -168,7 +166,7 @@ public class ScanResultActivity extends BaseActivity implements View.OnClickList
             tvRet.setText("Incorrect MRZ");
             MyToast.makeMyToast(activity,"Incorrect Scanning, please Scan Doc",Toast.LENGTH_SHORT);
             activity.finish();
-            Intent intent = new Intent(activity,UserRegistration.class);
+            Intent intent = new Intent(activity,ScanNowPassportImageActivity.class);
             startActivity(intent);
         }
 

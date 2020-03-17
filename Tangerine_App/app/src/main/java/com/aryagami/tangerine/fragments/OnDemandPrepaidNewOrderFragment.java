@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -46,6 +48,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
     LinearLayout accountSetupLayout;
     Button cancel,saveAndContinue;
     ProgressDialog progressDialog;
+    CheckBox mobileMoneyRegCheckbox;
 
     @Nullable
     @Override
@@ -56,12 +59,12 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
         RegistrationData.setUserThumbImageDrawable(null);
         RegistrationData.setUserIndexImageDrawable(null);
 
+
         if(NewOrderCommand.getOnDemandNewOrderCommand() != null){
             newOrderCommandData = NewOrderCommand.getOnDemandNewOrderCommand();
         }else{
             newOrderCommandData = new NewOrderCommand();
         }
-
 
 
         newOrderCommandData.isPostpaid = false;
@@ -74,6 +77,8 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
 
         cancel = (Button)view.findViewById(R.id.cancel_btn);
         saveAndContinue = (Button)view.findViewById(R.id.save_and_continue);
+
+        mobileMoneyRegCheckbox = (CheckBox)view.findViewById(R.id.enableMobileMoneyReg);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -88,11 +93,39 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                     case R.id.existing_acc_radio_btn:
                         saveAndContinue.setText(getString(R.string.save_and_continue));
                         accountSetupLayout.setVisibility(View.VISIBLE);
+
+                        if(RegistrationData.getEnableMobileMoneyReg() != null) {
+                            if (RegistrationData.getEnableMobileMoneyReg()) {
+                                mobileMoneyRegCheckbox.setVisibility(View.VISIBLE);
+                                mobileMoneyRegCheckbox.setChecked(false);
+                                setAccountDetails();
+                               // setMobileMoneyAccountDetails();
+                            } else {
+                                mobileMoneyRegCheckbox.setVisibility(View.GONE);
+                                mobileMoneyRegCheckbox.setChecked(false);
+                                setAccountDetails();
+                            }
+                        }else {
+                            mobileMoneyRegCheckbox.setVisibility(View.GONE);
+                            mobileMoneyRegCheckbox.setChecked(false);
+                            setAccountDetails();
+                        }
                         newOrderCommandData.isNewAccount = false;
-                        setAccountDetails();
+
                         break;
                 }
 
+            }
+        });
+
+        mobileMoneyRegCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked){
+                    setMobileMoneyAccountDetails();
+                }else{
+                    setAccountDetails();
+                }
             }
         });
 
@@ -161,7 +194,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
         }else {*/
             RestServiceHandler serviceHandler = new RestServiceHandler();
             try {
-                progressDialog = ProgressDialogUtil.startProgressDialog(getActivity(),"Please wait......");
+                progressDialog = ProgressDialogUtil.startProgressDialog(getActivity(),"Please wait, Fetching Active Accounts...");
 
                 serviceHandler.getAccountDetails(new RestServiceHandler.Callback() {
                     @Override
@@ -241,6 +274,111 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+    }
+    private void setMobileMoneyAccountDetails() {
+        /*if(NewOrderCommand.getAccount() != null){
+
+            accountList = new ArrayList<String>();
+            for (Account acc : NewOrderCommand.getAccount()) {
+                accountList.add(acc.username + "-" + acc.accountId);
+            }
+
+            accountList1 = new String[accountList.size()];
+            accountList.toArray(accountList1);
+
+            if (accountList1 != null) {
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, accountList1);
+                adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                accountSpinner.setAdapter(adapter);
+                saveAndContinue.setVisibility(View.VISIBLE);
+            } else {
+                saveAndContinue.setVisibility(View.INVISIBLE);
+                Toast.makeText(getActivity(), "EMPTY DATA", Toast.LENGTH_SHORT).show();
+            }
+        }else {*/
+        RestServiceHandler serviceHandler = new RestServiceHandler();
+        try {
+            progressDialog = ProgressDialogUtil.startProgressDialog(getActivity(),"Please wait, fetching Mobile Money Accounts");
+
+            serviceHandler.getMobileMoneyAccountDetails(new RestServiceHandler.Callback() {
+                @Override
+                public void success(DataModel.DataType type, List<DataModel> data) {
+                    if (data != null) {
+                            /*accounts = new Account[data.size()];
+                            data.toArray(accounts);
+
+                            NewOrderCommand.setAccount(accounts);
+
+                            accountList = new ArrayList<String>();
+                            for (Account acc : accounts) {
+                                accountList.add(acc.username + "-" + acc.accountId);
+                            }
+
+                            accountList1 = new String[accountList.size()];
+                            accountList.toArray(accountList1);
+
+                            if (accountList1 != null) {
+                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, accountList1);
+                                adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                                accountSpinner.setAdapter(adapter);
+                                saveAndContinue.setVisibility(View.VISIBLE);
+                                ProgressDialogUtil.stopProgressDialog(progressDialog);
+                            } else {
+                                saveAndContinue.setVisibility(View.INVISIBLE);
+                                Toast.makeText(getActivity(), "Empty Data!", Toast.LENGTH_SHORT).show();
+                            }*/
+
+                        Account account = (Account)data.get(0);
+                        if(account != null){
+                            if(account.status != null)
+                                if(account.status.equals("success")){
+
+                                    accounts = new Account[account.accountList.size()];
+                                    account.accountList.toArray(accounts);
+
+                                    NewOrderCommand.setAccount(accounts);
+
+                                    accountList = new ArrayList<String>();
+                                    for(Account acc : accounts){
+                                        accountList.add(acc.username+"-"+acc.accountId);
+                                    }
+
+                                    accountList1 = new String[accountList.size()];
+                                    accountList.toArray(accountList1);
+
+                                    if(accountList1 != null) {
+
+                                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, accountList1);
+                                        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                                        accountSpinner.setAdapter(adapter);
+                                        saveAndContinue.setVisibility(View.VISIBLE);
+                                        ProgressDialogUtil.stopProgressDialog(progressDialog);
+                                    }else{
+                                        ProgressDialogUtil.stopProgressDialog(progressDialog);
+                                        saveAndContinue.setVisibility(View.INVISIBLE);
+                                        Toast.makeText(getActivity(),"Empty Data",Toast.LENGTH_SHORT).show();
+                                    }
+                                }else if(account.status.equals("INVALID_SESSION")){
+                                    ReDirectToParentActivity.callLoginActivity(getActivity());
+                                }else{
+                                    MyToast.makeMyToast(getActivity(),"Status:"+account.status,Toast.LENGTH_SHORT);
+                                }
+
+
+                        }
+                    }
+                }
+
+                @Override
+                public void failure(RestServiceHandler.ErrorCode error, String status) {
+                    ProgressDialogUtil.stopProgressDialog(progressDialog);
+                    saveAndContinue.setVisibility(View.INVISIBLE);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     public  void onTrimMemory(int level) {
