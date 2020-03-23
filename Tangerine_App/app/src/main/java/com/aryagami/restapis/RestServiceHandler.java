@@ -117,6 +117,7 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         GET_STAFF_BY_RESELLER_ID,
         POST_UPLOAD_PDF_SIM_SWAP,
         GET_AVAILABLE_MSISDN_LIST,
+        CHECK_SPECIAL_NUMBER,
         GET_SIM_ICCID_LIST,
         GET_ETOPUP_REQUESTS_FROM_RESELLER,
         GET_VOUCHERS_REQUESTS_FROM_RESELLER,
@@ -393,6 +394,15 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
             case POST_SIM_REPLACEMENT_FORM:
                 try {
                     List<DataModel> simReplacement = SimReplacementForm.parseSimJSONResponse(response);
+                    callback.success(DataModel.DataType.SimReplacementForm, simReplacement);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    BugReport.postBugReportFromREST(Constants.emailId," "+e.getMessage()+" "+e.getCause(),"RestServiceHandler");
+                }
+                break;
+            case CHECK_SPECIAL_NUMBER:
+                try {
+                    List<DataModel> simReplacement = SimReplacementForm.parseSpecialNumberJSONResponse(response);
                     callback.success(DataModel.DataType.SimReplacementForm, simReplacement);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -822,6 +832,23 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         callback = cback;
         api = API.GET_AVAILABLE_MSISDN_LIST;
         url = Constants.serviceUrl + "get_available_msisdns/" + limitCount + "/";
+        method = HttpHandler.GET;
+        params = null;
+        executeService();
+    }
+
+    public void getAllAvailableSpecialMSISDNList(String limitCount, Callback cback) {
+        callback = cback;
+        api = API.GET_AVAILABLE_MSISDN_LIST;
+        url = Constants.serviceUrl + "get_special_numbers/" + limitCount + "/";
+        method = HttpHandler.GET;
+        params = null;
+        executeService();
+    }
+    public void getCheckSpecialISDNServedMSISDN(String servedMSISDN, Callback cback) throws IOException {
+        callback = cback;
+        api = API.CHECK_SPECIAL_NUMBER;
+        url = Constants.serviceUrl + "search_special_numbers/" + servedMSISDN + "/";
         method = HttpHandler.GET;
         params = null;
         executeService();

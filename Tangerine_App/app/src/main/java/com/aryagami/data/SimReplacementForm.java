@@ -3,6 +3,7 @@ package com.aryagami.data;
 import android.util.JsonReader;
 import android.util.JsonToken;
 import android.util.JsonWriter;
+import android.widget.ListView;
 
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
@@ -13,6 +14,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SimReplacementForm implements DataModel {
@@ -41,6 +43,7 @@ public class SimReplacementForm implements DataModel {
 
     public float accuracy;
     public List<String> msisdns;
+    public List<String> specialNumbers;
 
 
     public String lastSmsSentNumber;
@@ -63,6 +66,28 @@ public class SimReplacementForm implements DataModel {
 
     public String skipValidationReason;
 
+    // SIM INFO FOR SPECIAL NUMBER
+    public List<SimReplacementForm> specialNumberInfo;
+    public String servedIMSI;
+
+    public String servedMSISDN;
+
+    public Boolean isAllocated;
+
+    public String bulkId;
+
+    public String staticIpAddress;
+
+    public String lifecycleState;
+
+    public Date lifecycleStateUpdatedOn;
+
+    public String simHssState;
+
+    public Boolean isSpecialNumber;
+
+    public Float specialNumberPrice;
+
 
 
 
@@ -78,7 +103,7 @@ public class SimReplacementForm implements DataModel {
         return login;
     }
 
-    private static SimReplacementForm readResponse(JsonReader reader) throws IOException {
+    public static SimReplacementForm readResponse(JsonReader reader) throws IOException {
 
         SimReplacementForm simReplacementForm = new SimReplacementForm();
         while (reader.hasNext()) {
@@ -231,6 +256,29 @@ public class SimReplacementForm implements DataModel {
                 reader.endArray();
                 simInfo.msisdns = msisdnList;
 
+            }else if (name.equals("specialNumbers") && reader.peek() != JsonToken.NULL) {
+                List<String> specialList = new ArrayList<String>();
+                reader.beginArray();
+                while(reader.hasNext()){
+                    try{
+                        if(reader.peek() == JsonToken.STRING.NULL){
+                            return null;
+                        }else{
+                            String subCat = reader.nextString();
+                            specialList.add(subCat);
+                        }
+
+                    }catch (JsonIOException e){
+                        return  null;
+                    }catch (JsonParseException e){
+                        return null;
+                    }catch (IOException e){
+                        return null;
+                    }
+                }
+                reader.endArray();
+                simInfo.specialNumbers = specialList;
+
             }else{
                 reader.skipValue();
             }
@@ -239,6 +287,62 @@ public class SimReplacementForm implements DataModel {
         reader.endObject();
 
         return availableMSISDNList;
+    }
+
+
+    public static List<DataModel> parseSpecialNumberJSONResponse(String json) throws IOException {
+        InputStream in;
+        in =  new ByteArrayInputStream(json.getBytes("UTF-8"));
+        JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+        List<DataModel> availableMSISDNList = new ArrayList<DataModel>();
+        SimReplacementForm simInfo = new SimReplacementForm();
+
+        reader.beginObject();
+
+        while(reader.hasNext())
+        {
+            String name = reader.nextName();
+            if(name.equals("status"))
+            {
+                simInfo.status = reader.nextString();
+            }else if (name.equals("relatedNumbers") && reader.peek() != JsonToken.NULL) {
+
+                List<SimReplacementForm> simInfoList = new ArrayList<>();
+                reader.beginArray();
+                while(reader.hasNext()) {
+                    reader.beginObject();
+                    SimReplacementForm simInfor = readSimInfo(reader);
+                    simInfoList.add(simInfor);
+                    reader.endObject();
+                }
+                reader.endArray();
+                simInfo.specialNumberInfo = simInfoList;
+
+            }else{
+                reader.skipValue();
+            }
+        }
+        availableMSISDNList.add(simInfo);
+        reader.endObject();
+
+        return availableMSISDNList;
+    }
+
+    private static SimReplacementForm readSimInfo(JsonReader reader) throws IOException{
+
+        SimReplacementForm replacementForm = new SimReplacementForm();
+
+        while(reader.hasNext()) {
+            String name = reader.nextName();
+            if (name.equals("specialNumberPrice") && reader.peek() != JsonToken.NULL) {
+                 replacementForm.specialNumberPrice = Float.parseFloat(reader.nextString());
+            }else if (name.equals("servedMSISDN") && reader.peek() != JsonToken.NULL) {
+                replacementForm.servedMSISDN = reader.nextString();
+            } else {
+                    reader.skipValue();
+            }
+        }
+        return replacementForm;
     }
 
 }
