@@ -259,7 +259,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
 
                                 if(accountDetails.userInfo.userGroup != null)
                                 if(accountDetails.userInfo.userGroup.equals("Mobile Money Agent")){
-                                    
+
                                     if (accountDetails.userInfo.company != null) {
                                         firstName.setText("Company Name : " + accountDetails.userInfo.company);
                                     } else {
@@ -267,7 +267,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                                     }
 
                                     if (accountDetails.userInfo.mobileMoneyUserType != null) {
-                                        surName.setText("UserType : " + accountDetails.userInfo.company);
+                                        surName.setText("UserType : " + accountDetails.userInfo.mobileMoneyUserType);
                                     } else {
                                         surName.setText("UserType : Not Found");
                                     }

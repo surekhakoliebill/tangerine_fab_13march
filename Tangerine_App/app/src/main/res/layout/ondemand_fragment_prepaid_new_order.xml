@@ -94,7 +94,7 @@
         <TextView
             android:id="@+id/acc_first_name"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingLeft="10dp"
             android:fontFamily="@font/sansation_regular"
@@ -104,7 +104,7 @@
         <TextView
             android:id="@+id/acc_last_name"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingLeft="10dp"
             android:fontFamily="@font/sansation_regular"
@@ -114,7 +114,7 @@
         <TextView
             android:id="@+id/acc_user_identity"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingLeft="10dp"
             android:fontFamily="@font/sansation_regular"
