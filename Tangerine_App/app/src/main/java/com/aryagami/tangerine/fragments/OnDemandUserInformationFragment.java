@@ -763,13 +763,13 @@ public class OnDemandUserInformationFragment extends Fragment {
     private void setScannedData(ScanData scannedBarcodeData) {
 
         if (scannedBarcodeData.getLastName() != null) {
-            surname.setText(scannedBarcodeData.getLastName().toString());
+            surname.setText(scannedBarcodeData.getLastName());
         } else {
             surname.setText("");
         }
 
         if (scannedBarcodeData.getFirstName() != null) {
-            give_name.setText(scannedBarcodeData.getFirstName().toString());
+            give_name.setText(scannedBarcodeData.getFirstName());
         } else {
             give_name.setText("");
         }
@@ -835,9 +835,67 @@ public class OnDemandUserInformationFragment extends Fragment {
 
     private void setScannedDataValues(ScanData scanData) {
 
-        if(scanData.getFirstName().toString() != null | scanData.getLastName().toString()!= null | scanData.getPassportNo().toString() != null | scanData.getCountry().toString() != null | scanData.getDateOfBirth() != null){
+        if(scanData.getFirstName() != null){
+            if(scanData.getFirstName().trim().contains("<")){
+                String givenName = scanData.getFirstName().replace("<"," ");
+                give_name.setText(givenName);
+            }else if(scanData.getFirstName().trim().contains(">")){
+                String givenName = scanData.getFirstName().replace(">"," ");
+                give_name.setText(givenName);
+            }else{
+                give_name.setText(scanData.getFirstName());
+            }
 
-            give_name.setText(scanData.getFirstName().toString());
+        }else{
+            give_name.setText("");
+        }
+
+        if(scanData.getLastName() != null){
+            if(scanData.getLastName().trim().contains("<")){
+                String lastName = scanData.getLastName().replace("<"," ");
+                surname.setText(lastName);
+            }else if(scanData.getLastName().trim().contains(">")){
+                String lastName = scanData.getLastName().replace(">"," ");
+                surname.setText(lastName);
+            }else{
+                surname.setText(scanData.getLastName());
+            }
+
+        }else{
+            surname.setText("");
+        }
+
+        if(scanData.getPassportNo() != null){
+            document_id.setText(scanData.getPassportNo());
+            foreigner_passport_no.setText(scanData.getPassportNo());
+
+        }else{
+            document_id.setText("");
+            foreigner_passport_no.setText("");
+        }
+
+        if(scanData.getCountry() != null){
+            foreigner_nationality.setText(scanData.getCountry());
+            ugandaNationality.setText(scanData.getCountry());
+        }else{
+            foreigner_nationality.setText("");
+            ugandaNationality.setText("");
+        }
+
+        if(scanData.ugandanNationalId != null){
+            national_id_number.setText(scanData.ugandanNationalId);
+        }
+
+        if(scanData.getDateOfBirth() != null) {
+            String dob = scanData.getDateOfBirth();
+            if (dob != null) {
+                datePickerText.setText(dob.replace("-", "/"));
+            }
+        }
+
+       /* if(scanData.getFirstName() != null | scanData.getLastName()!= null | scanData.getPassportNo() != null | scanData.getCountry() != null | scanData.getDateOfBirth() != null){
+
+
 
             surname.setText(scanData.getLastName().toString());
             document_id.setText(scanData.getPassportNo().toString());
@@ -845,7 +903,7 @@ public class OnDemandUserInformationFragment extends Fragment {
             ugandaNationality.setText(scanData.getCountry().toString());
 
             if(scanData.getDateOfBirth() != null) {
-                String dob = scanData.getDateOfBirth().toString();
+                String dob = scanData.getDateOfBirth();
                 if (dob != null) {
                     datePickerText.setText(dob.replace("-", "/"));
                 }
@@ -860,9 +918,8 @@ public class OnDemandUserInformationFragment extends Fragment {
             }
         }else{
             MyToast.makeMyToast(getActivity(),"Please Scan your Document.", Toast.LENGTH_SHORT);
-        }
+        }*/
     }
-
 
     private UserRegistration collectRegistrationData(View view, UserRegistration userRegistration) {
 

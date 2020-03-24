@@ -172,6 +172,7 @@ public class UserRegistration implements DataModel, Serializable {
     public Integer yearOfBirth;
     public String fingerprint;
     public Boolean enableMobileMoneyReg;
+    public String mobileMoneyUserType;
 
 
 
@@ -634,6 +635,8 @@ public class UserRegistration implements DataModel, Serializable {
                 registration.passportValidityDated = reader.nextString();
             }else if (name.equals("userDoc") && reader.peek() != JsonToken.NULL) {
                 registration.userDoc = reader.nextString();
+            }else if (name.equals("mobileMoneyUserType") && reader.peek() != JsonToken.NULL) {
+                registration.mobileMoneyUserType = reader.nextString();
             }else if (name.equals("userSubscriptions") && reader.peek() != JsonToken.NULL) {
 
                 reader.beginArray();

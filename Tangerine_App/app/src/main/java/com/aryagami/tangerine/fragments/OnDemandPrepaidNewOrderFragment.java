@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,6 +17,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aryagami.R;
@@ -31,6 +33,8 @@ import com.aryagami.util.MyToast;
 import com.aryagami.util.ProgressDialogUtil;
 import com.aryagami.util.ReDirectToParentActivity;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,6 +53,10 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
     Button cancel,saveAndContinue;
     ProgressDialog progressDialog;
     CheckBox mobileMoneyRegCheckbox;
+    // AccountDetails
+    LinearLayout accountDetailsLayout;
+    TextView firstName, surName, identity;
+    CheckBox verifyUserId;
 
     @Nullable
     @Override
@@ -78,6 +86,14 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
         cancel = (Button)view.findViewById(R.id.cancel_btn);
         saveAndContinue = (Button)view.findViewById(R.id.save_and_continue);
 
+        // to show Account details
+        firstName = (TextView)view.findViewById(R.id.acc_first_name);
+        surName = (TextView)view.findViewById(R.id.acc_last_name);
+        identity = (TextView)view.findViewById(R.id.acc_user_identity);
+        verifyUserId = (CheckBox) view.findViewById(R.id.acc_verified_user_id);
+        accountDetailsLayout = (LinearLayout)view.findViewById(R.id.account_details);
+
+
         mobileMoneyRegCheckbox = (CheckBox)view.findViewById(R.id.enableMobileMoneyReg);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -92,6 +108,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                         break;
                     case R.id.existing_acc_radio_btn:
                         saveAndContinue.setText(getString(R.string.save_and_continue));
+                        saveAndContinue.setVisibility(View.INVISIBLE);
                         accountSetupLayout.setVisibility(View.VISIBLE);
 
                         if(RegistrationData.getEnableMobileMoneyReg() != null) {
@@ -122,8 +139,14 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
+                    accountDetailsLayout.setVisibility(View.GONE);
+                    saveAndContinue.setVisibility(View.INVISIBLE);
+                    verifyUserId.setChecked(false);
                     setMobileMoneyAccountDetails();
                 }else{
+                    accountDetailsLayout.setVisibility(View.GONE);
+                    saveAndContinue.setVisibility(View.INVISIBLE);
+                    verifyUserId.setChecked(false);
                     setAccountDetails();
                 }
             }
@@ -161,6 +184,135 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), OnDemandRegistrationActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+
+        verifyUserId.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    saveAndContinue.setVisibility(View.VISIBLE);
+                }else{
+                    saveAndContinue.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+        accountSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+                if(accounts != null){
+
+
+                    if(accounts.length > position){
+
+                        Account accountDetails = new Account();
+                        accountDetails = accounts[position];
+
+                        if(accountDetails.userInfo.registrationType != null) {
+                            accountDetailsLayout.setVisibility(View.VISIBLE);
+                            if (accountDetails.userInfo.registrationType.equals("personal")) {
+
+                                if (accountDetails.userInfo.nationalIdentity != null) {
+
+                                    if (accountDetails.userInfo.nationalIdentity.equals("Passport No")) {
+
+                                        if (accountDetails.userInfo.identityNumber != null) {
+                                            identity.setText("Passport No : " + accountDetails.userInfo.identityNumber);
+                                        } else {
+                                            identity.setVisibility(View.GONE);
+                                        }
+
+                                    } else if (accountDetails.userInfo.nationalIdentity.equals("Refugee")) {
+
+                                        if (accountDetails.userInfo.identityNumber != null) {
+                                            identity.setText("Refugee ID: " + accountDetails.userInfo.identityNumber);
+                                        } else {
+                                            identity.setVisibility(View.GONE);
+                                        }
+
+                                    } else if (accountDetails.userInfo.nationalIdentity.equals("Ugandan NationalID")) {
+
+                                        if (accountDetails.userInfo.identityNumber != null) {
+                                            identity.setText("Ugandan National ID : " + accountDetails.userInfo.identityNumber);
+                                        } else {
+                                            identity.setVisibility(View.GONE);
+                                        }
+                                    }
+
+                                    if (accountDetails.userInfo.fullName != null) {
+                                        firstName.setText("FirstName : " + accountDetails.userInfo.fullName);
+                                    } else {
+                                        firstName.setVisibility(View.GONE);
+                                    }
+                                    if (accountDetails.userInfo.surname != null) {
+                                        surName.setText("Surname : " + accountDetails.userInfo.fullName);
+                                    } else {
+                                        surName.setVisibility(View.GONE);
+                                    }
+
+
+                                }
+
+                            } else if (accountDetails.userInfo.registrationType.equals("company")) {
+
+                                if(accountDetails.userInfo.userGroup != null)
+                                if(accountDetails.userInfo.userGroup.equals("Mobile Money Agent")){
+                                    
+                                    if (accountDetails.userInfo.company != null) {
+                                        firstName.setText("Company Name : " + accountDetails.userInfo.company);
+                                    } else {
+                                        firstName.setVisibility(View.GONE);
+                                    }
+
+                                    if (accountDetails.userInfo.mobileMoneyUserType != null) {
+                                        surName.setText("UserType : " + accountDetails.userInfo.company);
+                                    } else {
+                                        surName.setText("UserType : Not Found");
+                                    }
+
+                                    if (accountDetails.userInfo.tinNumber != null) {
+                                        identity.setText("TIN Number : " + accountDetails.userInfo.tinNumber);
+                                    } else {
+                                        if(accountDetails.userInfo.coiNumber != null){
+                                            identity.setText("COI Number : " + accountDetails.userInfo.coiNumber);
+                                        }else{
+                                            identity.setText("TIN Number : Not Found"  );
+                                        }
+                                    }
+
+                                }else{
+                                    surName.setVisibility(View.GONE);
+                                    if (accountDetails.userInfo.company != null) {
+                                        firstName.setText("Company Name : " + accountDetails.userInfo.company);
+                                    } else {
+                                        firstName.setVisibility(View.GONE);
+                                    }
+
+                                    if (accountDetails.userInfo.tinNumber != null) {
+                                        identity.setText("TIN Number : " + accountDetails.userInfo.tinNumber);
+                                    } else {
+                                        if(accountDetails.userInfo.coiNumber != null){
+                                            identity.setText("COI Number : " + accountDetails.userInfo.coiNumber);
+                                        }else{
+                                            identity.setText("TIN Number : Identity Not Found"  );
+                                        }
+                                    }
+                                }
+
+                            }
+                        }else{
+                            accountDetailsLayout.setVisibility(View.GONE);
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
         return view;
@@ -247,7 +399,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, accountList1);
                                             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                                             accountSpinner.setAdapter(adapter);
-                                            saveAndContinue.setVisibility(View.VISIBLE);
+                                            saveAndContinue.setVisibility(View.INVISIBLE);
                                             ProgressDialogUtil.stopProgressDialog(progressDialog);
                                         }else{
                                             ProgressDialogUtil.stopProgressDialog(progressDialog);
@@ -352,7 +504,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, accountList1);
                                         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                                         accountSpinner.setAdapter(adapter);
-                                        saveAndContinue.setVisibility(View.VISIBLE);
+                                        saveAndContinue.setVisibility(View.INVISIBLE);
                                         ProgressDialogUtil.stopProgressDialog(progressDialog);
                                     }else{
                                         ProgressDialogUtil.stopProgressDialog(progressDialog);

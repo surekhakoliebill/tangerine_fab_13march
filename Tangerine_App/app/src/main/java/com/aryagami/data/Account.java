@@ -33,6 +33,7 @@ public class Account implements Serializable, DataModel {
     public String primaryAccountUsername;
     public List<Account> accountList;
     public String status;
+    public UserRegistration userInfo;
 
 
     public static List<DataModel> parseJSONResponseArray(String json) throws IOException {
@@ -93,7 +94,13 @@ public class Account implements Serializable, DataModel {
                     account.billingCycleId = Long.parseLong(reader.nextString());
                 } else if (name.equals("billingFrequency") && reader.peek() != JsonToken.NULL) {
                     account.billingFrequency = reader.nextString();
-                } else {
+                }else if (name.equals("userInfo") && reader.peek() != JsonToken.NULL) {
+
+                    reader.beginObject();
+                    UserRegistration userRegistration = UserRegistration.readUserInfoObject(reader);
+                    reader.endObject();
+                    account.userInfo = userRegistration;
+                }else {
                     reader.skipValue();
                 }
             } catch (IOException e) {
