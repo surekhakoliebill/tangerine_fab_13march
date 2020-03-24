@@ -104,6 +104,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                         saveAndContinue.setText(getString(R.string.continue_btn));
                         accountSetupLayout.setVisibility(View.GONE);
                         saveAndContinue.setVisibility(View.VISIBLE);
+                        accountDetailsLayout.setVisibility(View.GONE);
                         newOrderCommandData.isNewAccount = true;
                         break;
                     case R.id.existing_acc_radio_btn:
