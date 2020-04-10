@@ -181,6 +181,10 @@
             android:name=".tangerine.activities.ResellerUploadDeliveryNoteActivity"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".tangerine.activities.AirtimeValueRechargesActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
             android:name=".tangerine.activities.BuildVersion"
@@ -421,6 +425,12 @@
         </activity>
 
         <activity android:name=".tangerine.activities.BundleRechargeActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label=" "
+            android:parentActivityName=".tangerine.activities.NavigationMainActivity">
+        </activity>
+
+        <activity android:name=".tangerine.activities.ResellerRechargesListActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:label=" "
             android:parentActivityName=".tangerine.activities.NavigationMainActivity">

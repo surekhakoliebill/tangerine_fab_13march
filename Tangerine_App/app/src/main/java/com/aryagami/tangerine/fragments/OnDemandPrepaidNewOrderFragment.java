@@ -96,6 +96,14 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
 
         mobileMoneyRegCheckbox = (CheckBox)view.findViewById(R.id.enableMobileMoneyReg);
 
+        if(createNewAccountRadioButton.isChecked()){
+            saveAndContinue.setText(getString(R.string.continue_btn));
+            accountSetupLayout.setVisibility(View.GONE);
+            saveAndContinue.setVisibility(View.VISIBLE);
+            accountDetailsLayout.setVisibility(View.GONE);
+            newOrderCommandData.isNewAccount = true;
+        }
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -211,6 +219,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                         Account accountDetails = new Account();
                         accountDetails = accounts[position];
 
+                        if(accountDetails.userInfo != null)
                         if(accountDetails.userInfo.registrationType != null) {
                             accountDetailsLayout.setVisibility(View.VISIBLE);
                             if (accountDetails.userInfo.registrationType.equals("personal")) {
@@ -248,7 +257,8 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
                                         firstName.setVisibility(View.GONE);
                                     }
                                     if (accountDetails.userInfo.surname != null) {
-                                        surName.setText("Surname : " + accountDetails.userInfo.fullName);
+                                        surName.setVisibility(View.VISIBLE);
+                                        surName.setText("Surname : " + accountDetails.userInfo.surname);
                                     } else {
                                         surName.setVisibility(View.GONE);
                                     }
@@ -397,7 +407,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment {
 
                                         if(accountList1 != null) {
 
-                                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, accountList1);
+                                            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, accountList1);
                                             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                                             accountSpinner.setAdapter(adapter);
                                             saveAndContinue.setVisibility(View.INVISIBLE);

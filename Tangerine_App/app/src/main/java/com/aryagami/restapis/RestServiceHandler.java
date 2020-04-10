@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import com.aryagami.data.Account;
 import com.aryagami.data.ActivateCommand;
+import com.aryagami.data.AirtimeValue;
 import com.aryagami.data.ApproveReseller;
 import com.aryagami.data.BugReportCommand;
 import com.aryagami.data.Constants;
@@ -95,6 +96,7 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         CHECK_SUBSCRIPTION,
         CHANGE_SUBSCRIBER_SIM,
         NEW_ORDER,
+        CHECK_EXISTING_USER,
         GENERATE_REPORT_ETOPUP,
         DOCUMENT_UPLOAD_COMPLETE,
         GET_USER_REGISTERATION,
@@ -123,6 +125,8 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         GET_VOUCHERS_REQUESTS_FROM_RESELLER,
         GET_PRODUCT_REQUESTS_FROM_RESELLER,
         POST_UPDATE_USER,
+        GET_AIRTIME_VALUE_RECHARGE,
+        GET_TODAYS_RESELLER_RECHARGES,
         GET_USER_PLANS_BY_ID;
     }
 
@@ -174,6 +178,7 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
             case POST_RESELLER_REQUEST:
             case GENERATE_REPORT_ETOPUP:
             case BUG_REPORT:
+            case CHECK_EXISTING_USER:
             case POST_RESELLER_SERVICE_BUNDLE:
                 try {
                     List<DataModel> login = UserLogin.parseJSONResponse(response);
@@ -372,6 +377,15 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
                     BugReport.postBugReportFromREST(Constants.emailId," "+e.getMessage()+" "+e.getCause(),"RestServiceHandler");
                 }
                 break;
+            case GET_AIRTIME_VALUE_RECHARGE:
+                try {
+                    List<DataModel> airtimeProducts = AirtimeValue.parseAirtimeValueListJSONResponse(response);
+                    callback.success(DataModel.DataType.AirtimeValue, airtimeProducts);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    BugReport.postBugReportFromREST(Constants.emailId," "+e.getMessage()+" "+e.getCause(),"RestServiceHandler");
+                }
+                break;
             case CHECK_IMEI_AVAILABILITY:
                 try {
                     List<DataModel> deviceOrder = DeviceOrder.parseIMEIResponse(response);
@@ -448,6 +462,16 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
                     BugReport.postBugReportFromREST(Constants.emailId," "+e.getMessage()+" "+e.getCause(),"RestServiceHandler");
                 }
                 break;
+            case GET_TODAYS_RESELLER_RECHARGES:
+                try {
+                    List<DataModel> resellerRechargesList = ActivateCommand.parseResellerRechargesJSONResponse(response);
+                    callback.success(DataModel.DataType.ActivateCommand, resellerRechargesList);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    BugReport.postBugReportFromREST(Constants.emailId," "+e.getMessage()+" "+e.getCause(),"RestServiceHandler");
+                }
+                break;
+
 
             default:
         }
@@ -521,7 +545,8 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
 
     public void redeemVoucherDirect(ResellerVoucherType resellerVoucherType, Callback cback) throws IOException {
         callback = cback;
-        api = API.POST_REDEEM_VOUCHER;
+        //api = API.POST_REDEEM_VOUCHER;
+        api = API.NEW_ORDER;
         url = Constants.serviceUrl + "redeem_voucher_direct/";
         method = HttpHandler.POST;
         params = resellerVoucherType.getUserInfoJSON();
@@ -854,10 +879,10 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         executeService();
     }
 
-    public void postAggregatorTopup(NewOrderCommand.LocationCoordinates coordinates,String resellerId, String subscriptionId, String etopupAmount, Callback cback) throws IOException {
+    public void postAggregatorTopup(NewOrderCommand.LocationCoordinates coordinates,String resellerId, String subscriptionId, String etopupAmount, Boolean immediateRecharge,Callback cback) throws IOException {
         callback = cback;
         api = API.POST_AGGREGATOR_TOPUP;
-        url = Constants.serviceUrl + "reseller_request_etopup/" + resellerId + "/" + subscriptionId + "/" + etopupAmount + "/";
+        url = Constants.serviceUrl + "reseller_request_etopup/" + resellerId + "/" + subscriptionId + "/" + etopupAmount + "/" + immediateRecharge +"/";
         method = HttpHandler.POST;
         params = coordinates.getCoordinatesJSON();;
         executeService();
@@ -1177,6 +1202,54 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         executeService();
     }
 
+    public void checkExistingUser(String type, String idNumber, Callback cback) throws IOException {
+        callback = cback;
+        api = API.CHECK_EXISTING_USER;
+        url = Constants.serviceUrl + "check_existing_user/"+ type + "/" + idNumber +"/";
+        method = HttpHandler.POST;
+        params = null;
+        executeService();
+    }
+
+    public void getAirtimeProductsForRecharge(Callback cback) throws IOException{
+        callback = cback;
+        api = API.GET_AIRTIME_VALUE_RECHARGE;
+        url = Constants.serviceUrl + "get_approved_airtime_products/";
+        method = HttpHandler.GET;
+        params = null;
+        executeService();
+    }
+
+    public void getResellerRechargeSalesForToday(String resellerId, String startDate, Callback cback) throws IOException{
+        callback = cback;
+        api = API.GET_TODAYS_RESELLER_RECHARGES;
+        url = Constants.serviceUrl + "reseller_sales/ALL/"+resellerId+"/"+startDate+"/"+startDate;
+        method = HttpHandler.GET;
+        params = null;
+        executeService();
+    }
+
+    public void cancelRechargeRequest(ActivateCommand command, Callback cback) throws IOException {
+        try {
+        callback = cback;
+        api = API.NEW_ORDER;
+        url = Constants.serviceUrl + "recharge_cancel_request/";
+        method = HttpHandler.POST;
+        params = command.getCancelRechargeRequestJSON();
+        executeService();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void postAirtimeDirectRecharge(String resellerId, String subscriptionId, float amount, Boolean immediateRecharge, Callback cback) throws IOException{
+        callback = cback;
+        api = API.NEW_ORDER;
+        url = Constants.serviceUrl + "reseller_request_etopup_direct/"+ resellerId + "/"+ subscriptionId + "/" + amount + "/" +immediateRecharge;
+        method = HttpHandler.POST;
+        params = null;
+        executeService();
+    }
     public void logout(CacheCallback cback) throws IOException {
         cachecallback = cback;
         api = API.LOGOUT;

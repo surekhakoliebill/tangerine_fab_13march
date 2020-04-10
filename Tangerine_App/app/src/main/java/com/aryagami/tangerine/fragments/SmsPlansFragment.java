@@ -32,6 +32,24 @@ public class SmsPlansFragment extends Fragment {
     List<PlanGroup> planGroupsList = new ArrayList<>();
 
     public SmsPlansFragment(){
+        if( RegistrationData.getBundleList() != null && RegistrationData.getBundleList().size() !=0){
+
+            for(PlanGroup plan : RegistrationData.getBundleList())
+            {
+                if(plan.groupType.equals("Sms Plans") && plan.enableVoucherChannel) {
+                    planGroupsList.add(plan);
+                    // planGroups1[count] = plan;
+                    //  count++;
+                }
+            }
+            if (planGroupsList.size() != 0){
+                showBundlePlans();
+            }else {
+
+                MyToast.makeMyToast(getActivity(), "Sms Plans Data Empty...", Toast.LENGTH_SHORT);
+            }
+
+        }
 
     }
 
@@ -40,7 +58,25 @@ public class SmsPlansFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bundle_plans, container, false);
         bundlerechargelist = (ListView) view.findViewById(R.id.bundleplansList);
-        showBundlePlans();
+        if( RegistrationData.getBundleList() != null && RegistrationData.getBundleList().size() !=0){
+
+            for(PlanGroup plan : RegistrationData.getBundleList())
+            {
+                if(plan.groupType.equals("Sms Plans") && plan.enableVoucherChannel) {
+                    planGroupsList.add(plan);
+                    // planGroups1[count] = plan;
+                    //  count++;
+                }
+            }
+            if (planGroupsList.size() != 0){
+                showBundlePlans();
+            }else {
+
+                MyToast.makeMyToast(getActivity(), "Sms Plans Data Empty...", Toast.LENGTH_SHORT);
+            }
+
+        }
+
         return view;
     }
 
@@ -133,5 +169,29 @@ public class SmsPlansFragment extends Fragment {
 
             MyToast.makeMyToast(getActivity(), "Sms Plans Data Empty...", Toast.LENGTH_SHORT);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if( RegistrationData.getBundleList() != null && RegistrationData.getBundleList().size() !=0){
+
+            for(PlanGroup plan : RegistrationData.getBundleList())
+            {
+                if(plan.groupType.equals("Sms Plans") && plan.enableVoucherChannel) {
+                    planGroupsList.add(plan);
+                    // planGroups1[count] = plan;
+                    //  count++;
+                }
+            }
+            if (planGroupsList.size() != 0){
+                showBundlePlans();
+            }else {
+
+                MyToast.makeMyToast(getActivity(), "Sms Plans Data Empty...", Toast.LENGTH_SHORT);
+            }
+
+        }
+
     }
 }

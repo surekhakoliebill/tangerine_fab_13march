@@ -35,6 +35,7 @@ import com.aryagami.data.HeaderModel;
 import com.aryagami.data.RegistrationData;
 import com.aryagami.data.Roles;
 import com.aryagami.restapis.RestServiceHandler;
+import com.aryagami.tangerine.adapters.ResellerRechargesListAdapter;
 import com.aryagami.util.BugReport;
 import com.aryagami.util.CheckNetworkConnection;
 import com.aryagami.util.MyBroadCastReceiver;
@@ -285,19 +286,22 @@ public class NavigationMainActivity extends AppCompatActivity
                             if (id == 0) {
                                 Intent intent1 = new Intent(getApplicationContext(), ResellerChangePasswordActivity.class);
                                 startActivity(intent1);
-                            } else if (id == 7) {
+                            } else if (id == 8) {
                                 Intent intent1 = new Intent(getApplicationContext(), StaffByResellerActivity.class);
                                 startActivity(intent1);
-                            } else if (id == 5) {
+                            }else if (id == 5) {
+                                Intent intent = new Intent(getApplicationContext(), AirtimeValueRechargesActivity.class);
+                                startActivity(intent);
+                            }  else if (id == 6) {
                                 Intent intent = new Intent(getApplicationContext(), WarehouseManagementActivity.class);
                                 startActivity(intent);
-                            } else if (id == 6) {
+                            } else if (id == 7) {
                                 Intent intent1 = new Intent(getApplicationContext(), NewStaffUserRegistration.class);
                                 startActivity(intent1);
-                            }else if (id == 8) {
+                            }else if (id == 9) {
                                 Intent intent1 = new Intent(getApplicationContext(), BuildVersion.class);
                                 startActivity(intent1);
-                            } else if (id == 9) {
+                            } else if (id == 10) {
 
                                 RestServiceHandler serviceHandler = new RestServiceHandler();
                                 try {
@@ -411,6 +415,7 @@ public class NavigationMainActivity extends AppCompatActivity
                             return false;
                         }
                     })
+                    .addHeaderModel(new HeaderModel("Airtime Recharge"))
                     .addHeaderModel(new HeaderModel("My Bin"))
                     .addHeaderModel(new HeaderModel(staffRegistration))
                     .addHeaderModel(new HeaderModel("Staff Users"))
@@ -450,19 +455,22 @@ public class NavigationMainActivity extends AppCompatActivity
                             if (id == 0) {
                                 Intent intent1 = new Intent(getApplicationContext(), ResellerChangePasswordActivity.class);
                                 startActivity(intent1);
-                            } else if (id == 7) {
+                            } else if (id == 8) {
                                 Intent intent1 = new Intent(getApplicationContext(), StaffByResellerActivity.class);
                                 startActivity(intent1);
                             } else if (id == 5) {
+                                Intent intent = new Intent(getApplicationContext(), AirtimeValueRechargesActivity.class);
+                                startActivity(intent);
+                            }  else if (id == 6) {
                                 Intent intent = new Intent(getApplicationContext(), WarehouseManagementActivity.class);
                                 startActivity(intent);
-                            } else if (id == 6) {
+                            } else if (id == 7) {
                                 Intent intent1 = new Intent(getApplicationContext(), NewStaffUserRegistration.class);
                                 startActivity(intent1);
-                            }else if (id == 8) {
+                            }else if (id == 9) {
                                 Intent intent1 = new Intent(getApplicationContext(), BuildVersion.class);
                                 startActivity(intent1);
-                            } else if (id == 9) {
+                            } else if (id == 10) {
 
                                 RestServiceHandler serviceHandler = new RestServiceHandler();
                                 try {
@@ -589,6 +597,7 @@ public class NavigationMainActivity extends AppCompatActivity
                             return false;
                         }
                     })
+                    .addHeaderModel(new HeaderModel("Airtime Recharge"))
                     .addHeaderModel(new HeaderModel("My Bin"))
                     .addHeaderModel(new HeaderModel(staffRegistration))
                     .addHeaderModel(new HeaderModel("Staff Users"))
@@ -627,25 +636,25 @@ public class NavigationMainActivity extends AppCompatActivity
                             if (id == 0) {
                                 Intent intent1 = new Intent(getApplicationContext(), ResellerChangePasswordActivity.class);
                                 startActivity(intent1);
-                            } else if (id == 7) {
+                            } else if (id == 8) {
                                 Intent intent1 = new Intent(getApplicationContext(), StaffByResellerActivity.class);
                                 startActivity(intent1);
-                            } else if (id == 5) {
+                            } else if (id == 6) {
                                 Intent intent = new Intent(getApplicationContext(), WarehouseManagementActivity.class);
                                 startActivity(intent);
-                            } else if (id == 6) {
+                            } else if (id == 7) {
                                 Intent intent1 = new Intent(getApplicationContext(), NewStaffUserRegistration.class);
                                 startActivity(intent1);
-                            }else if (id == 8) {
+                            }else if (id == 9) {
                                 Intent intent1 = new Intent(getApplicationContext(), SelectReportActivity.class);
                                 startActivity(intent1);
-                            } else if (id == 9) {
+                            } else if (id == 10) {
                                 Intent intent1 = new Intent(getApplicationContext(), BuildVersion.class);
                                 startActivity(intent1);
-                            }/*else if (id == 10) {
-                                Intent intent1 = new Intent(getApplicationContext(), BundleRechargeActivity.class);
+                            }else if (id == 5) {
+                                Intent intent1 = new Intent(getApplicationContext(), ResellerRechargesListActivity.class);
                                 startActivity(intent1);
-                            }*/else if (id == 10) {
+                            }else if (id == 11) {
 
                                 RestServiceHandler serviceHandler = new RestServiceHandler();
                                 try {
@@ -768,6 +777,7 @@ public class NavigationMainActivity extends AppCompatActivity
                             return false;
                         }
                     })
+                    .addHeaderModel(new HeaderModel("Airtime Recharge"))
                     .addHeaderModel(new HeaderModel("My Bin"))
                     .addHeaderModel(new HeaderModel(staffRegistration))
                     .addHeaderModel(new HeaderModel("Staff Users"))

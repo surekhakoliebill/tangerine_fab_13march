@@ -164,9 +164,76 @@ public class OnDemandUserInformationFragment extends Fragment {
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String idNumber, userType;
 
                 userRegistrationData = collectRegistrationData(view,userRegistration);
-                if(userRegistrationData != null) {
+                if(userRegistrationData != null){
+
+                    if(userRegistrationData.registrationType.equals("company")){
+                        idNumber = userRegistration.tinNumber.trim();
+                        userType = userRegistration.registrationType;
+                    }else{
+                        if(userRegistrationData.nationalIdentity.equals("Refugee")){
+                            idNumber = userRegistration.refugeeIdentityNumber.trim();
+                            userType =   userRegistrationData.nationalIdentity.trim().replace(" ","_");
+                        }else{
+                            idNumber = userRegistration.identityNumber.trim();
+                            userType =   userRegistrationData.nationalIdentity.trim().replace(" ","_");
+                        }
+                    }
+                    progressDialog = ProgressDialogUtil.startProgressDialog(getActivity(),"Checking User Details......");
+
+                    RestServiceHandler serviceHandler = new RestServiceHandler();
+                    try {
+                        serviceHandler.checkExistingUser(userType, idNumber, new RestServiceHandler.Callback() {
+                            @Override
+                            public void success(DataModel.DataType type, List<DataModel> data) {
+                                        UserLogin response = (UserLogin)data.get(0);
+                                        if(response.status.equals("success")){
+                                            ProgressDialogUtil.stopProgressDialog(progressDialog);
+
+                                            userRegistration = userRegistrationData;
+                                            RegistrationData.setOnDemandRegistrationData(userRegistration);
+                                            UserSession.setAllUserInformation(getActivity(),userRegistration);
+
+                                            android.support.v4.app.FragmentTransaction fr=getFragmentManager().beginTransaction();
+                                            fr.replace(R.id.fragment_container_registration,new OnDemandBillingAddressFragment());
+                                            fr.commit();
+
+                                        }else if(response.status.equals("INVALID_SESSION")){
+                                                ReDirectToParentActivity.callLoginActivity(getActivity());
+                                        }else{
+                                            ProgressDialogUtil.stopProgressDialog(progressDialog);
+                                            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                                            alertDialog.setCancelable(false);
+                                            alertDialog.setTitle("Alert!");
+                                            alertDialog.setMessage("Status: "+response.status);
+                                            alertDialog.setNeutralButton(getResources().getString(R.string.ok),
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
+                                                            dialog.dismiss();
+                                                        }
+                                                    });
+                                            alertDialog.show();
+                                        }
+                            }
+
+                            @Override
+                            public void failure(RestServiceHandler.ErrorCode error, String status) {
+                                ProgressDialogUtil.stopProgressDialog(progressDialog);
+                                BugReport.postBugReport(getActivity(),Constants.emailId,"ERROR:"+error+"STATUS:"+status,"Checking User");
+                            }
+                        });
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        BugReport.postBugReport(getActivity(),Constants.emailId,"MESSAGE:"+e.getMessage()+"Cause:"+e.getCause(),"Checking User");
+                    }
+
+                }else{
+                    userRegistrationData = userRegistration;
+                }
+
+                /*if(userRegistrationData != null) {
                     userRegistration = userRegistrationData;
                     RegistrationData.setOnDemandRegistrationData(userRegistration);
                     UserSession.setAllUserInformation(getActivity(),userRegistration);
@@ -176,7 +243,7 @@ public class OnDemandUserInformationFragment extends Fragment {
                     fr.commit();
                 }else{
                     userRegistrationData = userRegistration;
-                }
+                }*/
             }
         });
 

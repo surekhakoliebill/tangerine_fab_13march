@@ -36,6 +36,7 @@ public interface DataModel {
         ProductRequestCommand,
         WalletAccountTransactionLogVo,
         ResellerRequestVo,
+        AirtimeValue,
         BugReportCommand;
     }
     public DataType getDataType();

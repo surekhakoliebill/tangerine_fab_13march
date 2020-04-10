@@ -48,6 +48,7 @@ public class UserLogin implements DataModel, Serializable {
     //FOR GENERATE REPORT
      public String reportStatus;
      public String docPath;
+    public Boolean immediateRecharge;
 
 
 
@@ -55,7 +56,7 @@ public class UserLogin implements DataModel, Serializable {
         UserLogin login = new UserLogin();
         while (reader.hasNext()) {
             String name = reader.nextName();
-            if (name.equals("status")) {
+            if (name.equals("status")&& reader.peek() != JsonToken.NULL) {
                 login.status = reader.nextString();
             } else if (name.equals("userName")) {
                 login.userName = reader.nextString();
@@ -79,6 +80,8 @@ public class UserLogin implements DataModel, Serializable {
                 login.forcePwdUpdate = reader.nextBoolean();
             }else if (name.equals("orderNo") && reader.peek() != JsonToken.NULL) {
                 login.orderNo = reader.nextString();
+            }else if (name.equals("immediateRecharge") && reader.peek() != JsonToken.NULL) {
+                login.immediateRecharge = reader.nextBoolean();
             } else if (name.equals("subscriptionIds") && reader.peek() != JsonToken.NULL) {
                 List<String> subscriptionList = new ArrayList<String>();
 
