@@ -29,6 +29,7 @@ import com.aryagami.data.CacheNewOrderData;
 import com.aryagami.data.Constants;
 import com.aryagami.data.DataModel;
 import com.aryagami.data.NewOrderCommand;
+import com.aryagami.data.OrderNumberDetails;
 import com.aryagami.data.PdfDocumentData;
 import com.aryagami.data.RegistrationData;
 import com.aryagami.data.ResellerStaff;
@@ -46,7 +47,10 @@ import com.aryagami.util.ReDirectToParentActivity;
 import com.aryagami.util.UserSession;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,6 +67,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
     RadioGroup radioGroup, radioGroup1;
     TextView setupValue, totalPrice, depositValue,notification;
     int imageUploadSuccessCount = 0;
+    int imageUploadFailCount = 0;
     int pdfDocUploadedCount = 0;
     int passportUploadSuccessCount = 0;
     String filePrefix = "";
@@ -89,10 +94,11 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
     PdfDocumentData docData = new PdfDocumentData();
     LinearLayout depositLayout;
     int i;
-    int docUploadCount = 0;
     Boolean documentUploadPending = false;
     String uuid;
     NewOrderCommand.LocationCoordinates coordinates = new NewOrderCommand.LocationCoordinates();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    String reqTimeExitingAcc = "";
 
     public  void onTrimMemory(int level) {
         System.gc();
@@ -1059,12 +1065,14 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                         if (command.isNewAccount) {
 
                             uploadPrepaidNewOrderDocuments();
+
                         } else {
 
                             progressDialog = ProgressDialogUtil.startProgressDialog(activity, "please wait...!");
                             if (account.accountId != null) {
                                 command.userInfo.accountId = account.accountId;
                             }
+                            reqTimeExitingAcc = dateFormat.format(new Date());
                             serviceHandler.postNewOrder(command, new RestServiceHandler.Callback() {
                                 @Override
                                 public void success(DataModel.DataType type, List<DataModel> data) {
@@ -1073,11 +1081,32 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                                         UserSession.setAllUserInformation(activity, null);
 
                                         ProgressDialogUtil.stopProgressDialog(progressDialog);
+                                        if (docData != null) {
+                                            final String fileUrl = "reseller_documents/payment_documents/" + orderDetails.orderNo + "/,payment_copy";
 
+                                            RestServiceHandler uploadImageServiceHandler = new RestServiceHandler();
+
+                                            if (docData.pdfRwaData != null) {
+                                                String reqTime = dateFormat.format(new Date());
+                                                uploadImageServiceHandler.uploadPdf("pdf", fileUrl, docData.pdfRwaData.toString(), new RestServiceHandler.Callback() {
+                                                    @Override
+                                                    public void success(DataModel.DataType type, List<DataModel> data) {
+                                                        UserLogin login1 = (UserLogin) data.get(0);
+                                                        if (login1.status.equals("success")) {
+
+                                                        }
+                                                    }
+                                                    @Override
+                                                    public void failure(RestServiceHandler.ErrorCode error, String status) {
+                                                        BugReport.postBugReport(activity, Constants.emailId, "Request Time: "+reqTime+" Response Time: "+dateFormat.format(new Date())+"Login Reseller Name: "+UserSession.getResellerName(activity)+"Payment Copy Not Uploaded\t" + docData.docType + "\t" + ("documents/" + docData.docType + "/" + orderDetails.userId + "/," + (docData.displayName.toString()).replace(" ", "_")) + "\t ImageEncodedData:" + docData.pdfRwaData.toString(), "NewOrderPaymentActivity- PaymentCopy");
+                                                    }
+                                                });
+                                            }
+                                        }
 
                                         if (orderDetails.subscriptionList != null) {
                                             if (orderDetails.subscriptionList.size() > 0)
-                                                activateSubscription(orderDetails.subscriptionList);
+                                                activateSubscription(orderDetails.subscriptionList, command.subscriptions.get(0).servedMSISDN);
                                         }
 
                                         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
@@ -1105,7 +1134,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                                             ReDirectToParentActivity.callLoginActivity(activity);
                                         } else if (orderDetails.status.equalsIgnoreCase("System Error")){
 
-                                            BugReport.postBugReport(activity, Constants.emailId,"Status: "+orderDetails.status+"Reason: "+orderDetails.reason,"New_order");
+                                            BugReport.postBugReport(activity, Constants.emailId,"servedMSISDN: "+command.subscriptions.get(0).servedMSISDN+" Request Time: "+ reqTimeExitingAcc+"Response Time: "+dateFormat.format(new Date())+"Login Reseller Name:"+UserSession.getResellerName(activity)+" Status: "+orderDetails.status+"Reason: "+orderDetails.reason,"New_order system Error");
 
                                         } else {
 
@@ -1135,7 +1164,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                                 @Override
                                 public void failure(RestServiceHandler.ErrorCode error, String status) {
                                     ProgressDialogUtil.stopProgressDialog(progressDialog);
-                                    BugReport.postBugReport(activity, Constants.emailId,"ERROR:"+error+"\n STATUS:"+status,"POSTPAID-EXISTING ORDER");
+                                    BugReport.postBugReport(activity, Constants.emailId,"servedMSISDN: "+command.subscriptions.get(0).servedMSISDN+" Request Time: "+ reqTimeExitingAcc+"Response Time: "+dateFormat.format(new Date())+"Login Reseller Name: "+UserSession.getResellerName(activity)+" ERROR:"+error+"\n STATUS:"+status,"PREPAID EXISTING ORDER FAILED");
                                     startNavigationActivity();
                                 }
                             });
@@ -1145,7 +1174,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    BugReport.postBugReport(activity, Constants.emailId, "STATUS:"+e.getMessage(), "NewOrderPayment Exception");
+                    BugReport.postBugReport(activity, Constants.emailId, "servedMSISDN: "+command.subscriptions.get(0).servedMSISDN+" Request Time: "+ reqTimeExitingAcc+"Response Time: "+dateFormat.format(new Date())+"Login Reseller Name: "+UserSession.getResellerName(activity)+" Message:"+e.getMessage()+" Cause:"+e.getCause(), "NewOrderPayment Exception");
 
                 }
             }
@@ -1173,12 +1202,14 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                 final int totalDocs = RegistrationData.getPersonalRegistrationUserDocs().size();
                 final UserRegistration.UserDocCommand[] docCommand = new UserRegistration.UserDocCommand[RegistrationData.getPersonalRegistrationUserDocs().size()];
                 RegistrationData.getPersonalRegistrationUserDocs().toArray(docCommand);
+
                 for (  i=0; i<totalDocs; i++) {
                     String prodPicDir = "temp_documents/" + docCommand[i].docType +"/"+ uuid + "/";
 
                     String[] docName = docCommand[i].docFiles.split(";");
                     filename1 = docName[0];
                     imageUploadSuccessCount = 0;
+                    imageUploadFailCount = 0;
 
                     RestServiceHandler uploadImageServiceHandler = new RestServiceHandler();
                     String imageEncodedData;
@@ -1187,6 +1218,8 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                     }else{
                         imageEncodedData = docCommand[i].imageData;
                     }
+                    Date startDate = new Date();
+
                     uploadImageServiceHandler.uploadPdf(docCommand[i].docFormat, prodPicDir + "," + filename1, imageEncodedData, new RestServiceHandler.Callback() {
                         @Override
                         public void success(DataModel.DataType type, List<DataModel> data) {
@@ -1227,37 +1260,47 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                                 ReDirectToParentActivity.callLoginActivity(activity);
                             } else if(!userLogin.status.isEmpty()){
                                 ProgressDialogUtil.stopProgressDialog(progressDialog1);
-                                registerUserAfterDocUploadFail();
+                                if(++imageUploadFailCount == 1){
+                                    registerUserAfterDocUploadFail();
+                                }
 
                             }
-                            ++docUploadCount;
+
                         }
 
                         @Override
                         public void failure(RestServiceHandler.ErrorCode error, String status) {
-                            ++docUploadCount;
+
                             ProgressDialogUtil.stopProgressDialog(progressDialog1);
-                            BugReport.postBugReport(activity, Constants.emailId, "STATUS:" + status + "ERROR:" + error, "USER_DOCS_NOT_UPLOADED");
+                            BugReport.postBugReport(activity, Constants.emailId, "Request Time: "+dateFormat.format(startDate)+"Response Time: "+dateFormat.format(new Date())+"Login Reseller Name: "+UserSession.getResellerName(activity)+"EncodedImageData: "+imageEncodedData+"\t STATUS:" + status + "\t ERROR:" + error, "USER_DOCS_NOT_UPLOADED - URL:"+prodPicDir);
 
                             /*if(i<totalDocs)
                                 pendingDocumentsList.add(docCommand[i]);
+
 */
-                            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
-                            alertDialog.setCancelable(false);
-                            alertDialog.setTitle("Alert!");
-                            alertDialog.setMessage("Unable to upload your documents, please retry!");
-                            alertDialog.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            }).setNegativeButton("Cache Background", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    registerUserAfterDocUploadFail();
-                                }
-                            });
-                            alertDialog.show();
+                            if(++imageUploadFailCount == 1){
+                                registerUserAfterDocUploadFail();
+
+                               /* final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+                                alertDialog.setCancelable(false);
+                                alertDialog.setTitle("Alert!");
+                                alertDialog.setMessage("Unable to upload your documents, please retry!");
+                                alertDialog.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).setNegativeButton("Cache Background", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        registerUserAfterDocUploadFail();
+                                    }
+                                });
+                                alertDialog.show();*/
+                            }
+
+
                         }
                     });
 
@@ -1272,7 +1315,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
         alertDialog.setCancelable(false);
         alertDialog.setTitle("Alert!");
         alertDialog.setMessage("Want to upload the documents in the background?");
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton("Cache Background", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -1280,11 +1323,12 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                 documentUploadPending = true;
                 placePrepaidNewOrder();
             }
-        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+        }).setNegativeButton("Retry", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
-                startNavigationActivity();
+               // uploadPrepaidNewOrderDocuments();  // This method also will test
+                //startNavigationActivity();
             }
         });
         alertDialog.show();
@@ -1293,10 +1337,13 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
 
 
     private void placePrepaidNewOrder() {
+        String reqTime = "";
         RestServiceHandler serviceHandler = new RestServiceHandler();
         try {
             progressDialog = ProgressDialogUtil.startProgressDialog(activity, "please wait...!");
 
+             reqTime = dateFormat.format(new Date());
+            String finalReqTime = reqTime;
             serviceHandler.postNewOrder(command, new RestServiceHandler.Callback() {
                 @Override
                 public void success(DataModel.DataType type, List<DataModel> data) {
@@ -1313,16 +1360,17 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
 
                                     RestServiceHandler uploadImageServiceHandler = new RestServiceHandler();
 
-                                    if (docData.pdfRwaData != null)
+                                    if (docData.pdfRwaData != null) {
+                                        String reqTime = dateFormat.format(new Date());
                                         uploadImageServiceHandler.uploadPdf("pdf", fileUrl, docData.pdfRwaData.toString(), new RestServiceHandler.Callback() {
                                             @Override
                                             public void success(DataModel.DataType type, List<DataModel> data) {
                                                 UserLogin login1 = (UserLogin) data.get(0);
                                                 if (login1.status.equals("success")) {
-                                                  //  MyToast.makeMyToast(activity, "Payment Copy Uploaded Successfully.", Toast.LENGTH_LONG);
+                                                    //  MyToast.makeMyToast(activity, "Payment Copy Uploaded Successfully.", Toast.LENGTH_LONG);
 
                                                 } else {
-                                                   // MyToast.makeMyToast(activity, "Payment Copy not Uploaded.", Toast.LENGTH_LONG);
+                                                    // MyToast.makeMyToast(activity, "Payment Copy not Uploaded.", Toast.LENGTH_LONG);
                                                     // startNavigationActivity();
                                                 }
 
@@ -1330,14 +1378,15 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
 
                                             @Override
                                             public void failure(RestServiceHandler.ErrorCode error, String status) {
-                                                BugReport.postBugReport(activity, Constants.emailId, "Document Not Uploaded\t" + docData.docType + "\t" + ("documents/" + docData.docType + "/" + orderDetails.userId + "/," + (docData.displayName.toString()).replace(" ", "_")) + "\t" + docData.pdfRwaData.toString(), "NewOrderPaymentActivity");
+                                                BugReport.postBugReport(activity, Constants.emailId, "Request Time: "+reqTime+" Response Time: "+dateFormat.format(new Date())+"Login Reseller Name: "+UserSession.getResellerName(activity)+"Payment Copy Not Uploaded\t" + docData.docType + "\t" + ("documents/" + docData.docType + "/" + orderDetails.userId + "/," + (docData.displayName.toString()).replace(" ", "_")) + "\t EncodedImageData:" + docData.pdfRwaData.toString(), "NewOrderPaymentActivity - Payment Copy upload failed.");
                                             }
                                         });
+                                    }
                                 }
                             }
                             if (orderDetails.subscriptionList != null) {
                                 if (orderDetails.subscriptionList.size() > 0)
-                                    activateSubscription(orderDetails.subscriptionList);
+                                    activateSubscription(orderDetails.subscriptionList, command.subscriptions.get(0).servedMSISDN);
                             }
 
                             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
@@ -1351,7 +1400,10 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                                             dialog.dismiss();
 
                                             if(documentUploadPending){
+                                               // startNavigationActivity();
+                                                savePendingDocuments(orderDetails.userId);
                                                 postDocumentUploadComplete(orderDetails.userId);
+                                               // uploadPendingDocuments(RegistrationData.getPersonalRegistrationUserDocs(), orderDetails.userId);
                                             }else {
                                                 RegistrationData.setOnDemandRegistrationData(null);
                                                 NewOrderCommand.setOnDemandNewOrderCommand(null);
@@ -1370,7 +1422,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                                 ReDirectToParentActivity.callLoginActivity(activity);
                             }else if(orderDetails.status.equalsIgnoreCase("System Error")){
 
-                                BugReport.postBugReport(activity, Constants.emailId,"Status: "+orderDetails.status+"Reason: "+orderDetails.reason,"New_order");
+                                BugReport.postBugReport(activity, Constants.emailId,"Request Time: "+finalReqTime+"Response Time: "+dateFormat.format(new Date())+"Login Reseller Name:"+UserSession.getResellerName(activity)+" Status: "+orderDetails.status+" Reason: "+orderDetails.reason,"While placing New Order: System Error");
 
                             } else {
 
@@ -1408,7 +1460,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                 @Override
                 public void failure(RestServiceHandler.ErrorCode error, String status) {
                     ProgressDialogUtil.stopProgressDialog(progressDialog);
-                    BugReport.postBugReport(activity, Constants.emailId, "STATUS:"+status+"ERROR"+error, "OnDemand NEW ORDER PAYMENT ACTIVITY.");
+                    BugReport.postBugReport(activity, Constants.emailId, "Request Time: "+ finalReqTime +" Response Time: "+dateFormat.format(new Date())+"\t servedMSISDN: "+command.subscriptions.get(0).servedMSISDN+"Login Reseller Name:"+UserSession.getResellerName(activity)+"\t STATUS:"+status+"\t ERROR"+error, " New Order Failure.");
 
                     /*final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
                     alertDialog.setCancelable(false);
@@ -1462,16 +1514,36 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
             });
         } catch (Exception e) {
             e.printStackTrace();
+            BugReport.postBugReport(activity,Constants.emailId,"Request Time: "+reqTime+" Response Time: "+dateFormat.format(new Date())+"\t servedMSISDN: "+command.subscriptions.get(0).servedMSISDN+"Login Reseller Name:"+UserSession.getResellerName(activity)+" Message: "+e.getMessage()+" \t Cause: "+e.getCause(),"New Order Exception.");
         }
+    }
 
+    private void savePendingDocuments(String userId) {
+        List<UserRegistration.UserDocCommand> docCommandList = new ArrayList<>();
+
+        if(RegistrationData.getPersonalRegistrationUserDocs() != null){
+            if(RegistrationData.getPersonalRegistrationUserDocs().size() !=0){
+                for(UserRegistration.UserDocCommand docCommand: RegistrationData.getPersonalRegistrationUserDocs()){
+                    UserRegistration.UserDocCommand doc = new UserRegistration.UserDocCommand();
+                    doc = docCommand;
+                    doc.userId = userId;
+                    doc.tempUserToken = uuid;
+                    docCommandList.add(doc);
+                }
+            }
+            RegistrationData.setPersonalRegistrationUserDocs(docCommandList);
+        }
 
     }
 
     private void postDocumentUploadComplete(String userId) {
+        String reqPostTime= "";
         RestServiceHandler serviceHandler = new RestServiceHandler();
         try {
             progressDialog2 = ProgressDialogUtil.startProgressDialog(activity, "please wait...!");
 
+            reqPostTime = dateFormat.format(new Date());
+            String finalReqPostTime = reqPostTime;
             serviceHandler.postDocumentUploadComplete(userId, new RestServiceHandler.Callback() {
                 @Override
                 public void success(DataModel.DataType type, List<DataModel> data) {
@@ -1503,15 +1575,82 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                 @Override
                 public void failure(RestServiceHandler.ErrorCode error, String status) {
                     ProgressDialogUtil.stopProgressDialog(progressDialog2);
-                    BugReport.postBugReport(activity, Constants.emailId,"STATUS:"+status+"ERROR:"+error,"DocumentUploadComplete");
+                    BugReport.postBugReport(activity, Constants.emailId,"Request Time: "+ finalReqPostTime +" Response Time:"+dateFormat.format(new Date())+" Login Reseller Name:"+ UserSession.getResellerName(activity)+" STATUS: "+status+" ERROR: "+error,"PostDocumentUploadComplete- failed");
                     startNavigationActivity();
                 }
             });
 
         }catch (Exception e){
-            BugReport.postBugReport(activity, Constants.emailId,"Message:"+e.getMessage()+",Cause:"+e.getCause(),"DocumentUploadComplete");
+            BugReport.postBugReport(activity, Constants.emailId,"Request Time: "+reqPostTime +" Response Time:"+dateFormat.format(new Date())+" Login Reseller Name:"+ UserSession.getResellerName(activity)+" Message: "+e.getMessage()+",Cause:"+e.getCause(),"PostDocumentUploadComplete- Exception");
 
         }
+    }
+
+    private void uploadPendingDocuments(List<UserRegistration.UserDocCommand> docCommand, String userId){
+        if (RegistrationData.getPersonalRegistrationUserDocs() != null) {
+
+            if(RegistrationData.getPersonalRegistrationUserDocs().size() != 0) {
+
+                final int totalDocs = RegistrationData.getPersonalRegistrationUserDocs().size();
+                final UserRegistration.UserDocCommand[] docCommand1 = new UserRegistration.UserDocCommand[RegistrationData.getPersonalRegistrationUserDocs().size()];
+                RegistrationData.getPersonalRegistrationUserDocs().toArray(docCommand1);
+
+                for (  i=0; i<totalDocs; i++) {
+                    String prodPicDir = "temp_documents/" + docCommand1[i].docType +"/"+ uuid + "/";
+
+                    String[] docName = docCommand1[i].docFiles.split(";");
+                    filename1 = docName[0];
+                    imageUploadSuccessCount = 0;
+                    imageUploadFailCount = 0;
+
+                    RestServiceHandler uploadImageServiceHandler = new RestServiceHandler();
+                    String imageEncodedData;
+                    if(docCommand1[i].docFormat.equals("pdf")){
+                        imageEncodedData = docCommand1[i].pdfRwaData;
+                    }else{
+                        imageEncodedData = docCommand1[i].imageData;
+                    }
+                    Date startDate = new Date();
+
+                    uploadImageServiceHandler.uploadPdf(docCommand1[i].docFormat, prodPicDir + "," + filename1, imageEncodedData, new RestServiceHandler.Callback() {
+                        @Override
+                        public void success(DataModel.DataType type, List<DataModel> data) {
+                            UserLogin userLogin = (UserLogin) data.get(0);
+                            if (userLogin.status.equals("success")) {
+
+                                if (++imageUploadSuccessCount == totalDocs) {
+                                    command.userInfo.documentsUploadPending = false;
+
+                                    RegistrationData.setPersonalRegistrationUserDocs(null);
+                                    RegistrationData.setUserThumbImageDrawable(null);
+                                    RegistrationData.setUserIndexImageDrawable(null);
+                                    RegistrationData.setRefugeeThumbImageDrawable(null);
+                                    RegistrationData.setCapturedFingerprintDrawable(null);
+
+                                    deleteFolderAndImage();
+                                }
+
+                            } else if (userLogin.status.equals("INVALID_SESSION")) {
+                                ProgressDialogUtil.stopProgressDialog(progressDialog1);
+                                ReDirectToParentActivity.callLoginActivity(activity);
+                            }
+
+                        }
+
+                        @Override
+                        public void failure(RestServiceHandler.ErrorCode error, String status) {
+
+                            ProgressDialogUtil.stopProgressDialog(progressDialog1);
+                            BugReport.postBugReport(activity, Constants.emailId, "Request Time: "+dateFormat.format(startDate)+"Response Time: "+dateFormat.format(new Date())+"\t STATUS:" + status + "\t ERROR:" + error, "Upload pending Documents in the background.");
+                        }
+                    });
+
+                }
+
+            }
+        }
+
+
     }
 
     @Override
@@ -1520,10 +1659,11 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
         CheckNetworkConnection.cehckNetwork(OnDemandNewOrderPaymentActivity.this);
     }
 
-    private void activateSubscription(List<Subscription> subscriptions) {
+    private void activateSubscription(List<Subscription> subscriptions, String servedMSISDN) {
 
         for (Subscription subscription : subscriptions) {
             if (subscription.subscriptionId != null) {
+                String reqTimeForActivation = "";
                 ActivateCommand command = new ActivateCommand();
                 command.entityName = "subscription";
                 command.activationId = subscription.subscriptionId.toString();
@@ -1532,6 +1672,9 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
 
                     progressDialog2 = ProgressDialogUtil.startProgressDialog(activity, "please wait, Activating Subscriptions...!");
                     RestServiceHandler serviceHandler = new RestServiceHandler();
+
+                     reqTimeForActivation = dateFormat.format(new Date());
+                    String finalReqTimeForActivation = reqTimeForActivation;
                     serviceHandler.activateSubscriptionStatus(command, new RestServiceHandler.Callback() {
                         @Override
                         public void success(DataModel.DataType type, List<DataModel> data) {
@@ -1560,7 +1703,21 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                                    if (userLogin.status.equals("INVALID_SESSION")) {
                                        ReDirectToParentActivity.callLoginActivity(activity);
                                    } else {
-                                       MyToast.makeMyToast(activity, "Status not updated, \nStatus:" + userLogin.status.toString(), Toast.LENGTH_SHORT);
+                                      // MyToast.makeMyToast(activity, "Status not updated, \nStatus:" + userLogin.status.toString(), Toast.LENGTH_SHORT);
+
+                                       final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+                                       alertDialog.setCancelable(false);
+                                       alertDialog.setTitle("Alert!");
+                                       alertDialog.setMessage("Subscription Status Not Updated. \n Reason: " + userLogin.status);
+
+                                       alertDialog.setNeutralButton(activity.getResources().getString(R.string.ok),
+                                               new DialogInterface.OnClickListener() {
+                                                   public void onClick(DialogInterface dialog, int id) {
+                                                       dialog.dismiss();
+                                                       //  startNavigationActivity();
+                                                   }
+                                               });
+                                       alertDialog.show();
                                    }
                                }
                            }else{
@@ -1572,14 +1729,14 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
                         @Override
                         public void failure(RestServiceHandler.ErrorCode error, String status) {
                             ProgressDialogUtil.stopProgressDialog(progressDialog2);
-                            BugReport.postBugReport(activity, Constants.emailId, "Error" + error + "\t Status:\n" + status, "NewOrderPaymentActivity-> ActivateSubscription");
+                            BugReport.postBugReport(activity, Constants.emailId, "servedMSISDN: "+servedMSISDN+ "Request Time: "+ finalReqTimeForActivation +" Response Time: "+dateFormat.format(new Date())+"Login Reseller Name: "+UserSession.getResellerName(activity)+"Error" + error + "\t Status:\n" + status, "NewOrderPaymentActivity-> ActivateSubscription Failed");
 
                         }
                     });
                 } catch (Exception e) {
                     ProgressDialogUtil.stopProgressDialog(progressDialog2);
                     e.printStackTrace();
-                    BugReport.postBugReport(activity, Constants.emailId, "STATUS"+e.getMessage(), "NewOrderPaymentActivity-> ActivateSubscription");
+                    BugReport.postBugReport(activity, Constants.emailId, "servedMSISDN:"+servedMSISDN+"Request Time: "+reqTimeForActivation+" Response Time: "+dateFormat.format(new Date())+"Login Reseller Name: "+UserSession.getResellerName(activity)+"STATUS"+e.getMessage(), "NewOrderPaymentActivity-> ActivateSubscription Exception");
                 }
             }
         }
@@ -1724,7 +1881,7 @@ public class OnDemandNewOrderPaymentActivity extends AppCompatActivity {
         coordinates.latitudeValue = RegistrationData.getCurrentLatitude();
         command.resellerLocation = coordinates;
         command.productListingIds = new ArrayList<Long>();
-        command.productListings = new ArrayList<NewOrderCommand.ProductListing>();
+       // command.productListings = new ArrayList<NewOrderCommand.ProductListing>();
 
         command.resellerCode = UserSession.getResellerId(activity);
         if (cheque.isChecked()) {

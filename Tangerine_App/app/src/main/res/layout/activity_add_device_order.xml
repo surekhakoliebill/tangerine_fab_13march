@@ -48,10 +48,9 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
+            android:visibility="invisible"
             android:src="@drawable/cart32">
         </ImageView>
-
-
 
     </LinearLayout>
 

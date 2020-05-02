@@ -164,8 +164,8 @@ public class OnDemandUserInformationFragment extends Fragment {
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idNumber, userType;
 
+                String idNumber, userType;
                 userRegistrationData = collectRegistrationData(view,userRegistration);
                 if(userRegistrationData != null){
 
@@ -212,6 +212,9 @@ public class OnDemandUserInformationFragment extends Fragment {
                                                     new DialogInterface.OnClickListener() {
                                                         public void onClick(DialogInterface dialog, int id) {
                                                             dialog.dismiss();
+
+                                                            Intent intent = new Intent(getActivity(), OnDemandNewOrderActivity.class);
+                                                            startActivity(intent);
                                                         }
                                                     });
                                             alertDialog.show();

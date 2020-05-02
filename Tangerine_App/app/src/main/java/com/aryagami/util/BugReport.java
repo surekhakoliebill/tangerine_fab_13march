@@ -55,7 +55,7 @@ public class BugReport {
         BugReportCommand command = new BugReportCommand();
         command.emailIds = emailIds;
         command.reportDescription = description;
-        command.reportArea = reportArea;
+        command.reportArea = reportArea+ ",\t SERVER URL:"+ Constants.serverURL;
 
         try {
             serviceHandler.postBugReport(command, new RestServiceHandler.Callback() {

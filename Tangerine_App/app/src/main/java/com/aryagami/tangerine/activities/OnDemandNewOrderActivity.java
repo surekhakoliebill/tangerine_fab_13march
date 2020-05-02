@@ -165,11 +165,11 @@ public class OnDemandNewOrderActivity extends AppCompatActivity {
     {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        //postpaidNewOrderFragment=new OnDemandPostpaidNewOrderFragment();
+        postpaidNewOrderFragment=new OnDemandPostpaidNewOrderFragment();
         onDemandPrepaidNewOrderFragment = new OnDemandPrepaidNewOrderFragment();
         // deviceOrderFragment = new DeviceOrderFragment();
 
-        //adapter.addFragment(postpaidNewOrderFragment,"POSTPAID");
+       adapter.addFragment(postpaidNewOrderFragment,"POSTPAID");
         adapter.addFragment(onDemandPrepaidNewOrderFragment,"PREPAID");
        // adapter.addFragment(deviceOrderFragment,"DEVICE");
         viewPager.setAdapter(adapter);

@@ -33,9 +33,25 @@
             android:text="@string/associate_to_existing"
             android:padding="5dp"
             android:textSize="17sp"
+            android:visibility="gone"
             android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/existing_acc_radio_btn_by_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/associate_to_existing"
+            android:padding="5dp"
+            android:textSize="17sp"
+            android:textColor="@color/black"/>
+
     </RadioGroup>
 
+        <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <LinearLayout
         android:id="@+id/existing_account_container1"
         android:layout_width="match_parent"
@@ -135,6 +151,157 @@
 
     </LinearLayout>
 
+    <!-- Get Existing Account Details Search by Uname, Surname, FirstName...-->
+
+    <LinearLayout
+        android:id="@+id/existing_account_search_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_marginTop="10dp"
+        android:weightSum="1">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        <CheckBox
+            android:id="@+id/enable_mobile_money_reg"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fontFamily="@font/sansation_bold"
+            android:textSize="17sp"
+            android:text=" Mobile Money Registration"
+            android:checked="false">
+        </CheckBox>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editbackground"
+            android:orientation="vertical">
+            <Spinner
+                android:id="@+id/account_search_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/search_spinner_title"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/username_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/filter_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" "
+                    android:maxLines="4"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/search_filtertype_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button"
+                android:padding="5dp"
+                android:text="Search"
+                android:textAllCaps="false"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:src="@drawable/search_icon"
+                android:textSize="17sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/msisdn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_marginTop="10dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/filter_msisdin_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="MSISDN"
+                    android:maxLength="12"
+                    android:maxLines="4"
+                    android:inputType="number"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/search_msisdn_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button"
+                android:padding="2dp"
+                android:text="Search"
+                android:textAllCaps="false"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:src="@drawable/search_icon"
+                android:textSize="17sp" />
+        </LinearLayout>
+        </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Accounts List:"
+            android:fontFamily="@font/sansation_bold"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center|left"
+            android:gravity="center"
+            android:textColor="@color/black">
+
+        </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ListView
+                    android:id="@+id/accounts_search_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone">
+                </ListView>
+
+
+            </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -166,4 +333,7 @@
             android:textAllCaps="false"
             android:text="@string/continue_btn"/>
     </LinearLayout>
+</LinearLayout>
+
+
 </LinearLayout>

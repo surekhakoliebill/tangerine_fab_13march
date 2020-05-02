@@ -8,11 +8,11 @@ public class Constants {
 
    // #Testing Server Url
    //public static final String serverURL = "http://10.20.15.3:4080/";
-   //  public static final String serverURL = "http://41.217.232.48:4080/";
+     public static final String serverURL = "http://41.217.232.48:4080/";
 
     // #Live Server Url
     //public static final String serverURL = "http://10.20.15.41/";
-     public static final String serverURL = "http://41.217.232.48/";
+   //  public static final String serverURL = "http://41.217.232.48/";
 
     //for Pramod
    // public static final String serverURL = "http://41.217.232.92/";
@@ -34,7 +34,7 @@ public class Constants {
     public static final int PRODUCT_PICTURE_FILE_PREFIX_TOKENS_MAX = 2;
     public final static String USERSESSIONINFO = "myPrefrnc";
 
-    public static final String emailId = "Surekha.koli16@gmail.com;raj.tts009@gmail.com";
+    public static final String emailId = "Surekha.koli16@gmail.com;raj.tts009@gmail.com;jeelani.sm@gmail.com;gadigepramodkumar@gmail.com;shaikshavali89@gmail.com;akhil.ambati1@gmail.com;prasanthreddy568@gmail.com;lakshmi17polineni@gmail.com;";
     public static final String sessionId = "0a8496a2-29a9-n-a889-e524c15cc642";
     public static final String subscriptionId = "667e069b-93a5-4c55-be29-f6e21def2c6f";
 

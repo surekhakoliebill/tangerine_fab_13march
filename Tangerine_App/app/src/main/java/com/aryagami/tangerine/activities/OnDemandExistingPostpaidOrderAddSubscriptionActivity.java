@@ -332,11 +332,11 @@ public class OnDemandExistingPostpaidOrderAddSubscriptionActivity extends AppCom
         String binRef = UserSession.getResellerId(getApplicationContext());
         String iccIdText="";
         if(RegistrationData.getIsScanICCID()){
-            iccIdText = scannedICCIDText.getText().toString();
+            iccIdText = scannedICCIDText.getText().toString().trim();
 
         }else {
             if (iccidSpinner.getSelectedItem() != null) {
-                iccIdText = iccidSpinner.getSelectedItem().toString();
+                iccIdText = iccidSpinner.getSelectedItem().toString().trim();
             }
         }
         if (!iccIdText.isEmpty()) {

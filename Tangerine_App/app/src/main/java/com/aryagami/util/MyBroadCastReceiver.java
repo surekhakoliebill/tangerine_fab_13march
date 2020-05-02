@@ -10,11 +10,15 @@ import com.aryagami.data.CacheNewOrderData;
 import com.aryagami.data.Constants;
 import com.aryagami.data.DataModel;
 import com.aryagami.data.NewOrderCommand;
+import com.aryagami.data.RegistrationData;
 import com.aryagami.data.UserLogin;
 import com.aryagami.data.UserRegistration;
 import com.aryagami.restapis.RestServiceHandler;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MyBroadCastReceiver extends BroadcastReceiver {
@@ -29,6 +33,13 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
     List<UserRegistration.UserDocCommand> userDocCommandList = new ArrayList<UserRegistration.UserDocCommand>();
     UserRegistration.UserDocCommand userDocsArray[];
     NewOrderCommand updateOrdersArray[];
+
+    String filename1="";
+    int imageUploadSuccessCount = 0;
+    int imageUploadFailCount = 0;
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    String userId = "";
+
 
 
     @Override
@@ -55,6 +66,103 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
             //ReUpload Documents
         // reUploadUserDocuments();
 
+        uploadPendingDocuments();
+    }
+
+    private void uploadPendingDocuments(){
+        if (RegistrationData.getPersonalRegistrationUserDocs() != null) {
+
+            if(RegistrationData.getPersonalRegistrationUserDocs().size() != 0) {
+
+                final int totalDocs = RegistrationData.getPersonalRegistrationUserDocs().size();
+                final UserRegistration.UserDocCommand[] docCommand1 = new UserRegistration.UserDocCommand[RegistrationData.getPersonalRegistrationUserDocs().size()];
+                RegistrationData.getPersonalRegistrationUserDocs().toArray(docCommand1);
+
+                for ( int i=0; i<totalDocs; i++) {
+                    String prodPicDir = "temp_documents/" + docCommand1[i].docType +"/"+ docCommand1[i].tempUserToken + "/";
+
+                    String[] docName = docCommand1[i].docFiles.split(";");
+                    filename1 = docName[0];
+                    imageUploadSuccessCount = 0;
+                    imageUploadFailCount = 0;
+                    userId = docCommand1[i].userId;
+
+                    RestServiceHandler uploadImageServiceHandler = new RestServiceHandler();
+                    String imageEncodedData;
+                    if(docCommand1[i].docFormat.equals("pdf")){
+                        imageEncodedData = docCommand1[i].pdfRwaData;
+                    }else{
+                        imageEncodedData = docCommand1[i].imageData;
+                    }
+                    Date startDate = new Date();
+
+                    uploadImageServiceHandler.uploadPdf(docCommand1[i].docFormat, prodPicDir + "," + filename1, imageEncodedData, new RestServiceHandler.Callback() {
+                        @Override
+                        public void success(DataModel.DataType type, List<DataModel> data) {
+                            UserLogin userLogin = (UserLogin) data.get(0);
+                            if (userLogin.status.equals("success")) {
+
+                                if (++imageUploadSuccessCount == totalDocs) {
+
+                                    RegistrationData.setPersonalRegistrationUserDocs(null);
+                                    RegistrationData.setUserThumbImageDrawable(null);
+                                    RegistrationData.setUserIndexImageDrawable(null);
+                                    RegistrationData.setRefugeeThumbImageDrawable(null);
+                                    RegistrationData.setCapturedFingerprintDrawable(null);
+                                    postDocumentUploadComplete(userId);
+                                }
+
+                            } else if (userLogin.status.equals("INVALID_SESSION")) {
+                            }
+
+                        }
+
+                        @Override
+                        public void failure(RestServiceHandler.ErrorCode error, String status) {
+                            BugReport.postBugReportFromREST( Constants.emailId, "Request Time: "+dateFormat.format(startDate)+"Response Time: "+dateFormat.format(new Date())+"Login Reseller Name: "+UserSession.getResellerName(activity)+"\t STATUS:" + status + "\t ERROR:" + error+" Image EncodedData: "+imageEncodedData, "Upload pending Documents in the background.  URL:"+prodPicDir + "," + filename1);
+                        }
+                    });
+
+                }
+
+            }
+        }
+
+
+    }
+
+    private void postDocumentUploadComplete(String userId) {
+        String postReqCompleteTime ="";
+            RestServiceHandler serviceHandler = new RestServiceHandler();
+            try {
+                 postReqCompleteTime = dateFormat.format(new Date());
+                String finalPostReqCompleteTime = postReqCompleteTime;
+
+                serviceHandler.postDocumentUploadComplete(userId, new RestServiceHandler.Callback() {
+                    @Override
+                    public void success(DataModel.DataType type, List<DataModel> data) {
+
+                        UserLogin orderDetails = (UserLogin) data.get(0);
+                        if (orderDetails.status.equals("success")) {
+                            BugReport.postBugReportFromREST(Constants.emailId,"Request Time: "+ finalPostReqCompleteTime +"Response Time:"+dateFormat.format(new Date())+"Login ResellerName: "+UserSession.getResellerName(activity)+" userId: "+userId,"DocumentUploadComplete in the Background: Success");
+
+
+                        }else  if (orderDetails.status.equals("INVALID_SESSION")){
+                          //  ReDirectToParentActivity.callLoginActivity(activity);
+                        }else{
+                            BugReport.postBugReportFromREST(Constants.emailId,"Request Time: "+ finalPostReqCompleteTime +"Response Time:"+dateFormat.format(new Date())+"Login ResellerName: "+UserSession.getResellerName(activity)+" userId: "+userId,"DocumentUploadComplete in the Background. Status: "+orderDetails.status +"Reason: "+orderDetails.reason);
+                        }
+                    }
+
+                    @Override
+                    public void failure(RestServiceHandler.ErrorCode error, String status) {
+                        BugReport.postBugReportFromREST(Constants.emailId,"Request Time: "+ finalPostReqCompleteTime +"Response Time:"+dateFormat.format(new Date())+"Login ResellerName: "+UserSession.getResellerName(activity)+" userId: "+userId+" STATUS:"+status+" ERROR:"+error,"DocumentUploadComplete in the Background: Failed");
+                    }
+                });
+
+            }catch (Exception e){
+                BugReport.postBugReportFromREST(Constants.emailId,"Request Time: "+postReqCompleteTime+"Response Time:"+dateFormat.format(new Date())+"Login ResellerName: "+UserSession.getResellerName(activity)+" userId: "+userId+" Message:"+e.getMessage()+",Cause:"+e.getCause(),"DocumentUploadComplete in the Background: Exception");
+            }
     }
 
     private void reUploadUserDocuments() {
@@ -140,7 +248,6 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
         }
 
     }
-
 
     private void uploadPendingDocuments(NewOrderCommand rowItem) {
         List<UserRegistration.UserDocCommand> userDocCommandList = new ArrayList<UserRegistration.UserDocCommand>();
@@ -521,7 +628,6 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
 
         }
     }
-
 
     private void deleteUpdatedNewOrderData(Context context, int pos) {
 

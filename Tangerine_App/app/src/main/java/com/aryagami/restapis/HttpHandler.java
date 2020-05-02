@@ -30,6 +30,8 @@ import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.message.BasicHeader;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HTTP;
@@ -150,6 +152,7 @@ public class HttpHandler {
 
         @Override
         protected ClientConnectionManager createClientConnectionManager() {
+
             SchemeRegistry registry = new SchemeRegistry();
             registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
             // Register for port 443 our SSLSocketFactory with our keystore
@@ -208,8 +211,20 @@ public class HttpHandler {
     public String doMakeServiceCall(String url, int method,
                                     String params, String data) {
         try {
+
+            /*HttpParams my_httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(my_httpParams, 120000);
+            HttpConnectionParams.setSoTimeout(my_httpParams, 1);*/
             // http client
             DefaultHttpClient httpClient = new MyHttpClient();
+
+            int timeout = 120; // seconds
+            HttpParams httpParams = httpClient.getParams();
+            HttpConnectionParams.setConnectionTimeout(
+                    httpParams, timeout * 1000); // http.connection.timeout
+            HttpConnectionParams.setSoTimeout(
+                    httpParams, timeout * 1000); // http.socket.timeout
+
             HttpEntity httpEntity = null;
             HttpResponse httpResponse = null;
             response = null;
@@ -318,8 +333,18 @@ public class HttpHandler {
     public String doMakeServicePdfCall(String url, int method,
                                        String params, String params1, String data) {
         try {
+
             // http client
             DefaultHttpClient httpClient = new MyHttpClient();
+
+            int timeout = 120; // seconds
+            HttpParams httpParams = httpClient.getParams();
+            HttpConnectionParams.setConnectionTimeout(
+                    httpParams, timeout * 1000); // http.connection.timeout
+            HttpConnectionParams.setSoTimeout(
+                    httpParams, timeout * 1000); // http.socket.timeout
+
+
             HttpEntity httpEntity = null;
             HttpResponse httpResponse = null;
             response = null;

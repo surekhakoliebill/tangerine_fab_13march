@@ -624,6 +624,14 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         params = null;
         executeService();
     }
+    public void getAccountDetailsBySearch(Boolean isMobileMoney, String type, String value, Callback cback) throws IOException {
+        callback = cback;
+        api = API.GET_ACCOUNT_DETAILS;
+        url = Constants.serviceUrl + "get_active_accounts/"+isMobileMoney + "/" +type + "/" + value + "/";
+        method = HttpHandler.GET;
+        params = null;
+        executeService();
+    }
 
     public void postUserRegisteration(UserRegistration userRegistration, Callback cback) throws IOException {
         callback = cback;

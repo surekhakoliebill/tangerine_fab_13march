@@ -965,6 +965,8 @@ public class OnDemandContractInformationActivity extends AppCompatActivity {
                             public void success(DataModel.DataType type, List<DataModel> data) {
                                 UserLogin userLogin = (UserLogin) data.get(0);
                                 if (userLogin.status.equals("success")) {
+                                     BugReport.postBugReport(activity, Constants.emailId, "Login Reseller Name: "+UserSession.getResellerName(activity)+"EncodedImageData: "+imageEncodedData, "POSTPAID_USER_UPLOADED_URL:"+prodPicDir);
+
 
                                     if (++imageUploadSuccessCount == totalDocs) {
                                         newOrderCommand.userInfo.documentsUploadPending = false;
@@ -1004,7 +1006,7 @@ public class OnDemandContractInformationActivity extends AppCompatActivity {
                             public void failure(RestServiceHandler.ErrorCode error, String status) {
                                 ++docUploadCount;
                                 ProgressDialogUtil.stopProgressDialog(progressDialog1);
-                                BugReport.postBugReport(activity, Constants.emailId, "STATUS:" + status + "ERROR:" + error, "UploadDocs");
+                                  BugReport.postBugReport(activity, Constants.emailId, "Login Reseller Name: "+UserSession.getResellerName(activity)+"EncodedImageData: "+imageEncodedData+"\t STATUS:" + status + "\t ERROR:" + error, "USER_DOCS_NOT_UPLOADED - URL:"+prodPicDir);
 
                               // if(i<totalDocs)
                                pendingDocumentsList.add(docCommand);

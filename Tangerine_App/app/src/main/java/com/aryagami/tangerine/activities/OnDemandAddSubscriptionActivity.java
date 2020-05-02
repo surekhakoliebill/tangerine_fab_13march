@@ -243,9 +243,9 @@ public class OnDemandAddSubscriptionActivity extends AppCompatActivity {
                                 collectSubscriptionData();
 
                                 NewOrderCommand.setOnDemandNewOrderCommand(newOrderCommand);
-                               /*
-                                 Intent intent = new Intent(getApplicationContext(), AddDeviceOrderActivity.class);*/
-                                Intent intent = new Intent(getApplicationContext(), OnDemandNewOrderPaymentActivity.class);
+
+                                 Intent intent = new Intent(getApplicationContext(), AddDeviceOrderActivity.class);
+                              //  Intent intent = new Intent(getApplicationContext(), OnDemandNewOrderPaymentActivity.class);
                                 startActivity(intent);
 
                             } else {
@@ -388,11 +388,11 @@ public class OnDemandAddSubscriptionActivity extends AppCompatActivity {
         String binRef = UserSession.getResellerId(getApplicationContext());
         String iccIdText="";
         if(RegistrationData.getIsScanICCID()){
-            iccIdText = scannedICCIDText.getText().toString();
+            iccIdText = scannedICCIDText.getText().toString().trim();
 
         }else {
             if (iccidSpinner.getSelectedItem() != null) {
-                iccIdText = iccidSpinner.getSelectedItem().toString();
+                iccIdText = iccidSpinner.getSelectedItem().toString().trim();
             }
         }
         if (!iccIdText.isEmpty()) {

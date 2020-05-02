@@ -173,7 +173,7 @@ public class AddDeviceOrderActivity extends AppCompatActivity {
                     command.productListings = finalProductList;
                 }
 
-                MyToast.makeMyToast(activity, "Size"+command.productListings.size(), Toast.LENGTH_SHORT);
+               // MyToast.makeMyToast(activity, "Size"+command.productListings.size(), Toast.LENGTH_SHORT);
 
                 NewOrderCommand.setOnDemandNewOrderCommand(command);
                 Intent intent = new Intent(getApplicationContext(), OnDemandNewOrderPaymentActivity.class);

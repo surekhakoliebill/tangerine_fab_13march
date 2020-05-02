@@ -947,7 +947,9 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                 return null;
             }
 
-            if(RegistrationData.getUserThumbImageDrawable() == null){
+           /* Fingerprint Compulsory
+
+           if(RegistrationData.getUserThumbImageDrawable() == null){
                 MyToast.makeMyToast(activity, "Please upload thumb fingerprint.", Toast.LENGTH_LONG);
                 return null;
             }
@@ -955,7 +957,7 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
             if(RegistrationData.getUserIndexImageDrawable() == null){
                 MyToast.makeMyToast(activity, "Please upload index fingerprint.", Toast.LENGTH_LONG);
                 return null;
-            }
+            }*/
         }
 
         if(RegistrationData.getIsRefugee()){
@@ -963,8 +965,10 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                 MyToast.makeMyToast(activity, "Please upload refugee document.", Toast.LENGTH_LONG);
                 return null;
             }
+/*
+  Fingerprint Compulsory comment
 
-            if(RegistrationData.getRefugeeThumbImageDrawable() == null){
+  if(RegistrationData.getRefugeeThumbImageDrawable() == null){
                 //MyToast.makeMyToast(activity, "Please Upload Refugee Fingerprint.", Toast.LENGTH_LONG);
 
 
@@ -977,8 +981,8 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                     MyToast.makeMyToast(activity, "Please upload index fingerprint.", Toast.LENGTH_LONG);
                     return null;
                 }
-               // return null;
-            }
+
+            }*/
         }
 
         if (idImages.size() != 0) {
