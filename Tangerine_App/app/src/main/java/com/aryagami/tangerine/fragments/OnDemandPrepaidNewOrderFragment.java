@@ -30,6 +30,7 @@ import com.aryagami.data.Constants;
 import com.aryagami.data.DataModel;
 import com.aryagami.data.NewOrderCommand;
 import com.aryagami.data.RegistrationData;
+import com.aryagami.data.Roles;
 import com.aryagami.restapis.RestServiceHandler;
 import com.aryagami.tangerine.activities.EditUserMainActivity;
 import com.aryagami.tangerine.activities.NavigationMainActivity;
@@ -41,6 +42,7 @@ import com.aryagami.util.BugReport;
 import com.aryagami.util.MyToast;
 import com.aryagami.util.ProgressDialogUtil;
 import com.aryagami.util.ReDirectToParentActivity;
+import com.aryagami.util.UserSession;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import org.w3c.dom.Text;
@@ -62,18 +64,22 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
     LinearLayout accountSetupLayout, accountSetupSearchLayout;
     Button cancel,saveAndContinue;
     ProgressDialog progressDialog;
-    CheckBox mobileMoneyRegCheckbox, searchMobileMoneyRegCheckbox;
+    CheckBox mobileMoneyRegCheckbox, searchMobileMoneyRegCheckbox, resellerAccessCheckBox;
     // AccountDetails
     LinearLayout accountDetailsLayout;
     TextView firstName, surName, identity;
     CheckBox verifyUserId;
     Boolean isMobileMoneyAgent = false;
+    Boolean isResellerAccess = false;
     String filterType, userValue;
     LinearLayout userNameLayout, msisdnLayout;
     String[] filterOptions = {"UserName", "FirstName", "Surname", "Existing Number(MSISDN)","Document Id"};
     ImageButton searchFilterTypeButton, searchMSISDNButton;
     TextInputEditText filterTypeText, msisdnFilterType;
     ListView searchedAccountsList;
+    SearchableSpinner accessTypeSpinner;
+    List<String> roleNames = new ArrayList<String>();
+    String[] roleNamesArray;
 
     @Nullable
     @Override
@@ -130,6 +136,8 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
 
         mobileMoneyRegCheckbox = (CheckBox)view.findViewById(R.id.enableMobileMoneyReg);
         searchMobileMoneyRegCheckbox = (CheckBox)view.findViewById(R.id.enable_mobile_money_reg);
+        resellerAccessCheckBox = (CheckBox)view.findViewById(R.id.reseller_access_check_box);
+        accessTypeSpinner = (SearchableSpinner) view.findViewById(R.id.reseller_access_type_spinner);
 
         if(createNewAccountRadioButton.isChecked()){
             saveAndContinue.setText(getString(R.string.continue_btn));
@@ -151,6 +159,7 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
                         saveAndContinue.setVisibility(View.VISIBLE);
                         accountDetailsLayout.setVisibility(View.GONE);
                         newOrderCommandData.isNewAccount = true;
+                        RegistrationData.setIsResellerAccess(false);
                         break;
                     case R.id.existing_acc_radio_btn:
                         saveAndContinue.setText(getString(R.string.save_and_continue));
@@ -182,6 +191,8 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
                         saveAndContinue.setVisibility(View.INVISIBLE);
                         accountSetupSearchLayout.setVisibility(View.VISIBLE);
 
+                        getAndSetUserRoles();
+
                         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, filterOptions);
                         adapter1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
                         accountSearchSpinner.setAdapter(adapter1);
@@ -199,6 +210,14 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
                         }else {
                             searchMobileMoneyRegCheckbox.setVisibility(View.GONE);
                             searchMobileMoneyRegCheckbox.setChecked(false);
+                        }
+
+                        if(UserSession.getInternalHelpdeskRegistration(getActivity())){
+                            resellerAccessCheckBox.setVisibility(View.VISIBLE);
+                            resellerAccessCheckBox.setChecked(false);
+                        }else{
+                            resellerAccessCheckBox.setVisibility(View.GONE);
+                            resellerAccessCheckBox.setChecked(false);
                         }
                         break;
                 }
@@ -239,6 +258,21 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
                 }
             }
         });
+
+        resellerAccessCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked){
+                    isResellerAccess = true;
+                    resellerAccessCheckBox.setChecked(true);
+                    RegistrationData.setIsResellerAccess(true);
+                }else{
+                    isResellerAccess = false;
+                    resellerAccessCheckBox.setChecked(false);
+                    RegistrationData.setIsResellerAccess(false);
+                }
+            }
+        });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,14 +289,21 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
                 if(accountSearchSpinner.getSelectedItem().equals("UserName")){
                     filterType = "username";
                 }
-                if(!filterTypeText.getText().toString().isEmpty()){
-                    String userValues[] = filterTypeText.getText().toString().split(" ");
-                    userValue = userValues[0];
-                    getAccountDetailsBySearch(isMobileMoneyAgent,filterType,userValue);
 
+                if(accessTypeSpinner.getSelectedItem() != null){
+                    String selectedRole = accessTypeSpinner.getSelectedItem().toString();
+                    if(!filterTypeText.getText().toString().isEmpty()){
+                        String userValues[] = filterTypeText.getText().toString().split(" ");
+                        userValue = userValues[0];
+                        getAccountDetailsBySearch(isMobileMoneyAgent,filterType,userValue,selectedRole);
+
+                    }else{
+                        searchedAccountsList.setVisibility(View.GONE);
+                        MyToast.makeMyToast(getActivity(),"Please Enter Text.", Toast.LENGTH_SHORT);
+                    }
                 }else{
                     searchedAccountsList.setVisibility(View.GONE);
-                    MyToast.makeMyToast(getActivity(),"Please Enter Text.", Toast.LENGTH_SHORT);
+                    MyToast.makeMyToast(getActivity(),"Please Select User Role.", Toast.LENGTH_SHORT);
                 }
 
             }
@@ -272,15 +313,21 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
             @Override
             public void onClick(View view) {
 
-                if(!msisdnFilterType.getText().toString().isEmpty()){
-                    userValue = msisdnFilterType.getText().toString().trim();
-                    getAccountDetailsBySearch(isMobileMoneyAgent,filterType,userValue);
+                if(accessTypeSpinner.getSelectedItem() != null){
 
+                    if(!msisdnFilterType.getText().toString().isEmpty()){
+                        userValue = msisdnFilterType.getText().toString().trim();
+                        getAccountDetailsBySearch(isMobileMoneyAgent,filterType,userValue, accessTypeSpinner.getSelectedItem().toString());
+
+                    }else{
+                        searchedAccountsList.setVisibility(View.GONE);
+                        MyToast.makeMyToast(getActivity(),"Please Enter MSISDN Number.", Toast.LENGTH_SHORT);
+                    }
                 }else{
                     searchedAccountsList.setVisibility(View.GONE);
-                    MyToast.makeMyToast(getActivity(),"Please Enter MSISDN Number.", Toast.LENGTH_SHORT);
-                }
+                    MyToast.makeMyToast(getActivity(),"Please Select User Role.", Toast.LENGTH_SHORT);
 
+                }
             }
         });
 
@@ -449,6 +496,61 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
             }
         });
         return view;
+    }
+
+    private void getAndSetUserRoles() {
+
+        RestServiceHandler serviceHandler = new RestServiceHandler();
+        try {
+            serviceHandler.getAllRoles(new RestServiceHandler.Callback() {
+                @Override
+                public void success(DataModel.DataType type, List<DataModel> data) {
+
+                    Roles role = (Roles)data.get(0);
+                    if(role != null){
+                        if(role.status != null){
+                            if(role.status.equals("success")){
+                                Roles[] rolesArray = new Roles[role.rolesList.size()];
+                                rolesArray = role.rolesList.toArray(rolesArray);
+                                if(rolesArray.length!= 0){
+                                    RegistrationData.setRoles(rolesArray);
+                                    for (Roles role1 : rolesArray) {
+                                        if (role1.roleName != null) {
+                                            roleNames.add(role1.roleName);
+                                        }
+                                    }
+
+                                    roleNamesArray = new String[roleNames.size()];
+                                    roleNames.toArray(roleNamesArray);
+
+                                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, roleNames);
+                                    adapter1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+                                    accessTypeSpinner.setAdapter(adapter1);
+
+                                }else{
+                                    MyToast.makeMyToast(getActivity(),"EMPTY ROLES DETAILS", Toast.LENGTH_SHORT);
+                                }
+                            }else if(role.status.equals("INVALID_SESSION")){
+                                ReDirectToParentActivity.callLoginActivity(getActivity());
+                            }else{
+                                MyToast.makeMyToast(getActivity(),"GET ROLES:"+role.status, Toast.LENGTH_SHORT);
+                            }
+                        }
+                    }else{
+                        MyToast.makeMyToast(getActivity(),"EMPTY ROLES DETAILS", Toast.LENGTH_SHORT);
+                    }
+                }
+
+                @Override
+                public void failure(RestServiceHandler.ErrorCode error, String status) {
+                    // MyToast.makeMyToast(getActivity(), "STATUS: "+status+"\n ERROR"+error, Toast.LENGTH_SHORT);
+                    BugReport.postBugReport(getActivity(), Constants.emailId,"Error:"+error+"Status"+status,"");
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+            BugReport.postBugReport(getActivity(), Constants.emailId,"Login UserName:"+UserSession.getResellerName(getActivity())+"Message: "+e.getMessage()+"Error: "+e.getCause(),"Get All UserRoles: Exception");
+        }
     }
 
     @Override
@@ -667,14 +769,14 @@ public class OnDemandPrepaidNewOrderFragment extends Fragment implements Adapter
 
     }
 
-    private void getAccountDetailsBySearch(Boolean isMobileMoneyAgent, String filterType, String value){
+    private void getAccountDetailsBySearch(Boolean isMobileMoneyAgent, String filterType, String value, String userRole){
         progressDialog = ProgressDialogUtil.startProgressDialog(getActivity(),"Please wait, Fetching Relative Accounts...");
 
         RestServiceHandler serviceHandler = new RestServiceHandler();
 
         try {
 
-            serviceHandler.getAccountDetailsBySearch(isMobileMoneyAgent, filterType, value.trim(), new RestServiceHandler.Callback() {
+            serviceHandler.getAccountDetailsBySearch(isMobileMoneyAgent, filterType, value.trim(),userRole, new RestServiceHandler.Callback() {
                 @Override
                 public void success(DataModel.DataType type, List<DataModel> data) {
                     if (data != null) {

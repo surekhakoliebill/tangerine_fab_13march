@@ -1,5 +1,6 @@
 package com.aryagami.util;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -16,7 +17,10 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,6 +29,7 @@ import android.widget.Toast;
 
 import com.aryagami.BuildConfig;
 import com.aryagami.R;
+import com.aryagami.data.Constants;
 import com.aryagami.data.UserRegistration;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.soundcloud.android.crop.Crop;
@@ -54,6 +59,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import android.content.pm.PackageManager;
 
 /**
  * Created by aryagami on 11/9/15.
@@ -87,6 +93,55 @@ public class PictureUtility {
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 if (items[item].equals(activity.getResources().getString(R.string.take_photo))) {
+
+
+                    if (ContextCompat.checkSelfPermission(activity,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        marshMallowPermission.requestPermissionForExternalStorage();
+                    }
+
+                    imageByCamera = true;
+                    if (!marshMallowPermission.checkPermissionForCamera()) {
+                        marshMallowPermission.requestPermissionForCamera();
+                    } else {
+                        if (!marshMallowPermission.checkPermissionForExternalStorage()) {
+                            marshMallowPermission.requestPermissionForExternalStorage();
+                        } else {
+                            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            //cameraIntent.putExtra(MediaStore.EXTRA_FINISH_ON_COMPLETION, true);
+                            if (cameraIntent.resolveActivity(activity.getPackageManager()) != null) {
+                               // activity.startActivityForResult(cameraIntent, REQUEST_CAMERA);
+
+                                String folderPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/Tangerine/Temp";
+                                File folder = new File(folderPath);
+
+                                if (!folder.exists()) {
+                                    folder.mkdirs();
+                                    MyToast.makeMyToast(activity, "Tangerine Directory Created", Toast.LENGTH_SHORT);
+                                }
+
+                                File pictureFile = null;
+                                pictureFile = getPictureFile(folder);
+                                if (pictureFile != null) {
+
+                                    imageUri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", pictureFile);
+                                    //   imageUri = Uri.fromFile(lastDocument);
+                                    String provider = "com.android.providers.media.MediaProvider";
+
+                                    activity.grantUriPermission(provider, imageUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                    activity.grantUriPermission(provider, imageUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+                                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                                    activity.startActivityForResult(cameraIntent, REQUEST_CAMERA);
+
+                                }else{
+                                    BugReport.postBugReport(activity, Constants.emailId, " "+pictureFile,"TAKE PHOTO");
+                                }
+                            }
+                        }
+
+                    /*
                     imageByCamera = true;
                     if (!marshMallowPermission.checkPermissionForCamera()) {
                         marshMallowPermission.requestPermissionForCamera();
@@ -125,6 +180,7 @@ public class PictureUtility {
 
 
                         }
+                    }*/
                     }
 
                 } else if (items[item].equals(activity.getResources().getString(R.string.from_gallery))) {

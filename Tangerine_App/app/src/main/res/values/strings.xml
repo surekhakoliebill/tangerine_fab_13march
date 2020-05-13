@@ -134,6 +134,7 @@
         <string name="nav_header_desc">Navigation header</string>
 
         <string name="spinner_title">PROMPT</string>
+        <string name="role_spinner_title">Select User Role</string>
         <string name="search_spinner_title">Select Filter Type</string>
 
         <string name="Please_upload_refugee_document">Please Upload Refugee Document.</string>

@@ -181,10 +181,34 @@
             android:checked="false">
         </CheckBox>
 
+            <CheckBox
+                android:id="@+id/reseller_access_check_box"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/sansation_bold"
+                android:textSize="17sp"
+                android:text=" Reseller Access"
+                android:checked="false">
+            </CheckBox>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/editbackground"
+                android:orientation="vertical">
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:id="@+id/reseller_access_type_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:spinnerMode="dialog"
+                    android:prompt="@string/role_spinner_title"
+                    />
+            </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/editbackground"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
             <Spinner
                 android:id="@+id/account_search_spinner"

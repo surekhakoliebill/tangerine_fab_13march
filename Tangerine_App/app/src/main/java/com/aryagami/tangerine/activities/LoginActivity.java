@@ -120,6 +120,12 @@ public class LoginActivity extends AppCompatActivity {
                                                         RegistrationData.setNavigationData(navigationData);
                                                         RegistrationData.setEnableMobileMoneyReg(resellerLoginInfo.userInfo.enableMobileMoneyReg);
 
+                                                        if(resellerLoginInfo.userInfo.internalHelpdeskRegistration != null){
+                                                             UserSession.setInternalHelpdeskRegistration(activity, resellerLoginInfo.userInfo.internalHelpdeskRegistration);
+                                                        }else{
+                                                            UserSession.setInternalHelpdeskRegistration(activity,false);
+                                                        }
+
                                                         ProgressDialogUtil.stopProgressDialog(progressDialog);
                                                         MyToast.makeMyToast(LoginActivity.this, "Successfully Login", Toast.LENGTH_LONG);
                                                             startNavigationActivity();

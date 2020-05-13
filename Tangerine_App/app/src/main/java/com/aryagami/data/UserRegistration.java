@@ -173,6 +173,7 @@ public class UserRegistration implements DataModel, Serializable {
     public String fingerprint;
     public Boolean enableMobileMoneyReg;
     public String mobileMoneyUserType;
+    public Boolean internalHelpdeskRegistration;
 
 
 

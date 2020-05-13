@@ -488,4 +488,14 @@ public class RegistrationData implements Serializable {
 
     public static Boolean enableMobileMoneyReg = false;
 
+    public static Boolean getIsResellerAccess() {
+        return isResellerAccess;
+    }
+
+    public static void setIsResellerAccess(Boolean isResellerAccess) {
+        RegistrationData.isResellerAccess = isResellerAccess;
+    }
+
+    public static Boolean isResellerAccess = false;
+
 }

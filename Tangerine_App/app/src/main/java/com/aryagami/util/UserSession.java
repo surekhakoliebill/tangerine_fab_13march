@@ -23,6 +23,8 @@ public class UserSession   {
     static private Boolean enableMobileMoneyReg = null;
     static private String subscriptionId = null;
     static private UserRegistration allUserInformation= null;
+    static private Boolean isResellerAccess = null;
+    static private Boolean internalHelpdeskRegistration = null;
 
     static SharedPreferences sharedpreferences;
 
@@ -86,7 +88,31 @@ public class UserSession   {
         return userId;
     }
 
+    public static Boolean getInternalHelpdeskRegistration(Context context) {
 
+        if (internalHelpdeskRegistration == null) {
+            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
+            internalHelpdeskRegistration = sharedpreferences.getBoolean("internalHelpdeskRegistration", false);
+        }
+        return internalHelpdeskRegistration;
+    }
+
+    public static void setInternalHelpdeskRegistration(Context context, Boolean internalHelpdeskRegistration) {
+        UserSession.internalHelpdeskRegistration = internalHelpdeskRegistration;
+
+        if (internalHelpdeskRegistration != null) {
+            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putBoolean("internalHelpdeskRegistration", internalHelpdeskRegistration);
+            editor.commit();
+        } else {
+            UserSession.internalHelpdeskRegistration = null;
+            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.remove("internalHelpdeskRegistration");
+            editor.commit();
+        }
+    }
     // Set & Get userGroup
 
     static public void setUserGroup(Context context, String userGroup) {
@@ -262,35 +288,5 @@ public class UserSession   {
 
     }
 
-   /* public static Boolean getEnableMobileMoneyReg(Context context) {
 
-        if (enableMobileMoneyReg == null){
-            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
-            enableMobileMoneyReg = sharedpreferences.getBoolean("enableMobileMoneyReg", null);
-        }
-
-        return enableMobileMoneyReg;
-    }
-
-    public static void setEnableMobileMoneyReg(Context context, Boolean enableMobileMoneyReg) {
-        UserSession.enableMobileMoneyReg = enableMobileMoneyReg;
-
-        if (enableMobileMoneyReg != null) {
-
-            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
-
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-           // editor.putString("enableMobileMoneyReg", enableMobileMoneyReg);
-            editor.putBoolean("enableMobileMoneyReg", enableMobileMoneyReg);
-            editor.commit();
-        } else {
-            UserSession.enableMobileMoneyReg = null;
-            sharedpreferences = context.getSharedPreferences(Constants.USERSESSIONINFO, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.remove("enableMobileMoneyReg");
-            editor.commit();
-        }
-    }
-
-*/
 }

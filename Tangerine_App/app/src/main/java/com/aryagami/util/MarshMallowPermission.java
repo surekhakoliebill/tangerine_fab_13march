@@ -53,7 +53,17 @@ public class MarshMallowPermission {
         }
     }
 
+    public boolean checkPermissionForStorage(){
+        int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void requestPermissionForExternalStorage(){
+
         final MarshMallowPermission permission = new MarshMallowPermission(activity);
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
 
@@ -76,7 +86,20 @@ public class MarshMallowPermission {
 
     public void requestPermissionForCamera(){
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)){
-            Toast.makeText(activity, activity.getResources().getString(R.string.marshmallow_Camera_permission), Toast.LENGTH_LONG).show();
+           // Toast.makeText(activity, activity.getResources().getString(R.string.marshmallow_Camera_permission), Toast.LENGTH_LONG).show();
+
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+            alertDialog.setCancelable(false);
+            alertDialog.setTitle("Alert");
+            alertDialog.setMessage(activity.getResources().getString(R.string.marshmallow_Camera_permission));
+            alertDialog.setNeutralButton(activity.getResources().getString(R.string.ok),
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+                        }
+                    });
+            alertDialog.show();
         } else {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
         }

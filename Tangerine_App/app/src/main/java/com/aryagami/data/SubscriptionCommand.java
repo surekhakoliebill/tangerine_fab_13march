@@ -75,6 +75,7 @@ public class SubscriptionCommand implements DataModel, Serializable {
     public List<String> bundleList;
     public String basePlanName;
     public Float inventoryPrice;
+    public Boolean isResellerAccessNetwork;
 
 
     public static List<DataModel> parseSubscriptionJSONInput(String json) throws IOException {

@@ -964,6 +964,7 @@ public class NewOrderCommand implements Serializable, DataModel {
                     jwriter.name("isSingleIp").value(subscriptionCommand.isSingleIp);
                     jwriter.name("discountType").value(subscriptionCommand.discountType);
                     jwriter.name("isAutoSelectIp").value(subscriptionCommand.isAutoSelectIp);
+                    jwriter.name("isResellerAccessNetwork").value(subscriptionCommand.isResellerAccessNetwork);
                     jwriter.name("subPlanAddonMappings");
                     getSubPlanAddonMappingsJSON(subscriptionCommand, jwriter);
 

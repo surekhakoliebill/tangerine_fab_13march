@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="300dp"
+    android:layout_height="500dp"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/lycaflash"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/popup_border"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <ListView
+            android:id="@+id/tasks_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="2dp"
+            />
+        <Button
+            android:id="@+id/finish_process_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:padding="5dp"
+            android:visibility="invisible"
+            android:text="Finish Process"
+            android:fontFamily="@font/sansation_bold"
+            android:textAllCaps="false"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+   <!-- android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp"
+    android:padding="10px"android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp"
+    android:padding="10px"-->

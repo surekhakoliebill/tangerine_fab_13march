@@ -604,6 +604,7 @@ public class OnDemandAddSubscriptionActivity extends AppCompatActivity {
 
         command.skipInventoryCheck = false;
         command.subscriptionInfo = "";
+        command.isResellerAccessNetwork = RegistrationData.getIsResellerAccess();
 
         command.subPlanAddonMappings = new ArrayList<SubscriptionCommand.SubscriptionPlanAddon>();
         subscriptionCommandList.add(command);

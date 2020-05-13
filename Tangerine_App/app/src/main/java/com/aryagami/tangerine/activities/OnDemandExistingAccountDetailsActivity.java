@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ import com.aryagami.data.NewOrderCommand;
 import com.aryagami.data.RegistrationData;
 import com.aryagami.data.UserRegistration;
 import com.aryagami.util.CheckNetworkConnection;
+import com.aryagami.util.UserSession;
 
 public class OnDemandExistingAccountDetailsActivity extends AppCompatActivity {
 
@@ -28,6 +31,7 @@ public class OnDemandExistingAccountDetailsActivity extends AppCompatActivity {
     UserRegistration registration;
     RadioGroup discountTyepRadioGroup;
     RadioButton flatRadioButton, percentRadioButton;
+    String[] accessTypes = {"Prepaid", "Reseller Access"};
 
     public  void onTrimMemory(int level) {
         System.gc();
@@ -167,6 +171,7 @@ public class OnDemandExistingAccountDetailsActivity extends AppCompatActivity {
         }else{
             registration.discountValue = 0f;
         }
+
 
     }
 

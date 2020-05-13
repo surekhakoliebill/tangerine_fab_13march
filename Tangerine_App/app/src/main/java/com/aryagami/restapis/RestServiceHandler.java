@@ -36,6 +36,7 @@ import com.aryagami.data.WarehouseBinLotVo;
 import com.aryagami.data.WalletAccountTransactionLogVo;
 import com.aryagami.util.BugReport;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -624,10 +625,11 @@ RestServiceHandler extends AsyncTask<Void, Void, Void> {
         params = null;
         executeService();
     }
-    public void getAccountDetailsBySearch(Boolean isMobileMoney, String type, String value, Callback cback) throws IOException {
+    public void getAccountDetailsBySearch(Boolean isMobileMoney, String type, String value, String roleName, Callback cback) throws IOException {
         callback = cback;
         api = API.GET_ACCOUNT_DETAILS;
-        url = Constants.serviceUrl + "get_active_accounts/"+isMobileMoney + "/" +type + "/" + value + "/";
+        String rName = roleName.replace(" ", "%20");
+        url = Constants.serviceUrl + "get_active_accounts/"+isMobileMoney + "/" +type + "/" + value + "/" +rName +"/";
         method = HttpHandler.GET;
         params = null;
         executeService();
