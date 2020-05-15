@@ -317,7 +317,7 @@ public class OnDemandUserInformationFragment extends Fragment {
         selectGenderSpinner.setAdapter(adapter1);
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, companyRegTypes);
-        adapter1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         companyRegTypeSpinner.setAdapter(adapter2);
 
         datePickerText.setInputType(InputType.TYPE_NULL);
@@ -1218,6 +1218,11 @@ public class OnDemandUserInformationFragment extends Fragment {
                 return null;
             }
 
+            if(companyRegTypeSpinner.getSelectedItem() != null){
+                userRegistration.companyRegistrationType = companyRegTypeSpinner.getSelectedItem().toString();
+            }else{
+                userRegistration.companyRegistrationType = "General";
+            }
 
             EditText tin_no = (EditText) view.findViewById(R.id.c_tin_no);
 

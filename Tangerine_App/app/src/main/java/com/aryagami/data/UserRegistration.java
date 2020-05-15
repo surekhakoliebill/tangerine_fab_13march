@@ -174,6 +174,7 @@ public class UserRegistration implements DataModel, Serializable {
     public Boolean enableMobileMoneyReg;
     public String mobileMoneyUserType;
     public Boolean internalHelpdeskRegistration;
+    public String companyRegistrationType;
 
 
 

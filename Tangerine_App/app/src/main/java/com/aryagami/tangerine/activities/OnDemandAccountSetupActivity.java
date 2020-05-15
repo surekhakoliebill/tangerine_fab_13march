@@ -90,9 +90,10 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
     ImageView fingerPrintImage, capturedFingerPrint;
     private boolean isPdfFile = false;
 
-    DocumentTypes[] pdfUpload, companyDocs, personalDocs;
+    DocumentTypes[] pdfUpload, companyDocs, personalDocs, ngoDocsArray;
     List<DocumentTypes> companyDocList = new ArrayList<DocumentTypes>();
     List<DocumentTypes> personalDocList = new ArrayList<DocumentTypes>();
+    List<DocumentTypes> ngoDocList = new ArrayList<DocumentTypes>();
     Bitmap bitmap;
 
     List<PdfDocumentData> pdfDocumentDataList = new ArrayList<PdfDocumentData>();
@@ -102,7 +103,9 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
     ImageView thumbFingerImage, indexFingerImage;
     List<Drawable> userFingerprintsList = new ArrayList<Drawable>();
     
-    LinearLayout capturedFingerprintLayout, uploadFingerprintLayout;
+    LinearLayout capturedFingerprintLayout, uploadFingerprintLayout, generalCompanyDocLayout, ngoCompanyDocLayout;
+    Button ngoButton1, ngoButton2, ngoButton3;
+    TextView ngoNotification1, ngoNotification2, ngoNotification3;
 
     public  void onTrimMemory(int level) {
         System.gc();
@@ -179,6 +182,19 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
         capturedFingerprintLayout = (LinearLayout)findViewById(R.id.captured_fingerprint_layout);
         uploadFingerprintLayout = (LinearLayout)findViewById(R.id.upload_fingerprint_layout);
 
+        // General & ComapnyDoc layout
+        generalCompanyDocLayout = (LinearLayout)findViewById(R.id.general_doc_layout);
+        ngoCompanyDocLayout = (LinearLayout)findViewById(R.id.ngo_doc_layout);
+
+        //NGO Buttons & Notifications
+        ngoButton1 = (Button)findViewById(R.id.ngo_1);
+        ngoButton2 = (Button)findViewById(R.id.ngo_2);
+        ngoButton3 = (Button)findViewById(R.id.ngo_3);
+
+        ngoNotification1 = (TextView)findViewById(R.id.ngo_notification1);
+        ngoNotification2 = (TextView)findViewById(R.id.ngo_notification2);
+        ngoNotification3 = (TextView)findViewById(R.id.ngo_notification3);
+
        if(userRegistration != null)
            if(userRegistration.registrationType != null) {
                if (userRegistration.registrationType.equals("personal") || userRegistration.registrationType.equals("retailer")) {
@@ -244,6 +260,19 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                    activationDocLayout.setVisibility(View.VISIBLE);
                    accountsetupPersonal.setVisibility(View.GONE);
                    accountsetupCompany.setVisibility(View.VISIBLE);
+
+                   if(userRegistration.companyRegistrationType != null){
+                       if(userRegistration.companyRegistrationType.equals("General")){
+                           ngoCompanyDocLayout.setVisibility(View.GONE);
+                           generalCompanyDocLayout.setVisibility(View.VISIBLE);
+                       }else if(userRegistration.companyRegistrationType.equals("NGO")){
+                           ngoCompanyDocLayout.setVisibility(View.VISIBLE);
+                           generalCompanyDocLayout.setVisibility(View.GONE);
+                       }
+                   }else{
+                       ngoCompanyDocLayout.setVisibility(View.GONE);
+                       generalCompanyDocLayout.setVisibility(View.VISIBLE);
+                   }
                }
            }
 
@@ -460,6 +489,31 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                 selectAlertItem(activity,78 ,documentName);
             }
         });*/
+
+        ngoButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                String documentName = ngoButton1.getText().toString().replace(" ", "_");
+                clearPreviousPdfData(documentName);
+                selectAlertItem(activity,91 ,documentName);
+            }
+        });
+        ngoButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                String documentName = ngoButton2.getText().toString().replace(" ", "_");
+                clearPreviousPdfData(documentName);
+                selectAlertItem(activity,92 ,documentName);
+            }
+        });
+        ngoButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                String documentName = ngoButton3.getText().toString().replace(" ", "_");
+                clearPreviousPdfData(documentName);
+                selectAlertItem(activity,93 ,documentName);
+            }
+        });
 
         upload_profile_File.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -782,13 +836,17 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                                 }
                             } else if (upload.userType.equals("personal")) {
                                 personalDocList.add(upload);
+                            }else if(upload.userType.equals("NGO")){
+                                ngoDocList.add(upload);
                             }
                         }
 
                         companyDocs = new DocumentTypes[companyDocList.size()];
+                        ngoDocsArray = new DocumentTypes[ngoDocList.size()];
                         uploadedDocArray = new PdfDocumentData[companyDocList.size()];
                         personalDocs = new DocumentTypes[personalDocList.size()];
                         companyDocList.toArray(companyDocs);
+                        ngoDocList.toArray(ngoDocsArray);
 
                         if (companyDocs.length != 0) {
                             certifiedcompany.setText(companyDocs[0].displayName);
@@ -798,6 +856,11 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                             URAcertified.setText(companyDocs[4].displayName);
                             previousbusiness.setText(companyDocs[5].displayName);
                             bankstatement.setText(companyDocs[6].displayName);
+                        }
+                        if(ngoDocsArray.length != 0){
+                            ngoButton1.setText(ngoDocsArray[0].displayName);
+                            ngoButton2.setText(ngoDocsArray[1].displayName);
+                            ngoButton3.setText(ngoDocsArray[2].displayName);
                         }
                         personalDocList.toArray(personalDocs);
                         enableCompanyDocButtons();
@@ -1522,8 +1585,7 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
             }
         }
 
-
-       /* if (requestCode == 78 && resultCode == RESULT_OK) {
+        if (requestCode == 91 && resultCode == RESULT_OK) {
             if(data != null)
                 if(data.getData() != null) {
                     // from direct external Storage
@@ -1537,18 +1599,18 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
 
             if(pdfUri != null) {
                 PdfDocumentData docData1 = new PdfDocumentData();
-                docData1.displayName = companyDocs[6].displayName.toString();
-                docData1.docType = checkDisplayName(companyDocs[6].displayName.toString());
+                docData1.displayName = ngoDocsArray[0].displayName;
+                docData1.docType = ngoDocsArray[0].docType;
                 docData1.imageData = pdfUri;
                 String encodeData = FilePath.getEncodeData(activity,pdfUri);
-                if (encodeData != null) {
+                if (encodeData!= null) {
 
                     if(!encodeData.equals("File size is too Large") && !encodeData.equals("File Not Found")){
                         docData1.pdfRwaData = encodeData;
-                        uploadedDocArray[6] = docData1;
+                        uploadedDocArray[0] = docData1;
                         pdfDocumentDataList.add(docData1);
 
-                        notification7.setText("A file is selected :" + docData1.displayName.toString().replace(" ","_")+".pdf");
+                        ngoNotification1.setText("A file is selected :" + docData1.displayName.toString().replace(" ","_")+".pdf");
                     }else if (encodeData.equals("File Not Found")){
                         MyToast.makeMyToast(activity,"File Not Found, Please reUpload.", Toast.LENGTH_SHORT);
                     }else if (encodeData.equals("File size is too Large")){
@@ -1556,7 +1618,77 @@ public class OnDemandAccountSetupActivity extends AppCompatActivity {
                     }
                 }
             }
-        }*/
+        }
+
+        if (requestCode == 92 && resultCode == RESULT_OK) {
+            if(data != null)
+                if(data.getData() != null) {
+                    // from direct external Storage
+                    pdfUri = data.getData();
+                }else{
+                    //from generate Pdf
+                    String uri = data.getStringExtra("result");
+                    if (uri != null)
+                        pdfUri = Uri.parse(uri);
+                }
+
+            if(pdfUri != null) {
+                PdfDocumentData docData1 = new PdfDocumentData();
+                docData1.displayName = ngoDocsArray[1].displayName.toString();
+                docData1.docType = ngoDocsArray[1].docType;
+                docData1.imageData = pdfUri;
+                String encodeData = FilePath.getEncodeData(activity,pdfUri);
+                if (encodeData!= null) {
+
+                    if(!encodeData.equals("File size is too Large") && !encodeData.equals("File Not Found")){
+                        docData1.pdfRwaData = encodeData;
+                        uploadedDocArray[1] = docData1;
+                        pdfDocumentDataList.add(docData1);
+
+                        ngoNotification2.setText("A file is selected :" + docData1.displayName.toString().replace(" ","_")+".pdf");
+                    }else if (encodeData.equals("File Not Found")){
+                        MyToast.makeMyToast(activity,"File Not Found, Please reUpload.", Toast.LENGTH_SHORT);
+                    }else if (encodeData.equals("File size is too Large")){
+                        MyToast.makeMyToast(activity,"The uploaded file size should be less than 10 MB.", Toast.LENGTH_SHORT);
+                    }
+                }
+            }
+        }
+
+        if (requestCode == 93 && resultCode == RESULT_OK) {
+            if(data != null)
+                if(data.getData() != null) {
+                    // from direct external Storage
+                    pdfUri = data.getData();
+                }else{
+                    //from generate Pdf
+                    String uri = data.getStringExtra("result");
+                    if (uri != null)
+                        pdfUri = Uri.parse(uri);
+                }
+
+            if(pdfUri != null) {
+                PdfDocumentData docData1 = new PdfDocumentData();
+                docData1.displayName = ngoDocsArray[0].displayName;
+                docData1.docType = ngoDocsArray[0].docType;
+                docData1.imageData = pdfUri;
+                String encodeData = FilePath.getEncodeData(activity,pdfUri);
+                if (encodeData!= null) {
+
+                    if(!encodeData.equals("File size is too Large") && !encodeData.equals("File Not Found")){
+                        docData1.pdfRwaData = encodeData;
+                        uploadedDocArray[2] = docData1;
+                        pdfDocumentDataList.add(docData1);
+
+                        ngoNotification3.setText("A file is selected :" + docData1.displayName.toString().replace(" ","_")+".pdf");
+                    }else if (encodeData.equals("File Not Found")){
+                        MyToast.makeMyToast(activity,"File Not Found, Please reUpload.", Toast.LENGTH_SHORT);
+                    }else if (encodeData.equals("File size is too Large")){
+                        MyToast.makeMyToast(activity,"The uploaded file size should be less than 10 MB.", Toast.LENGTH_SHORT);
+                    }
+                }
+            }
+        }
 
         if (requestCode == 100) {
             fingerPrintImage.setVisibility(View.VISIBLE);
