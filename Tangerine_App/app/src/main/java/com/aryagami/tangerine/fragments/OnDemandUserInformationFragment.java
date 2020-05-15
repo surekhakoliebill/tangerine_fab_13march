@@ -64,11 +64,12 @@ public class OnDemandUserInformationFragment extends Fragment {
 
     LinearLayout datePikerLayout;
     TextInputLayout surnameLayout, visaValidityLayout;
-    Spinner passportTypeSpinner, selectGenderSpinner;
+    Spinner passportTypeSpinner, selectGenderSpinner, companyRegTypeSpinner;
     TextInputEditText give_name,document_id,foreigner_nationality,surname,datePickerText,user_name, email_id, phone_number, national_id_number, dob, foreigner_passport_no, foreigner_identity_no, company_name, tin_number, certificate_number, c_user_name, c_email, c_phone_number, c_company, c_tin_number, c_certificate_number, c_primary_username, c_primary_phone_number, c_primary_email, c_alternate_user_name, c_alternate_phone_number, c_alternate_email,issuedDate ;
     TextInputEditText refugeeId, visaExpiryDate, refugeeNationality, ugandaNationality;
     String[] passportTypes = {"Validity Date","Life time validity", "E. A Community – TZ","E. A Community – KE","E. A Community – BR","E. A Community – SS","E. A Community – RW"};
     String[] genderTypes = {"Select Gender", "Male","Female","Others"};
+    String[] companyRegTypes = {"General", "NGO"};
 
 
     @Nullable
@@ -113,6 +114,8 @@ public class OnDemandUserInformationFragment extends Fragment {
         selectGenderSpinner = (Spinner)view.findViewById(R.id.select_gender_spinner);
         selectGenderSpinner.setPrompt("");
         genderLayout = (LinearLayout)view.findViewById(R.id.gender_layout);
+
+        companyRegTypeSpinner = (Spinner)view.findViewById(R.id.company_reg_type_spinner);
 
         verifyText = (TextView)view.findViewById(R.id.verify_text);
 
@@ -312,6 +315,10 @@ public class OnDemandUserInformationFragment extends Fragment {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, genderTypes);
         adapter1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         selectGenderSpinner.setAdapter(adapter1);
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, companyRegTypes);
+        adapter1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        companyRegTypeSpinner.setAdapter(adapter2);
 
         datePickerText.setInputType(InputType.TYPE_NULL);
         datePickerText.requestFocus();
@@ -1122,6 +1129,8 @@ public class OnDemandUserInformationFragment extends Fragment {
             }else if(refugeeBtn.isChecked()){
 
                 userRegistration.nationalIdentity = "Refugee";
+                userRegistration.surname = "";
+                userRegistration.surName = "";
 
                 if(refugeeId.getText().toString().isEmpty()){
                     Toast.makeText(getActivity(), "Please enter Identity Number", Toast.LENGTH_SHORT).show();
